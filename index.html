@@ -75,7 +75,7 @@ small{color:#555}
 <button class="btn green" onclick="show('payment')">NENDA PAYMENT 💳</button></div></div>
 
 <!-- PHARMACY -->
-<div id="pharmacy" class="page"><button class="btn grey" onclick="show('home')">⬅ RUDI HOME</button>
+<div id="pharmacy" class="page"><button class="btn red" onclick="show('theatre')">🏥 THEATRE / OPERATION</button>
 <div class="card"><h2>💊 Pharmacy - Dawa</h2><img src="IMG-20261113-WA1869.jpg">
 <p><b>MWELEKEO:</b> Kutoka Daktari / Lab > Leta karatasi ya dawa (Prescription) > Lipa > Chukua dawa. Daktari wa dawa atakuelekeza jinsi ya kutumia.</p>
 <button class="btn green" onclick="show('payment')">LIPA DAWA - NENDA PAYMENT 💳</button>
@@ -117,6 +117,15 @@ small{color:#555}
 <input id="p-kiasi" placeholder="Kiasi - Ksh">
 <button class="btn green" onclick="lipa()">LIPA SASA ✅</button>
 <div id="p-res"></div></div></div>
+  
+  <!-- THEATRE -->
+<div id="theatre" class="page"><button class="btn" onclick="show('pharmacy')">💊 PHARMACY</button>
+<div class="card"><h2>🏥 Theatre / Operation</h2><img src="PIC-11.jpg">
+<p><b>MWELEKEO:</b> Kutoka Emergency / Check Up > Theatre > Daktari anakufanyia operation > Baada ya operation unarudi Ward kupumzika.</p>
+<p><b>Humu ndani:</b> Madaktari wa upasuaji, Nurses, Theatre Bed, Mashine za kupumua, Taasisi safi na salama.</p>
+<p><b>Kumbuka:</b> Mgonjwa hapaswi kula kabla ya operation. Ndugu wanasubiri nje ya Theatre.</p>
+<button class="btn green" onclick="show('payment')">MALIZA - NENDA PAYMENT 💳</button>
+<button class="btn" onclick="show('home')">RUDI HOME</button></div></div>
 
 <script>
 function show(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
