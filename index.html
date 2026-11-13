@@ -10,153 +10,191 @@ body{background:#F1F5F9;color:#0B1B2E;padding:14px}
 .topbar{background:#0B1B2E;color:#fff;padding:14px;border-radius:12px;text-align:center;font-weight:bold}
 .topbar span{color:#2EC4B6}
 .page{background:#fff;border-radius:16px;padding:16px;margin-top:14px;box-shadow:0 4px 14px rgba(0,0,0,.06)}
-.sectionTitle h2{font-size:22px;margin-bottom:8px}
-.pageImg{width:100%;border-radius:14px;margin:10px 0;object-fit:cover}
+.pageImg{width:100%;border-radius:14px;margin:10px 0}
 .card{background:#F8FAFC;border-radius:14px;padding:14px;margin-top:10px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.btnPrimary{background:#0A4D8A;color:#fff;border:0;padding:12px 16px;border-radius:10px;width:100%;font-weight:bold;margin-top:10px}
+.btnPrimary{background:#0A4D8A;color:#fff;border:0;padding:12px;border-radius:10px;width:100%;font-weight:bold;margin-top:10px}
+.btnGreen{background:#059669;color:#fff;border:0;padding:12px;border-radius:10px;width:100%;font-weight:bold;margin-top:10px}
+.btnGold{background:#D97706;color:#fff;border:0;padding:12px;border-radius:10px;width:100%;font-weight:bold;margin-top:10px}
+.btnDark{background:#0B1B2E;color:#fff;border:0;padding:12px;border-radius:10px;width:100%;font-weight:bold;margin-top:10px}
+.btnPurple{background:#6D28D9;color:#fff;border:0;padding:12px;border-radius:10px;width:100%;font-weight:bold;margin-top:10px}
 .alertGreen{background:#ECFDF5;border:1px solid #6EE7B7;padding:12px;border-radius:12px;margin-top:10px}
 .alertBlue{background:#EFF6FF;border:1px solid #93C5FD;padding:12px;border-radius:12px;margin-top:10px}
 .alertGold{background:#FFFBEB;border:1px solid #FCD34D;padding:12px;border-radius:12px;margin-top:10px}
-.table{width:100%;border-collapse:collapse;margin-top:10px}
-.table th{background:#F1F5F9;text-align:left;padding:10px}
-.table td{padding:12px;border-bottom:1px solid #E2E8F0}
+.alertRed{background:#FEF2F2;border:1px solid #FCA5A5;padding:12px;border-radius:12px;margin-top:10px}
 .protocol{background:#F8FAFC;border-left:4px solid #0A4D8A;padding:12px;border-radius:10px;margin-top:10px}
-.receipt{border:2px dashed #0A4D8A;padding:14px;border-radius:12px;margin-top:10px}
+.receipt{border:2px dashed #0A4D8A;padding:14px;border-radius:12px;margin-top:10px;display:none;background:#FFFBEB}
 .mapBox{border-radius:20px;overflow:hidden;margin-top:10px}
-.mapBox iframe{width:100%;height:220px;border:0}
+.mapBox iframe{width:100%;height:260px;border:0}
 .footer{background:#0B1B2E;color:#fff;padding:16px;border-radius:14px;text-align:center;margin-top:14px}
 input,select,textarea{width:100%;padding:11px;border:1px solid #CBD5E1;border-radius:10px;margin-top:6px}
-label{font-weight:bold;font-size:13px}
+label{font-weight:bold;font-size:13px;display:block;margin-top:10px}
 .nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .nav button{background:#fff;border:1px solid #CBD5E1;padding:10px 12px;border-radius:20px;font-weight:bold}
+.formTitle{font-size:18px;margin-top:14px;color:#0A4D8A}
+.serviceCard{border:1px solid #E2E8F0;border-radius:14px;padding:12px;margin-top:12px}
+.roleBox{border:2px solid #E2E8F0;border-radius:14px;padding:14px;margin-top:12px}
 @media(max-width:900px){.grid2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+<div class="topbar"><span>SCRUPULOUS HOSPITAL</span> - WATAMU<br><small>Care That Never Compromises | Call: 0112955446</small></div>
+<!-- LANDING - KABLA YA HOMEPAGE -->
+<div id="landingPage" class="page">
+<span style="background:#E0F2FE;padding:6px 10px;border-radius:20px;font-weight:bold;font-size:12px">SCRUPULOUS HOSPITAL WATAMU</span>
+<h1 style="margin-top:10px">Care That<br><span style="color:#0A4D8A">Never Compromises</span></h1>
+<p style="margin-top:8px">Hospitali ya kisasa Watamu - Emergency 24hrs, Maternity, Theatre, Lab, Pharmacy na Mortuary.</p>
+<img class="pageImg" src="images/gate.jpg" alt="Gate">
+<div class="alertBlue"><b>OUR LOCATION & CONTACT</b><br>
+📍 <b>Location:</b> Watamu, Kilifi County, Kenya - Malindi Road, near Watamu Town<br>
+📞 <b>Phone / Emergency:</b> 0112955446<br>
+🚑 <b>Ambulance:</b> 0112955446<br>
+✉️ <b>Email:</b> scrupulouslucas@gmail.com<br>
+🕒 <b>Open:</b> 24 Hours - Every Day</div>
 
-<div class="topbar"><span>SCRUPULOUS HOSPITAL</span> - WATAMU<br><small>Care That Never Compromises</small></div>
+<h3 class="formTitle">Find Us - Google Map Location</h3>
+<div class="mapBox"><iframe src="https://maps.google.com/maps?q=Watamu%2C%20Kilifi%20County%2C%20Kenya&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe></div>
+<p><a href="https://maps.google.com/?q=Watamu,Kilifi,Kenya" target="_blank">Open in Google Maps</a></p>
 
-<!-- LOGIN - INAFUNGUKA KWANZA -->
-<div id="loginPage" class="page">
-  <span style="background:#E0F2FE;padding:6px 10px;border-radius:20px;font-weight:bold;font-size:12px">SCRUPULOUS HOSPITAL</span>
-  <h1 style="margin-top:10px">Care That<br><span style="color:#0A4D8A">Never Compromises</span></h1>
-  <p style="margin-top:8px">From emergency to maternity, laboratory to pharmacy — we are here for Watamu.</p>
-  <div class="card">
-    <label>Staff Name / Username</label>
-    <input type="text" placeholder="e.g. Dr. A. Mensah">
-    <label style="margin-top:10px;display:block">Password / PIN</label>
-    <input type="password" placeholder="Enter password">
-    <button class="btnPrimary" onclick="showMain()">LOGIN TO HOSPITAL SYSTEM</button>
-  </div>
-  <div class="alertBlue"><b>Emergency?</b><br>Call: 0712 345 678 | Ambulance: 102</div>
+<h2 style="margin-top:16px">Our Services - Chagua Huduma</h2>
+<div class="serviceCard"><img class="pageImg" src="images/gate.jpg"><h3>1. Gate / Visiting</h3><p>Mlango mkuu, security, kuingia kwa wagonjwa na wageni.</p><button class="btnPrimary" onclick="goToService('page-gate')">VIEW GATE</button></div>
+<div class="serviceCard"><img class="pageImg" src="images/accident.jpg"><h3>2. Accident & Emergency</h3><p>Ajali, dharura, Ambulance, Trauma Bay 2.</p><button class="btnPrimary" onclick="goToService('page-accident')">VIEW EMERGENCY</button></div>
+<div class="serviceCard"><img class="pageImg" src="images/theatre.jpg"><h3>3. Theatre - Surgery</h3><p>Theatre kubwa, surgical lights, General, Emergency, C-Section.</p><button class="btnPrimary" onclick="goToService('page-theatre')">VIEW THEATRE</button></div>
+<div class="serviceCard"><img class="pageImg" src="images/lab.jpg"><h3>4. Lab & Pharmacy</h3><p>Vipimo - Blood, Malaria, HIV, Urine + Dawa halisi.</p><button class="btnPrimary" onclick="goToService('page-lab')">VIEW LAB & PHARMACY</button></div>
+<div class="serviceCard"><img class="pageImg" src="images/mortuary.jpg"><h3>5. Mortuary</h3><p>Heshima, utulivu, kuhifadhi na kuchukua mwili.</p><button class="btnPrimary" onclick="goToService('page-mortuary')">VIEW MORTUARY</button></div>
+<div class="serviceCard"><img class="pageImg" src="images/boardroom.jpg"><h3>6. Board Room</h3><p>Uongozi, Agenda 2026-2027, Partnership na Donation.</p><button class="btnPrimary" onclick="goToService('page-board')">VIEW BOARD ROOM</button></div>
+
+<h2 style="margin-top:22px">Sign In To Continue</h2>
+<div class="roleBox"><h3>PATIENT - Mgonjwa</h3>
+<label>Jina Kamili</label><input id="patientName" type="text" placeholder="Jina kamili">
+<label>Simu</label><input type="tel" placeholder="07XX XXX XXX">
+<label>Email</label><input type="email" placeholder="example@gmail.com">
+<button class="btnGreen" onclick="loginAs('PATIENT','patientName')">SIGN IN AS PATIENT</button></div>
+
+<div class="roleBox"><h3>WORKER - Mfanyakazi</h3><p>Doctor, Nurse, Receptionist, Others</p>
+<label>Jina la Worker</label><input id="workerName" type="text" placeholder="Jina la staff">
+<label>Role Yako</label><select id="workerRole"><option>Doctor</option><option>Nurse</option><option>Receptionist</option><option>Lab Technician</option><option>Pharmacist</option><option>Others</option></select>
+<label>Staff ID / Password</label><input type="password" placeholder="Staff ID / PIN">
+<button class="btnGold" onclick="loginWorker()">SIGN IN AS WORKER</button></div>
+
+<div class="roleBox"><h3>ADMIN - Msimamizi</h3>
+<label>Admin Name</label><input id="adminName" type="text" placeholder="Jina la admin">
+<label>Admin Password</label><input type="password" placeholder="Admin password">
+<button class="btnDark" onclick="loginAs('ADMIN','adminName')">SIGN IN AS ADMIN</button></div>
+
+<div class="roleBox"><h3>DIRECTOR - Mkurugenzi</h3>
+<label>Director Name</label><input id="directorName" type="text" placeholder="Jina la director">
+<label>Director Code</label><input type="password" placeholder="Director code">
+<button class="btnPurple" onclick="loginAs('DIRECTOR','directorName')">SIGN IN AS DIRECTOR</button></div>
+
+<div class="alertRed"><b>Emergency?</b> Piga sasa: 0112955446</div>
 </div>
-
-<!-- MENU -->
+<!-- MAIN APP - HOMEPAGE BAADA YA SIGN IN -->
 <div id="mainApp" style="display:none">
 <div class="nav">
-  <button onclick="showPage('page-home')">Home</button>
-  <button onclick="showPage('page-gate')">Gate</button>
-  <button onclick="showPage('page-board')">Board Room</button>
-  <button onclick="showPage('page-theatre')">Theatre</button>
-  <button onclick="showPage('page-accident')">Accident</button>
-  <button onclick="showPage('page-mortuary')">Mortuary</button>
-  <button onclick="showPage('page-lab')">Lab & Pharmacy</button>
-  <button onclick="showPage('page-attendance')">Attendance</button>
+<button onclick="showPage('page-home')">Home</button>
+<button onclick="showPage('page-gate')">Gate</button>
+<button onclick="showPage('page-board')">Board Room</button>
+<button onclick="showPage('page-theatre')">Theatre</button>
+<button onclick="showPage('page-accident')">Accident</button>
+<button onclick="showPage('page-mortuary')">Mortuary</button>
+<button onclick="showPage('page-lab')">Lab & Pharmacy</button>
+<button onclick="showPage('page-attendance')">Attendance</button>
+<button onclick="backToLanding()">Back to Sign In</button>
 </div>
+<div id="welcomeMsg" class="alertGreen" style="margin-top:12px"></div>
 
-<!-- HOME -->
 <div id="page-home" class="page">
-  <div class="sectionTitle"><h2>Welcome to Scrupulous Hospital Watamu</h2></div>
-  <img class="pageImg" src="images/gate.jpg" alt="Scrupulous Hospital Gate">
-  <p>Hospitali ya kisasa Watamu — Emergency 24hrs, Maternity, Theatre, Lab, Pharmacy na Mortuary.</p>
-  <div class="grid2">
-    <div class="card"><h3>Emergency 24/7</h3><p>Accident & Emergency na Ambulance arrival.</p></div>
-    <div class="card"><h3>Maternity & Theatre</h3><p>Modern theatre rooms na surgical lights.</p></div>
-  </div>
-  <div class="alertGreen"><b>PROTOCOL:</b> Mgojwa wa dharura — Triage kwanza, kisha Accident Room.</div>
+<h2>Homepage - Welcome to Scrupulous Hospital Watamu</h2>
+<img class="pageImg" src="images/gate.jpg">
+<p><b>Maelezo:</b> Karibu Scrupulous Hospital Watamu. Chagua huduma kwenye menu hapo juu. Kila page ina picha, maelezo na form yake.</p>
+<p>📍 Watamu, Kilifi | 📞 0112955446 | ✉️ scrupulouslucas@gmail.com</p>
+<h3 class="formTitle">Book General Appointment</h3>
+<div class="card">
+<label>Jina Kamili</label><input id="homeName" type="text" placeholder="Jina kamili">
+<label>Simu</label><input type="tel" placeholder="07XX XXX XXX">
+<label>Huduma</label><select><option>General Checkup</option><option>Maternity</option><option>Emergency</option><option>Lab Test</option><option>Pharmacy</option><option>Surgery</option></select>
+<label>Tarehe</label><input type="date">
+<label>Maelezo / Dalili</label><textarea placeholder="Eleza shida yako..."></textarea>
+<button class="btnPrimary" onclick="submitForm('homeReceipt','homeName')">SUBMIT APPOINTMENT</button>
+</div>
+<div id="homeReceipt" class="receipt"><b>RECEIPT - APPOINTMENT IMEPOKELEWA</b><br>Asante! Tutakupigia. Simu: 0112955446</div>
 </div>
 
-<!-- GATE -->
 <div id="page-gate" class="page" style="display:none">
-  <div class="sectionTitle"><h2>Hospital Gate</h2></div>
-  <img class="pageImg" src="images/gate.jpg" alt="Scrupulous Hospital Gate">
-  <p>Main entrance ya Scrupulous Hospital Watamu.</p>
+<h2>Gate - Entrance & Visiting</h2>
+<img class="pageImg" src="images/gate.jpg">
+<p><b>Maelezo:</b> Mlango mkuu. Wageni, wagonjwa na ambulance wanaingilia hapa. Security inaku-check na kukuelekeza sector sahihi.</p>
+<div class="alertBlue"><b>Visiting:</b> 10:00-12:00 na 16:00-18:00 | <b>Emergency:</b> 24hrs</div>
+<div class="card"><label>Jina la Mgeni</label><input id="gateName" type="text" placeholder="Jina kamili"><label>Simu</label><input type="tel" placeholder="07XX XXX XXX"><label>Unaenda Wapi?</label><select><option>Emergency</option><option>Maternity</option><option>Theatre</option><option>Lab</option><option>Pharmacy</option><option>Mortuary</option><option>Board / Admin</option></select><button class="btnPrimary" onclick="submitForm('gateReceipt','gateName')">SUBMIT ENTRY</button></div>
+<div id="gateReceipt" class="receipt"><b>RECEIPT - ENTRY IMERUHUSIWA</b><br>Karibu! Onyesha hii kwa security.</div>
 </div>
 
-<!-- BOARD ROOM -->
 <div id="page-board" class="page" style="display:none">
-  <div class="sectionTitle"><h2>Board Room - Board of Directors</h2></div>
-  <img class="pageImg" src="images/boardroom.jpg" alt="Board Room">
-  <div class="alertGold"><b>AGENDA: BOARD MEETING 2026-2027</b><br>1. Expansion 2026-2027<br>2. New Theatre & Equipment<br>3. Community Health Program<br>4. Patient Care Metrics 95%+</div>
-  <table class="table"><tr><th>Year</th><th>Focus</th></tr><tr><td>2026</td><td>Expand Emergency & Theatre</td></tr><tr><td>2027</td><td>New Maternity Wing & Outreach</td></tr></table>
+<h2>Board Room - Board of Directors</h2>
+<img class="pageImg" src="images/boardroom.jpg">
+<p><b>Maelezo:</b> Chumba cha uongozi. Maamuzi makubwa hapa - upanuzi, vifaa vipya, huduma kwa jamii. Karibu na bahari, Watamu.</p>
+<div class="alertGold"><b>AGENDA 2026-2027</b><br>1. Expansion 2026-2027<br>2. New Theatre & Equipment<br>3. Community Health Program<br>4. Patient Care 95%+</div>
+<div class="card"><label>Jina Kamili</label><input id="boardName" type="text" placeholder="Jina kamili"><label>Shirika</label><input type="text" placeholder="Jina la shirika"><label>Simu / Email</label><input type="text" placeholder="07XX / email"><label>Ujumbe</label><textarea placeholder="Andika ombi..."></textarea><button class="btnPrimary" onclick="submitForm('boardReceipt','boardName')">SUBMIT REQUEST</button></div>
+<div id="boardReceipt" class="receipt"><b>RECEIPT - OMBI LIMEFIKA KWA BOARD</b><br>Board itakujibu ndani ya siku 3.</div>
 </div>
 
-<!-- THEATRE -->
 <div id="page-theatre" class="page" style="display:none">
-  <div class="sectionTitle"><h2>Theatre Rooms</h2></div>
-  <img class="pageImg" src="images/theatre.jpg" alt="Theatre Rooms">
-  <div class="protocol"><b>PROTOCOL YA THEATRE:</b> Sterile environment, surgical lights zote ON, check patient monitor kabla ya kuanza.</div>
-  <div class="grid2">
-    <div class="card"><h3>Theatre 1</h3><p>General Surgery</p></div>
-    <div class="card"><h3>Theatre 2</h3><p>Emergency Surgery</p></div>
-    <div class="card"><h3>Theatre 3</h3><p>Maternity / C-Section</p></div>
-    <div class="card"><h3>Scrub Room</h3><p>Entry kwa madaktari tu</p></div>
-  </div>
+<h2>Theatre Rooms - Surgery</h2>
+<img class="pageImg" src="images/theatre.jpg">
+<p><b>Maelezo:</b> Theatre kubwa, safi, surgical lights. Madaktari na wauguzi wako tayari kwa upasuaji wa kawaida na dharura - General, Emergency, C-Section.</p>
+<div class="protocol"><b>PROTOCOL:</b> Sterile, lights ON, check monitor kabla ya kuanza.</div>
+<div class="grid2"><div class="card"><h3>Theatre 1</h3><p>General Surgery</p></div><div class="card"><h3>Theatre 2</h3><p>Emergency Surgery</p></div><div class="card"><h3>Theatre 3</h3><p>Maternity / C-Section</p></div><div class="card"><h3>Scrub Room</h3><p>Madaktari tu</p></div></div>
+<div class="card"><label>Jina la Mgonjwa</label><input id="theatreName" type="text" placeholder="Jina kamili"><label>Aina ya Upasuaji</label><select><option>General</option><option>Emergency</option><option>C-Section</option><option>Minor</option></select><label>Tarehe</label><input type="date"><button class="btnPrimary" onclick="submitForm('theatreReceipt','theatreName')">BOOK SURGERY</button></div>
+<div id="theatreReceipt" class="receipt"><b>RECEIPT - SURGERY IMEPOKELEWA</b><br>Daktari atakuthibitishia.</div>
 </div>
 
-<!-- ACCIDENT -->
 <div id="page-accident" class="page" style="display:none">
-  <div class="sectionTitle"><h2>Accident & Emergency</h2></div>
-  <img class="pageImg" src="images/accident.jpg" alt="Accident Room">
-  <div class="alertBlue"><b>AMBULANCE ARRIVAL / EMERGENCY DROP-OFF</b><br>Ambulance inafika hapa moja kwa moja — Trauma Bay 2 iko tayari.</div>
-  <div class="card"><h3>Support for Families</h3><p>Stay Calm — We Are Here To Help. Triage Priority Care.</p></div>
+<h2>Accident & Emergency</h2>
+<img class="pageImg" src="images/accident.jpg">
+<p><b>Maelezo:</b> Chumba kikubwa cha dharura. Ambulance inafika hapa moja kwa moja - Trauma Bay 2 iko tayari.</p>
+<div class="alertRed"><b>AMBULANCE:</b> Piga 0112955446 sasa!</div>
+<div class="card"><label>Jina la Mgonjwa</label><input id="accidentName" type="text" placeholder="Jina kamili"><label>Simu</label><input type="tel" placeholder="07XX XXX XXX"><label>Aina ya Dharura</label><select><option>Ajali ya Gari / Pikipiki</option><option>Kuumia</option><option>Kuzirai</option><option>Kuungua</option><option>Mengine</option></select><label>Mahali Ambulance Iende</label><input type="text" placeholder="e.g. Watamu, Malindi Road"><button class="btnPrimary" onclick="submitForm('accidentReceipt','accidentName')">REQUEST AMBULANCE</button></div>
+<div id="accidentReceipt" class="receipt"><b>RECEIPT - AMBULANCE IMETUMWA!</b><br>Kaa karibu na simu.</div>
 </div>
 
-<!-- MORTUARY -->
 <div id="page-mortuary" class="page" style="display:none">
-  <div class="sectionTitle"><h2>Mortuary</h2></div>
-  <img class="pageImg" src="images/mortuary.jpg" alt="Mortuary">
-  <div class="protocol"><b>PROTOCOL:</b> Heshima, utulivu na usiri kwa familia. Wasiliana na reception kwa taratibu.</div>
+<h2>Mortuary - With Respect</h2>
+<img class="pageImg" src="images/mortuary.jpg">
+<p><b>Maelezo:</b> Sehemu ya heshima na utulivu kwa familia. Tunahifadhi kwa usafi, usiri na heshima kubwa.</p>
+<div class="card"><label>Jina la Familia</label><input id="mortuaryName" type="text" placeholder="Jina kamili"><label>Simu</label><input type="tel" placeholder="07XX XXX XXX"><label>Huduma</label><select><option>Kuhifadhi</option><option>Kuchukua Mwili</option><option>Embalming</option><option>Maelezo Tu</option></select><label>Tarehe</label><input type="date"><button class="btnPrimary" onclick="submitForm('mortuaryReceipt','mortuaryName')">SUBMIT REQUEST</button></div>
+<div id="mortuaryReceipt" class="receipt"><b>RECEIPT - OMBI LIMEFIKA</b><br>Pole sana. Tutawapigia.</div>
 </div>
 
-<!-- LAB & PHARMACY -->
 <div id="page-lab" class="page" style="display:none">
-  <div class="sectionTitle"><h2>Lab & Pharmacy</h2></div>
-  <div class="protocol"><b>PROTOCOL YA LAB:</b> Sampuli sahihi, label sahihi, matokeo kwa wakati.</div>
-  <img class="pageImg" src="images/lab.jpg" alt="Laboratory">
-  <div class="grid2">
-    <div class="card"><h3>Laboratory Tests</h3><p>Blood test, Urine, Malaria, HIV, na mengine.</p></div>
-    <div class="card"><h3>Pharmacy</h3><p>Dawa halisi, maelekezo ya daktari.</p></div>
-  </div>
-  <img class="pageImg" src="images/pharmacy.jpg" alt="Pharmacy">
+<h2>Lab & Pharmacy</h2>
+<img class="pageImg" src="images/lab.jpg">
+<p><b>Maelezo ya Lab:</b> Vipimo vya haraka na sahihi - Blood, Urine, Malaria, HIV.</p>
+<img class="pageImg" src="images/pharmacy.jpg">
+<p><b>Maelezo ya Pharmacy:</b> Dawa halisi, kwa maelekezo ya daktari.</p>
+<div class="card"><label>Jina la Mgonjwa</label><input id="labName" type="text" placeholder="Jina kamili"><label>Unahitaji Nini?</label><select><option>Lab Test</option><option>Dawa - Pharmacy</option><option>Lab + Pharmacy</option></select><label>Kipimo / Dawa</label><input type="text" placeholder="e.g. Malaria test"><button class="btnPrimary" onclick="submitForm('labReceipt','labName')">SUBMIT REQUEST</button></div>
+<div id="labReceipt" class="receipt"><b>RECEIPT - LAB / PHARMACY IMEPOKELEWA</b><br>Karibu!</div>
 </div>
 
-<!-- ATTENDANCE -->
 <div id="page-attendance" class="page" style="display:none">
-  <div class="sectionTitle"><h2>Staff Attendance</h2></div>
-  <div class="protocol"><b>PROTOCOL YA ATTENDANCE:</b> Kila staff a-sign in akifika na a-sign out akitoka.</div>
-  <div class="card">
-    <label>Staff Name</label><input type="text" placeholder="Jina kamili">
-    <label>Department</label><select><option>Emergency</option><option>Theatre</option><option>Lab</option><option>Pharmacy</option><option>Mortuary</option><option>Admin / Board</option></select>
-    <label>Time In</label><input type="time">
-    <button class="btnPrimary">SUBMIT ATTENDANCE</button>
-  </div>
-  <div class="receipt"><b>RECEIPT / CONFIRMATION</b><br>Attendance imerekodiwa. Asante!</div>
+<h2>Staff Attendance</h2>
+<img class="pageImg" src="images/gate.jpg">
+<p><b>Maelezo:</b> Kwa wafanyakazi tu - Doctor, Nurse, Receptionist, Others, Admin, Director.</p>
+<div class="card"><label>Staff Name</label><input id="staffName" type="text" placeholder="Jina kamili"><label>Role</label><select><option>Doctor</option><option>Nurse</option><option>Receptionist</option><option>Admin</option><option>Director</option><option>Others</option></select><label>Time In</label><input type="time"><button class="btnPrimary" onclick="submitForm('staffReceipt','staffName')">SUBMIT ATTENDANCE</button></div>
+<div id="staffReceipt" class="receipt"><b>RECEIPT - ATTENDANCE IMEREKODIWA</b><br>Asante!</div>
 </div>
 
-<div class="page">
-  <div class="sectionTitle"><h2>Location - Watamu</h2></div>
-  <div class="mapBox"><iframe src="https://maps.google.com/maps?q=Watamu%2C%20Kenya&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe></div>
-  <p style="margin-top:8px">Scrupulous Hospital Watamu, Kilifi County, Kenya</p>
-</div>
-
-<div class="footer">© 2026-2027 Scrupulous Hospital Watamu | Care That Never Compromises</div>
+<div class="page"><h2>Location - Watamu</h2><div class="mapBox"><iframe src="https://maps.google.com/maps?q=Watamu%2C%20Kilifi%20County%2C%20Kenya&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe></div><p>📍 Watamu, Kilifi | 📞 0112955446 | ✉️ scrupulouslucas@gmail.com</p></div>
+<div class="footer">© 2026-2027 Scrupulous Hospital Watamu | 0112955446 | scrupulouslucas@gmail.com</div>
 </div>
 
 <script>
-function showMain(){document.getElementById('loginPage').style.display='none';document.getElementById('mainApp').style.display='block';showPage('page-home');}
+function loginAs(type,inputId){var n=document.getElementById(inputId);if(!n||n.value.trim()===''){alert('Tafadhali andika Jina kwanza');return;}document.getElementById('landingPage').style.display='none';document.getElementById('mainApp').style.display='block';document.getElementById('welcomeMsg').innerHTML='<b>Karibu '+n.value+'!</b> Umesign in kama '+type+'.';showPage('page-home');}
+function loginWorker(){var n=document.getElementById('workerName');var role=document.getElementById('workerRole').value;if(!n||n.value.trim()===''){alert('Tafadhali andika Jina la Worker');return;}document.getElementById('landingPage').style.display='none';document.getElementById('mainApp').style.display='block';document.getElementById('welcomeMsg').innerHTML='<b>Karibu '+n.value+'!</b> Worker - '+role;showPage('page-home');}
+function goToService(pageId){var p=document.getElementById('patientName');if(!p||p.value.trim()===''){alert('Sign In kama Patient kwanza - andika Jina');return;}loginAs('PATIENT','patientName');showPage(pageId);}
+function backToLanding(){document.getElementById('mainApp').style.display='none';document.getElementById('landingPage').style.display='block';window.scrollTo(0,0);}
 function showPage(id){var pages=document.querySelectorAll('#mainApp .page');pages.forEach(function(p){p.style.display='none'});document.getElementById(id).style.display='block';window.scrollTo(0,0);}
+function submitForm(receiptId,nameId){var n=document.getElementById(nameId);if(!n||n.value.trim()===''){alert('Tafadhali andika Jina kwanza');return;}document.getElementById(receiptId).style.display='block';alert('Asante '+n.value+'! Form imepokelewa. 0112955446 / scrupulouslucas@gmail.com');}
 </script>
 </body>
-  </html>
+</html>
