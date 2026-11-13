@@ -83,39 +83,104 @@ small{color:#555}
   
 <!-- CANTEEN -->
 <div id="canteen" class="page"><button class="btn grey" onclick="show('home')">⬅ RUDI HOME</button>
-<div class="card"><h2>🍽️ CANTEEN - Order Chakula</h2><img src="IMG-20261113-WA1638.jpg">
-<h3>🇹🇿 LOCAL - VYAKULA VYA KINYUMBANI</h3>
+<div class="card"><h2>🍽️ CANTEEN - Order Chakula</h2><img src="PIC-9.jpg">
+
+<h3>📋 MENU YA LEO</h3>
+<h3>🇹🇿 LOCAL</h3>
 <p>🍚 Wali + Nyama - 250<br>
 🍛 Pilau + Kuku - 300<br>
 🍲 Ugali + Samaki - 250<br>
 🫓 Chapati (2) + Maharage - 200<br>
 🍌 Matoke + Nyama - 280<br>
-🥘 Mchicha + Ugali - 200<br>
-🍖 Nyama Choma (1/4) - 400<br>
-🐟 Samaki wa Kuchoma - 350<br>
-🍲 Supu ya Kuku - 180<br>
-🥣 Uji wa Dawa - 120</p>
+🍖 Nyama Choma - 400</p>
 
 <h3>🌍 INTERNATIONAL</h3>
 <p>🍔 Burger + Chips - 450<br>
 🍕 Pizza (Slice) - 350<br>
-🍕 Pizza (Full) - 1200<br>
-🍝 Spaghetti / Pasta - 400<br>
-🍗 Fried Chicken (2pcs) + Chips - 500<br>
+🍝 Spaghetti - 400<br>
 🌯 Shawarma - 380<br>
-🥪 Sandwich + Chips - 300<br>
-🥗 Chicken Salad - 350<br>
-🍜 Noodles / Ramen - 400<br>
-🌮 Tacos (2) - 420<br>
-🍩 Donut (1) - 100<br>
-🍰 Cake Slice - 200</p>
+🍗 Fried Chicken + Chips - 500</p>
 
 <h3>🥤 VINYWAJI</h3>
 <p>🥤 Soda - 100<br>
 🧃 Juice Fresh - 150<br>
-☕ Chai / Kahawa - 80<br>
-🥛 Maziwa - 100<br>
-💧 Maji (500ml) - 50</p>
+☕ Chai / Kahawa - 80</p>
+
+<hr>
+<h3>📝 JAZA ORDER YAKO</h3>
+
+<p>Jina lako:</p>
+<input id="cName" placeholder="Mfano: John" style="width:100%;padding:10px;margin:5px 0">
+
+<p>Namba ya Simu:</p>
+<input id="cPhone" placeholder="0712..." style="width:100%;padding:10px;margin:5px 0">
+
+<p>Chagua Chakula:</p>
+<select id="cFood" style="width:100%;padding:10px;margin:5px 0">
+<optgroup label="🇹🇿 LOCAL">
+<option value="250">Wali + Nyama - 250</option>
+<option value="300">Pilau + Kuku - 300</option>
+<option value="250">Ugali + Samaki - 250</option>
+<option value="200">Chapati + Maharage - 200</option>
+<option value="280">Matoke + Nyama - 280</option>
+<option value="400">Nyama Choma - 400</option>
+</optgroup>
+<optgroup label="🌍 INTERNATIONAL">
+<option value="450">Burger + Chips - 450</option>
+<option value="350">Pizza (Slice) - 350</option>
+<option value="400">Spaghetti - 400</option>
+<option value="380">Shawarma - 380</option>
+<option value="500">Fried Chicken + Chips - 500</option>
+</optgroup>
+<optgroup label="🥤 VINYWAJI">
+<option value="100">Soda - 100</option>
+<option value="150">Juice Fresh - 150</option>
+<option value="80">Chai / Kahawa - 80</option>
+</optgroup>
+</select>
+
+<p>Idadi (Quantity):</p>
+<input id="cQty" type="number" value="1" min="1" style="width:100%;padding:10px;margin:5px 0">
+
+<p>Uko wapi? (Ward / Meza):</p>
+<input id="cPlace" placeholder="Mfano: Ward 2, Meza 4" style="width:100%;padding:10px;margin:5px 0">
+
+<hr>
+<h3>💳 CHAGUA NJIA YA KULIPA</h3>
+<select id="cPay" style="width:100%;padding:10px;margin:5px 0">
+<option value="M-PESA">📱 M-PESA</option>
+<option value="CASH">💵 CASH - Nitalipa Nikiletewa</option>
+<option value="CARD">💳 CARD</option>
+<option value="AIRTEL MONEY">📱 AIRTEL MONEY</option>
+</select>
+
+<p>M-PESA Till / Namba ya Kulipia:</p>
+<p style="background:#e8f5e9;padding:10px;font-weight:bold">Till: 123456 - Scrupulous Hospital Canteen</p>
+
+<p>Jumla ya Kulipa:</p>
+<p id="cTotal" style="font-size:20px;font-weight:bold;color:green">Ksh 0</p>
+
+<button class="btn green" onclick="orderFood()">TUMA ORDER NA LIPA ✅</button>
+<p id="cResult" style="font-weight:bold;color:green"></p>
+
+<button class="btn" onclick="show('home')">RUDI HOME</button></div></div>
+
+<script>
+function orderFood(){
+  var n=document.getElementById('cName').value;
+  var p=document.getElementById('cPhone').value;
+  var f=document.getElementById('cFood');
+  var price=parseInt(f.value);
+  var fname=f.options[f.selectedIndex].text;
+  var q=parseInt(document.getElementById('cQty').value);
+  var place=document.getElementById('cPlace').value;
+  var pay=document.getElementById('cPay').value;
+  var total=price*q;
+  document.getElementById('cTotal').innerHTML="Ksh "+total;
+  if(n==""||p==""){document.getElementById('cResult').innerHTML="⚠️ Tafadhali jaza Jina na Simu kwanza!";return;}
+  document.getElementById('cResult').innerHTML="✅ Asante "+n+"! Order yako imetumwa!<br>"+fname+" x "+q+" = Ksh "+total+"<br>Njia ya Kulipa: "+pay+"<br>Italetwa: "+place+"<br>Tutakupigia: "+p;
+}
+</script>
   
 <!-- BOARDROOM -->
 <div id="boardroom" class="page"><button class="btn grey" onclick="show('home')">⬅ RUDI HOME</button>
