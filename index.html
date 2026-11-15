@@ -10,6 +10,26 @@ input,select{width:100%;padding:13px;margin:8px 0;border-radius:9px;border:1px s
 .red{background:#d92b2b} .green{background:#0a8a4a} .dark{background:#333} .grey{background:#666} .orange{background:#e67e22} .purple{background:#6a1b9a}
 .top{background:#007a5e;color:white;padding:14px;text-align:center;font-weight:bold}
 small{color:#555}
+  <style>
+.nav-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 15px;
+}
+.nav-square{
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  border: none;
+  border-radius: 12px;
+}
 </style></head><body>
 <div class="top">SCRUPULOUS HOSPITAL WATAMU | 0112955446</div>
 
@@ -26,19 +46,23 @@ small{color:#555}
 
 <!-- HOME -->
 <div id="home" class="page"><div class="card">
-<h2>Karibu <span class="nm"></span> 👋</h2>
+<h2>Karibu <span class="nm"></span> 🙏👋</h2>
 <img src="IMG-20261113-WA4381.jpg">
 <p><b>Mlango mkuu.</b> Wageni, wagonjwa na ambulance wanaingia hapa. Security inaku-check na kukuelekeza sector sahihi.</p>
 <p><b>Visiting:</b> 10:00-12:00 na 16:00-18:00 | <b>Emergency:</b> 24hrs</p></div>
-<button class="btn red" onclick="show('emergency')">🚨 EMERGENCY & ACCIDENT</button>
-<button class="btn" onclick="show('checkup')">🩺 DOCTOR'S CHECK UP - Jaza Form</button>
-<button class="btn" onclick="show('lab')">🧪 LAB</button>
-<button class="btn" onclick="show('pharmacy')">💊 PHARMACY</button>
-<button class="btn red" onclick="show('theatre')">🏥 THEATRE / OPERATION</button>
-<button class="btn orange" onclick="show('canteen')">🍽️ CANTEEN AREA</button>
-<button class="btn purple" onclick="show('boardroom')">🏢 BOARDROOM</button>
-<button class="btn dark" onclick="show('mortuary')">🕊️ MORTUARY</button>
-<button class="btn green" onclick="show('payment')">💳 PAYMENT</button>
+<div class="nav-grid">
+  <button class="nav-square red" onclick="show('emergency')">🚨<span>EMERGENCY</span></button>
+  <button class="nav-square teal" onclick="show('checkup')">🩺<span>DOCTOR'S<br>CHECK UP</span></button>
+  <button class="nav-square green" onclick="show('lab')">🧪<span>LAB</span></button>
+
+  <button class="nav-square green2" onclick="show('pharmacy')">💊<span>PHARMACY</span></button>
+  <button class="nav-square red" onclick="show('theatre')">🏥<span>THEATRE</span></button>
+  <button class="nav-square orange" onclick="show('canteen')">🍽️<span>CANTEEN</span></button>
+
+  <button class="nav-square purple" onclick="show('boardroom')">🏢<span>BOARDROOM</span></button>
+  <button class="nav-square black" onclick="show('mortuary')">⚰️<span>MORTUARY</span></button>
+  <button class="nav-square green2" onclick="show('payment')">💳<span>PAYMENT</span></button>
+</div>
 <p style="text-align:center"><small>© 2026-2027 Scrupulous Hospital Watamu | scrupulouslucas@gmail.com</small></p></div>
 
 <!-- EMERGENCY -->
