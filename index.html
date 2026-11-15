@@ -13,6 +13,7 @@ small{color:#555}
 .nav-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:15px}
 .nav-square{aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:white;font-weight:bold;font-size:12px;border:none;border-radius:12px;text-align:center}
 .teal{background:#00897b}.green2{background:#1e8e4a}.orange{background:#f57c00}.purple{background:#6a1b9a}.black{background:#333}
+.navy{background:#1a237e}.blue{background:#1565c0}.gold{background:#b8860b}
 </style></head><body>
 <div class="top">SCRUPULOUS HOSPITAL WATAMU | 0112955446</div>
 
@@ -41,6 +42,9 @@ small{color:#555}
   <button class="nav-square purple" onclick="show('boardroom')">🏢<span>BOARDROOM</span></button>
   <button class="nav-square black" onclick="show('mortuary')">⚰️<span>MORTUARY</span></button>
   <button class="nav-square green2" onclick="show('payment')">💳<span>PAYMENT</span></button>
+  <button class="nav-square navy" onclick="show('admin')">🔐<span>ADMIN</span></button>
+ <button class="nav-square blue" onclick="show('staff')">👨‍⚕️<span>HOSPITAL<br>STAFF</span></button>
+ <button class="nav-square gold" onclick="show('directors')">⭐<span>DIRECTORS</span></button>
   </div>
 <h2>Karibu <span class="nm"></span> 🙏🙏</h2>
 <img src="IMG-20261113-WA4381.jpg">
@@ -206,7 +210,7 @@ function orderFood(){
 <div id="mortuary" class="page"><button class="btn grey" onclick="show('home')">⬅ RUDI HOME</button>
 <div class="card"><h2>🕊️ Mortuary</h2><img src="IMG-20261113-WA8067.jpg">
 <p>Tunawafariji. Pole sana. Kwa msaada, nenda Reception.</p>
-<p><b>MWELEKEO:</b> Mlango Mkuu > Kulia > Mortuary Office. Saa za kazi: 8:00 - 17:00, Emergency 24hrs.</p>
+<p><b>MWELEKEO:</b> Mlango Mkuu > Kulia > Mortuary Office. Saa za kazi: 08:00 - 21:00|Emergency 24hrs.</p>
 <p>Simu: 0112955446 | scrupulouslucas@gmail.com</p>
 <button class="btn dark" onclick="show('home')">RUDI HOME</button></div></div>
 
@@ -228,6 +232,43 @@ function orderFood(){
 <button class="btn green" onclick="show('payment')">MALIZA - NENDA PAYMENT 💳</button>
 <button class="btn" onclick="show('home')">RUDI HOME</button></div></div>
   
+  <!-- ADMIN -->
+<div id="admin" class="page">
+  <h2>🔐 ADMIN</h2>
+  <p><b>Admin Panel</b> - Usimamizi wa mfumo mzima.</p>
+  <p>• Staff Management<br>• Reports<br>• Settings<br>• User Accounts</p>
+  <button class="btn" onclick="show('home')">⬅ RUDI HOME</button>
+</div>
+
+<!-- HOSPITAL STAFF -->
+<div id="staff" class="page">
+  <h2>👨‍⚕️ HOSPITAL STAFF</h2>
+  <p><b>Wafanyakazi wa Hospitali:</b></p>
+  <p>1. Medical Doctors and Specialists<br>
+    2. Nursing Staff<br>
+    3. Laboratory and Diagnostic Staff<br>
+    4. Pharmacy Staff<br>
+    5. Hospital Management and Administration Staff<br>
+    6. Allied Health Professionals<br>
+    7. Emergency and Critical Care Staff<br>
+    8. Hospital Support and Operational Staff<br>
+    9. Specialized Hospital Departments</p>
+  <button class="btn" onclick="show('home')">⬅ RUDI HOME</button>
+</div>
+
+<!-- DIRECTORS -->
+<div id="directors" class="page">
+  <h2>⭐ DIRECTORS</h2>
+  <p><b>Scrupulous Hospital Board of Directors</b></p>
+  <p>• MR. KAZUNGU CHARO - Chief Executive Officer<br>
+  • MS. CHRISTINA NEEMA - Director of Programs<br>
+  • MS. NADZUA MKANZALA - Director of Programs<br>
+  • DR. MWANAHAWA CHARO - Clinical Services Lead<br>
+  • MR. KITSAO NYALE - Operations Director<br>
+  • DR. NZARO KIRIMO - Medical Director<br>
+  • MR. CHENGO MWALIMU - Director of Finance</p>
+  <button class="btn" onclick="show('home')">⬅ RUDI HOME</button>
+</div>
 <script>
 function show(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
 function ingia(){let j=document.getElementById('jina').value;if(!j){alert('Weka jina kwanza');return;}
