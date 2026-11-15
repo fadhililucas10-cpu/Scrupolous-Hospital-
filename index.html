@@ -288,10 +288,80 @@ function orderFood(){
   • MR. CHENGO MWALIMU - Director of Finance</p>
   <button class="btn" onclick="show('home')">⬅ RUDI HOME</button>
 </div>
+  <!-- ATTENDANCE -->
+<div id="attendance" class="page"><div class="card">
+<h2>📋 Staff Attendance</h2>
+<p>Karibu <b><span class="nm"></span></b> | Role: <b><span id="roleShow"></span></b></p>
+<p>Date: <b><span id="todayDate"></span></b></p>
+
+<label><b>Chagua Department Yako:</b></label>
+<select id="dept" onchange="loadWork()" style="width:100%;padding:12px;border-radius:10px;margin:8px 0">
+  <option value="">-- Chagua Department --</option>
+  <option>Medical Doctors and Specialists</option>
+  <option>Nursing Staff</option>
+  <option>Laboratory and Diagnostic Staff</option>
+  <option>Pharmacy Staff</option>
+  <option>Hospital Management and Administration Staff</option>
+  <option>Allied Health Professionals</option>
+  <option>Emergency and Critical Care Staff</option>
+  <option>Hospital Support and Operational Staff</option>
+  <option>Specialized Hospital Departments</option>
+</select>
+
+<div id="workBox" style="display:none;background:#f0f8ff;padding:12px;border-radius:10px;text-align:left">
+  <h3>🗓️ Work Assignment - Leo</h3>
+  <p id="workList"></p>
+  <label><b>Status:</b></label><br>
+  <label><input type="radio" name="att" value="Present" checked> ✅ Present</label>
+  <label><input type="radio" name="att" value="Late"> 🕐 Late</label>
+  <label><input type="radio" name="att" value="Absent"> ❌ Absent</label><br><br>
+  <label><b>Time In:</b></label>
+  <input type="time" id="timeIn" style="width:100%;padding:10px;border-radius:8px">
+  <br><br>
+  <label><b>Notes / Kazi Uliyofanya:</b></label>
+  <textarea id="notes" rows="3" style="width:100%;padding:10px;border-radius:8px" placeholder="Andika kazi uliyofanya leo..."></textarea><br><br>
+  <button class="btn" onclick="submitAtt()">✅ SUBMIT ATTENDANCE</button>
+  <p id="attMsg" style="color:green;font-weight:bold"></p>
+</div>
+
+<button class="btn" onclick="show('home')">⬅ RUDI HOME</button>
+</div></div>
 <script>
 function show(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
 function ingia(){let j=document.getElementById('jina').value;if(!j){alert('Weka jina kwanza');return;}
 localStorage.setItem('jina',j);document.querySelectorAll('.nm').forEach(e=>e.innerText=j);show('home');}
+  function loadWork(){
+  let d=document.getElementById('dept').value;
+  let box=document.getElementById('workBox');
+  if(!d){box.style.display='none';return;}
+  box.style.display='block';
+  let works={
+    "Medical Doctors and Specialists":"• Ward Round 08:00-10:00<br>• OPD Clinic 10:00-13:00<br>• Specialist Review 14:00-16:00",
+    "Nursing Staff":"• Ward Handover 07:00<br>• Vitals & Medication 08:00-12:00<br>• Patient Care & Documentation 13:00-17:00",
+    "Laboratory and Diagnostic Staff":"• Sample Collection 08:00-10:00<br>• Lab Tests & Results 10:00-15:00<br>• Report Delivery 15:00-16:00",
+    "Pharmacy Staff":"• Drug Dispensing 08:00-12:00<br>• Stock Check 12:00-13:00<br>• Ward Pharmacy Round 14:00-16:00",
+    "Hospital Management and Administration Staff":"• Staff Meeting 08:30<br>• Reports & Records 09:00-13:00<br>• Finance / Admin Duties 14:00-17:00",
+    "Allied Health Professionals":"• Physiotherapy Sessions 09:00-12:00<br>• Nutrition / Counselling 13:00-15:00<br>• Rehab Reports 15:00-16:00",
+    "Emergency and Critical Care Staff":"• Emergency Triage 24hrs Shift<br>• Resuscitation / ICU Monitoring<br>• Ambulance Receiving",
+    "Hospital Support and Operational Staff":"• Cleaning & Hygiene 07:00-10:00<br>• Security / Transport / Maintenance<br>• Waste Management",
+    "Specialized Hospital Departments":"• Theatre List / Special Clinic<br>• Department Program as per Roster<br>• Follow-up & Referrals"
+  };
+  document.getElementById('workList').innerHTML=works[d]||"• Kazi kulingana na Roster ya leo";
+}
+
+function submitAtt(){
+  let d=document.getElementById('dept').value;
+  let s=document.querySelector('input[name="att"]:checked').value;
+  let t=document.getElementById('timeIn').value;
+  document.getElementById('attMsg').innerHTML="✅ Asante! Attendance imerekodiwa: "+d+" - "+s+" | Time In: "+t;
+}
+
+// Onyesha Role + Date kwenye Attendance
+function openAttendance(){
+  document.getElementById('roleShow').innerText=localStorage.getItem('role')||"Hospital Staff";
+  document.getElementById('todayDate').innerText=new Date().toDateString();
+  show('attendance');
+}
 function emergencyTuma(){let j=document.getElementById('e-jina').value||localStorage.getItem('jina')||'Mgonjwa';
 document.getElementById('e-res').innerHTML='<div style="background:#e8f6f3;padding:12px;border-radius:10px"><h3>Asante '+j+'! Form imepokelewa.</h3><p>➡️ Nenda sasa: <b>Emergency Theatre - Bed 1</b>. Daktari anakusubiri.</p><button class="btn green" onclick="show(\'payment\')">ENDELEA KWA PAYMENT ➡️</button></div>';}
 function elekeza(){let u=document.getElementById('c-ugonjwa').value;let m='';
