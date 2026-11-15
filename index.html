@@ -287,6 +287,58 @@ function orderFood(){
   • DR. GEORGINA PENDO - Director of Nursing Services<br>
   • DR. SAMUEL SHUKRANI - Director of Medical Research<br>
   • MR. CHENGO MWALIMU - Director of Finance</p>
+  <!-- ===== PASTE HAPA - DIRECTORS + AGENDAS ===== -->
+<style>
+.dir-box{background:#fff;border-radius:12px;padding:15px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.dir-item{padding:10px 0;border-bottom:1px solid #eee}
+.dir-item:last-child{border:none}
+.dir-item b{color:#111}
+.dir-item .pos{color:#0a7a3a;font-weight:bold;font-size:13px}
+.dir-item small{color:#555;font-size:13px}
+.ag-table{width:100%;border-collapse:collapse;font-size:14px}
+.ag-table th{background:#0a7a3a;color:#fff;padding:10px;text-align:left}
+.ag-table td{padding:10px;border-bottom:1px solid #eee;vertical-align:top}
+.badge{font-size:11px;padding:4px 8px;border-radius:20px;color:#fff;white-space:nowrap;cursor:pointer}
+.pending{background:#f39c12}.progress{background:#2980b9}.done{background:#27ae60}
+.ag-input,.ag-select{width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc;font-size:15px}
+.ag-btn{width:100%;padding:12px;background:#0a7a3a;color:#fff;border:none;border-radius:8px;font-weight:bold;cursor:pointer}
+</style>
+
+<h2 style="color:#0a7a3a">⭐ DIRECTORS</h2>
+<p><b>Scrupulous Hospital Board of Directors</b></p>
+
+<div class="dir-box" id="directorsList"></div>
+
+<h3>📋 AGENDAS LIST - Assignment by Position</h3>
+
+<div class="dir-box">
+  <label>Filter by Director:</label>
+  <select class="ag-select" id="filterDirector" onchange="renderAgendas()">
+    <option value="all">-- All Directors --</option>
+  </select>
+  <label>Filter by Status:</label>
+  <select class="ag-select" id="filterStatus" onchange="renderAgendas()">
+    <option value="all">All Status</option>
+    <option value="Pending">Pending</option>
+    <option value="In Progress">In Progress</option>
+    <option value="Done">Done</option>
+  </select>
+</div>
+
+<div class="dir-box">
+  <label>Add New Agenda:</label>
+  <input class="ag-input" id="newAgenda" placeholder="e.g. Buy 2 new ambulances">
+  <select class="ag-select" id="newDirector"></select>
+  <button class="ag-btn" onclick="addAgenda()">+ ADD AGENDA</button>
+</div>
+
+<div class="dir-box" style="overflow-x:auto">
+  <table class="ag-table">
+    <thead><tr><th>Agenda</th><th>Assigned To / Position</th><th>Role / Duty</th><th>Status</th></tr></thead>
+    <tbody id="agendaTable"></tbody>
+  </table>
+</div>
+<!-- ===== MWISHO WA PASTE ===== -->
   <button class="btn" onclick="show('home')">⬅ RUDI HOME</button>
 </div>
   <!-- ATTENDANCE -->
@@ -375,4 +427,62 @@ else m='🚨 EMERGENCY! Nenda moja kwa moja <b>EMERGENCY SECTOR</b> sasa hivi!';
 document.getElementById('c-res').innerHTML='<div style="background:#e8f6f3;padding:12px;border-radius:10px"><h3>'+m+'</h3><button class="btn" onclick="show(\'lab\')">NENDA LAB 🧪</button><button class="btn" onclick="show(\'pharmacy\')">NENDA PHARMACY 💊</button><button class="btn red" onclick="show(\'emergency\')">NENDA EMERGENCY 🚨</button><button class="btn green" onclick="show(\'payment\')">MALIZA - NENDA PAYMENT 💳</button></div>';}
 function lipa(){document.getElementById('p-res').innerHTML='<h3>Asante! Payment imepokelewa ✅</h3><p><b>RECEIPT - ENTRY IMERUHUSIWA</b><br>Karibu! Onyesha hii kwa security.</p><button class="btn" onclick="show(\'home\')">RUDI HOME</button>';}
 let saved=localStorage.getItem('jina');if(saved){document.querySelectorAll('.nm').forEach(e=>e.innerText=saved);}
+const directors = [
+  { id: 1, name: "MR. ARNOLD TUMAINI", position: "Chief Executive Officer" },
+  { id: 2, name: "MR. KITSAO NYALE", position: "Chief Operations Officer" },
+  { id: 3, name: "DR. NZARO KIRIMO", position: "Chief Medical Officer" },
+  { id: 4, name: "MS. PRAISE FURAHA", position: "Chief Nursing Officer" },
+  { id: 5, name: "MS. CHRISTINA NEEMA", position: "Director of Programs" },
+  { id: 6, name: "MS. NADZUA MKANZALA", position: "Director of Patient Safety" },
+  { id: 7, name: "DR. MWANAHAWA CHARO", position: "Director of Clinical Services" },
+  { id: 8, name: "DR. ISAAC YAA", position: "Director of Human Resources" },
+  { id: 9, name: "DR. GEORGINA PENDO", position: "Director of Nursing Services" },
+  { id: 10, name: "DR. SAMUEL SHUKRANI", position: "Director of Medical Research" },
+  { id: 11, name: "MR. CHENGO MWALIMU", position: "Director of Finance" },
+];
+const rolesByPosition = {
+  "Chief Executive Officer": "Overall leadership, final approval, partnerships, expansion",
+  "Chief Operations Officer": "Daily operations, ambulances, helicopters, gates & security, visitor gate",
+  "Chief Medical Officer": "Medical standards, doctors supervision, emergency protocols",
+  "Chief Nursing Officer": "Nursing leadership, ward supervision, ethics",
+  "Director of Programs": "Programs, community outreach, health campaigns",
+  "Director of Patient Safety": "Patient safety, infection control, incident reports",
+  "Director of Clinical Services": "Clinics, theatre, pharmacy, lab, rosters",
+  "Director of Human Resources": "Hiring, training, duty rosters, welfare",
+  "Director of Nursing Services": "Nursing rosters, nurse training, ward staffing",
+  "Director of Medical Research": "Research, data, new treatment methods",
+  "Director of Finance": "Budget, salaries, procurement, audit",
+};
+let agendas = [
+  { title: "Final approval for Hospital expansion", directorId: 1, status: "Pending" },
+  { title: "Arrange helicopters parking & Air Care Unit", directorId: 2, status: "In Progress" },
+  { title: "Separate visitor gate - NOT via Emergency", directorId: 2, status: "In Progress" },
+  { title: "Review Emergency protocols 24/7", directorId: 3, status: "Pending" },
+  { title: "Nursing leadership - ward supervision", directorId: 4, status: "In Progress" },
+  { title: "Community health program in Watamu", directorId: 5, status: "Pending" },
+  { title: "Patient safety audit - infection control", directorId: 6, status: "Pending" },
+  { title: "Clinical services - Theatre, Pharmacy & Lab", directorId: 7, status: "In Progress" },
+  { title: "Hire 10 nurses & 5 doctors for Emergency", directorId: 8, status: "Pending" },
+  { title: "Nursing rosters & nurse training", directorId: 9, status: "Pending" },
+  { title: "Research on new treatment methods", directorId: 10, status: "Pending" },
+  { title: "Budget for ambulances, helicopters & building", directorId: 11, status: "Pending" },
+  { title: "Salaries & procurement payments", directorId: 11, status: "Done" },
+];
+function getDirector(id){ return directors.find(d=>d.id===id); }
+function renderAgendas(){
+  const fId = document.getElementById('filterDirector').value;
+  const fStatus = document.getElementById('filterStatus').value;
+  let list = agendas.filter(a => (fId==="all" || a.directorId==fId) && (fStatus==="all" || a.status===fStatus));
+  document.getElementById('agendaTable').innerHTML = list.map(a=>{
+    const d = getDirector(a.directorId);
+    const cls = a.status==="Done"?"#27ae60":a.status==="In Progress"?"#2980b9":"#f39c12";
+    return `<tr><td style="padding:10px;border-bottom:1px solid #eee"><b>${a.title}</b></td><td style="padding:10px;border-bottom:1px solid #eee"><b>${d.name}</b><br><span style="color:#0a7a3a;font-weight:bold;font-size:13px">${d.position}</span></td><td style="padding:10px;border-bottom:1px solid #eee">${rolesByPosition[d.position]}</td><td style="padding:10px;border-bottom:1px solid #eee"><span onclick="toggleStatus('${a.title.replace(/'/g,"\\'")}')" style="font-size:11px;padding:4px 8px;border-radius:20px;color:#fff;background:${cls};cursor:pointer;white-space:nowrap">${a.status} ↻</span></td></tr>`;
+  }).join('');
+  const opts = directors.map(d=>`<option value="${d.id}">${d.name} - ${d.position}</option>`).join('');
+  document.getElementById('filterDirector').innerHTML = `<option value="all">-- All Directors --</option>` + opts;
+  document.getElementById('newDirector').innerHTML = opts;
+}
+function toggleStatus(title){ const a = agendas.find(x=>x.title===title); a.status = a.status==="Pending" ? "In Progress" : a.status==="In Progress" ? "Done" : "Pending"; renderAgendas(); }
+function addAgenda(){ const t=document.getElementById('newAgenda').value.trim(); const dId=parseInt(document.getElementById('newDirector').value); if(!t) return alert("Weka agenda kwanza"); agendas.unshift({title:t,directorId:dId,status:"Pending"}); document.getElementById('newAgenda').value=""; renderAgendas(); }
+renderAgendas();
 </script></body></html>
