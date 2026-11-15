@@ -34,6 +34,7 @@ small{color:#555}
 <button class="btn" onclick="show('checkup')">🩺 DOCTOR'S CHECK UP - Jaza Form</button>
 <button class="btn" onclick="show('lab')">🧪 LAB</button>
 <button class="btn" onclick="show('pharmacy')">💊 PHARMACY</button>
+<button class="btn red" onclick="show('theatre')">🏥 THEATRE / OPERATION</button>
 <button class="btn orange" onclick="show('canteen')">🍽️ CANTEEN AREA</button>
 <button class="btn purple" onclick="show('boardroom')">🏢 BOARDROOM</button>
 <button class="btn dark" onclick="show('mortuary')">🕊️ MORTUARY</button>
@@ -218,7 +219,7 @@ function orderFood(){
 <p><b>Kumbuka:</b> Mgonjwa hapaswi kula kabla ya operation. Ndugu wanasubiri nje ya Theatre.</p>
 <button class="btn green" onclick="show('payment')">MALIZA - NENDA PAYMENT 💳</button>
 <button class="btn" onclick="show('home')">RUDI HOME</button></div></div>
-
+  
 <script>
 function show(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
 function ingia(){let j=document.getElementById('jina').value;if(!j){alert('Weka jina kwanza');return;}
