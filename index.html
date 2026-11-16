@@ -144,6 +144,16 @@ small{color:#555}
 <input id="c-jina" placeholder="Jina la Mgonjwa">
 <input id="c-umri" placeholder="Umri">
 <select id="c-ugonjwa">
+  <label>Jinsia:</label>
+<select id="pGender" style="width:100%;padding:10px;margin:5px 0;border-radius:8px;">
+  <option value="">-- Chagua Jinsia --</option>
+  <option value="Mwanaume">Mwanaume</option>
+  <option value="Mwanamke">Mwanamke</option>
+  <option value="Mtoto">Mtoto</option>
+</select>
+
+<label>Dalili / Symptoms - Eleza unavyojisikia:</label>
+<textarea id="pSymptoms" rows="3" placeholder="Mfano: Homa, kichwa kuuma, kikohozi siku 3, tumbo kuuma..." style="width:100%;padding:10px;margin:5px 0;border-radius:8px;"></textarea>
 <option value="malaria">Homa / Malaria - Homa, kutetemeka</option>
 <option value="typhoid">Typhoid - Tumbo, homa kali</option>
 <option value="mifupa">Mifupa / Kuumia</option>
@@ -151,7 +161,7 @@ small{color:#555}
 <option value="kikohozi">Kikohozi / Mafua</option>
 <option value="emergency">Emergency - Kuumia vibaya / Kupumua shida</option>
 </select>
-<button class="btn" onclick="elekeza()">TUMA - NIPATE MWELEKEO ➡️</button>
+<button class="btn" onclick="savePatientFromCheckup()">TUMA KWA DAKTARI</button>
 <div id="c-res"></div></div></div>
 
 <!-- LAB -->
@@ -764,5 +774,78 @@ function saveDawa(){
   document.getElementById('dawaShow').style.display = 'block';
   document.getElementById('dawaText').innerText = full;
   alert("Dawa imehifadhiwa! Sasa lipa ili upate Receipt.");
+}
+  
+// ===== LINKING SYSTEM - SCRUPULOUS =====
+function getPatient(){
+  try{ return JSON.parse(localStorage.getItem('scrupulous_patient')) || {}; }catch(e){ return {}; }
+}
+function savePatientData(obj){
+  var old = getPatient();
+  var n = Object.assign(old, obj);
+  localStorage.setItem('scrupulous_patient', JSON.stringify(n));
+  return n;
+}
+
+// 1. MGONJWA AKIJAZA CHECKUP - Hifadhi
+function savePatientFromCheckup(){
+  var name = document.getElementById('c-jina')?.value || document.getElementById('patientName')?.value || '';
+  var age = document.getElementById('c-umri')?.value || '';
+  var phone = document.getElementById('c-ugonjwa')?.value || '';
+  var gender = document.getElementById('pGender')?.value || '';
+  var symptoms = document.getElementById('pSymptoms')?.value || document.getElementById('dalili')?.value || '';
+  if(!name){ alert('Andika jina la mgonjwa kwanza'); return; }
+  savePatientData({name:name, age:age, phone:phone, gender:gender, symptoms:symptoms});
+  alert('✅ Taarifa za mgonjwa zimehifadhiwa. Sasa Daktari ataziona.');
+  show('doctor');
+}
+
+// 2. DAKTARI AKIFUNGUA PAGE - Jaza kiotomatiki
+function loadDoctorData(){
+  var p = getPatient();
+  var box = document.getElementById('doctorPatientView');
+  if(box){
+    if(p.name){
+      box.innerHTML = '<b>Jina:</b> '+p.name+'<br><b>Umri:</b> '+(p.age||'-')+'<br><b>Simu:</b> '+(p.phone||'-')+'<br><b>Dalili:</b> '+(p.symptoms||'-')+'<br><b>Matokeo ya Lab:</b> '+(p.labResult||'Bado')+'<br><b>Maelezo ya Daktari:</b> '+(p.doctorNote||'-');
+    } else {
+      box.innerHTML = 'Hakuna mgonjwa aliyejaza bado';
+    }
+  }
+  // Jaza box za Daktari kama Lab imeshajaza
+  if(p.labResult && document.getElementById('docLabResult')) document.getElementById('docLabResult').value = p.labResult;
+  if(p.doctorNote && document.getElementById('docNote')) document.getElementById('docNote').value = p.doctorNote;
+  // Jaza Pharmacy kama Daktari ameshaandika dawa
+  if(p.medicine && document.getElementById('pharmMedicine')) document.getElementById('pharmMedicine').value = p.medicine;
+}
+
+// 3. DAKTARI AKIHIFADHI MATOKEO + DAWA
+function saveDoctorPrescription(){
+  var lab = document.getElementById('docLabResult')?.value || '';
+  var note = document.getElementById('docNote')?.value || '';
+  var med = document.getElementById('docMedicine')?.value || '';
+  var use = document.getElementById('docUsage')?.value || '';
+  savePatientData({labResult:lab, doctorNote:note, medicine:med, usage:use});
+  alert('✅ Matokeo na Dawa zimehifadhiwa. Sasa Lab na Pharmacy zitajijaza zenyewe.');
+  show('pharmacy');
+}
+
+// 4. LAB AKIFUNGUA - Jaza box ya Matokeo yenyewe
+function loadLabData(){
+  var p = getPatient();
+  var labBox = document.getElementById('labResultBox');
+  if(labBox && p.labResult) labBox.value = p.labResult;
+  var noteBox = document.getElementById('labDoctorNote');
+  if(noteBox && p.doctorNote) noteBox.value = p.doctorNote;
+}
+
+// 5. OVERRIDE show() ili kila ukibadili page ijaze yenyewe
+var oldShow = window.show;
+window.show = function(page){
+  if(oldShow) oldShow(page);
+  else { document.querySelectorAll('.page').forEach(d=>d.style.display='none'); var el=document.getElementById(page); if(el) el.style.display='block'; }
+  if(page=='doctor') loadDoctorData();
+  if(page=='lab') loadLabData();
+  if(page=='pharmacy') loadDoctorData();
+  window.scrollTo(0,0);
 }
 </script></body></html>
