@@ -144,7 +144,21 @@ small{color:#555}
 <input id="c-jina" placeholder="Jina la Mgonjwa">
 <input id="c-umri" placeholder="Umri">
 <select id="c-ugonjwa">
-  <label>Jinsia:</label>
+  <input id="c-jina" placeholder="Jina la Mgonjwa">
+<input id="c-umri" type="number" placeholder="Umri">
+
+<label>Ugonjwa / Chagua:</label>
+<select id="c-ugonjwa">
+  <option value="">-- Chagua Ugonjwa --</option>
+  <option value="Malaria">Homa / Malaria</option>
+  <option value="Typhoid">Typhoid</option>
+  <option value="Mifupa">Mifupa / Kuumia</option>
+  <option value="Presha">Presha / Kisukari</option>
+  <option value="Kikohozi">Kikohozi / Mafua</option>
+  <option value="Emergency">Emergency</option>
+</select>
+
+<label>Jinsia:</label>
 <select id="pGender">
   <option value="">-- Chagua Jinsia --</option>
   <option value="Mwanaume">Mwanaume</option>
@@ -152,21 +166,11 @@ small{color:#555}
   <option value="Mtoto">Mtoto</option>
 </select>
 
-<label>Umeugua kwa Siku Ngapi?</label>
-<input id="pDays" type="number" placeholder="Mfano: 2, 4, 8" min="1">
+<label>Umeugua Siku Ngapi?</label>
+<input id="pDays" type="number" placeholder="Mfano: 2, 4, 8">
 
 <label>Dalili / Symptoms:</label>
-<textarea id="pSymptoms" rows="3" placeholder="Mfano: Homa, kutetemeka, kichwa kuuma..."></textarea>
-
-<label>Dalili / Symptoms - Eleza unavyojisikia:</label>
-<textarea id="pSymptoms" rows="3" placeholder="Mfano: Homa, kichwa kuuma, kikohozi siku 3, tumbo kuuma..." style="width:100%;padding:10px;margin:5px 0;border-radius:8px;"></textarea>
-<option value="malaria">Homa / Malaria - Homa, kutetemeka</option>
-<option value="typhoid">Typhoid - Tumbo, homa kali</option>
-<option value="mifupa">Mifupa / Kuumia</option>
-<option value="presha">Presha / Kisukari</option>
-<option value="kikohozi">Kikohozi / Mafua</option>
-<option value="emergency">Emergency - Kuumia vibaya / Kupumua shida</option>
-</select>
+<textarea id="pSymptoms" rows="3" placeholder="Mfano: Homa, kichwa kuuma..."></textarea>
 <button class="btn" onclick="savePatientFromCheckup()">TUMA KWA DAKTARI</button>
 <div id="c-res"></div></div></div>
 
@@ -233,7 +237,7 @@ small{color:#555}
 <!-- DASHBOARD - Inaonekana baada ya Login -->
 <div id="doctorDash" style="display:none">
 <h3>🧑‍⚕️ Taarifa za Mgonjwa - Kutoka kwa Mgonjwa</h3>
-<div id="doctorPatientView" style="background:#fff;border-radius:8px;padding:12px;border:1px solid #ddd">Hakuna mgonjwa bado</div>
+<div id="doctorPatientView" style="background:#e8f5e9;padding:12px;border-radius:10px;font-weight:bold;">Bado hakuna mgonjwa - Subiri mgonjwa ajaze Checkup</div>
 <div id="drugSuggestion" style="background:#fff3cd;padding:12px;border-radius:10px;margin-top:10px;display:none;"></div>
   
 <h3 style="margin-top:15px">🧪 Daktari: Jaza Matokeo ya Lab</h3>
@@ -430,8 +434,10 @@ function orderFood(){
   <p><b>Njia ya Kulipa:</b> <span id="receiptMethod">M-PESA - 0112955446</span></p>
   <p><b>Kiasi:</b> Ksh <span id="receiptAmount">200</span></p>
   <p><b>Huduma:</b> <span id="receiptService">Matibabu / Lab / Pharmacy</span></p>
-  <p><b>Matokeo ya Lab:</b> <span id="receiptLab">Angalia hapa chini</span></p>
-  <p><b>Dawa Uliyopewa:</b> <span id="receiptDawa">Angalia Prescription</span></p>
+  <p><b>Matokeo ya Lab:</b> <span id="receiptLab">Bado</span></p>
+<p><b>Dawa Uliyopewa:</b> <span id="receiptMed">Bado</span></p>
+<p><b>Jinsi ya Kutumia:</b> <span id="receiptUsage">Bado</span></p>
+<p><b>Jumla Uliyolipa:</b> <span id="receiptTotal">Ksh 0</span></p>
   <hr>
   <p style="text-align:center"><b>✅ PAID - ASANTE! ENTRY IMERUHUSIWA</b><br><small>Onyesha hii kwa Security / Reception</small></p>
   <p style="text-align:center;font-size:12px">Tel: 0112955446 | Email: scrupulouslucas@gmail.com</p>
@@ -712,6 +718,9 @@ function saveLab(){
   if(!umri) return alert("Weka umri wa mgonjwa kwanza - Daktari anahitaji kujua");
   const full = type + " : " + res + " | Mgonjwa: Umri " + umri + ", " + mjamzito + ", Allergy: " + (allergy || "Hakuna") + " - DAKTARI AAMUE DAWA";
   localStorage.setItem('labResult', full);
+var _oldP = JSON.parse(localStorage.getItem('scrupulous_patient')||'{}');
+_oldP.labResult = full;
+localStorage.setItem('scrupulous_patient', JSON.stringify(_oldP));
   document.getElementById('labResultShow').style.display = 'block';
   document.getElementById('labResultText').innerText = full;
   alert("Matokeo yamehifadhiwa! Sasa Daktari ataona taarifa kamili na atachagua dawa.");
@@ -859,4 +868,13 @@ window.show = function(page){
   if(page=='pharmacy') loadDoctorData();
   window.scrollTo(0,0);
 }
+  function loadReceipt(){
+  var p = JSON.parse(localStorage.getItem('scrupulous_patient')||'{}');
+  if(document.getElementById('receiptLab')) document.getElementById('receiptLab').innerText = p.labResult || p.lab || 'Bado - Fanya Lab Kwanza';
+  if(document.getElementById('receiptMed')) document.getElementById('receiptMed').innerText = p.medicine || 'Bado';
+  if(document.getElementById('receiptUsage')) document.getElementById('receiptUsage').innerText = p.usage || 'Bado';
+  if(document.getElementById('receiptTotal')) document.getElementById('receiptTotal').innerText = 'Ksh ' + ((p.medPrice||0) + 200);
+}
+var _oldShow2 = window.show;
+window.show = function(page){ if(_oldShow2) _oldShow2(page); if(page=='payment'||page=='receipt') loadReceipt(); };
 </script></body></html>
