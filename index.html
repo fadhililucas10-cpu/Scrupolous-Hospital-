@@ -824,27 +824,6 @@ function goDoctor(){
   old.symptoms = s1 ? s1.value : '';
   localStorage.setItem('scrupulous_patient', JSON.stringify(old));
 
-  // Nenda kwa Daktari - kwa nguvu, sio kwa show() ya zamani
-  var pages = document.querySelectorAll('.page');
-  pages.forEach(function(p){ p.style.display = 'none'; });
-  var doc = document.getElementById('doctor');
-  if(doc) doc.style.display = 'block';
-  window.scrollTo(0,0);
-  if(typeof loadDoctorData === 'function') loadDoctorData();
-  alert('Asante ' + name + '! Umepelekwa kwa Daktari');
-}
-
-// Kama nav ya juu ya DAKTARI pia haifanyi kazi, hii inairekebisha
-function goPage(pageId){
-  var pages = document.querySelectorAll('.page');
-  pages.forEach(function(p){ p.style.display = 'none'; });
-  var el = document.getElementById(pageId);
-  if(el) el.style.display = 'block';
-  window.scrollTo(0,0);
-  if(pageId === 'doctor' && typeof loadDoctorData === 'function') loadDoctorData();
-  if(pageId === 'pharmacy' && typeof loadDoctorData === 'function') loadDoctorData();
-}
-  // ===== FIX YOTE - BUTTONS ZIFANYE KAZI TENA =====
 function show(pageId){
   var pages = document.querySelectorAll('.page');
   for(var i=0; i<pages.length; i++){
