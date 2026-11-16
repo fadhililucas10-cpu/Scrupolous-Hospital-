@@ -197,56 +197,136 @@ small{color:#555}
 <button class="btn green" onclick="show('payment')">NENDA PAYMENT 💳</button></div></div>
  
   <div id="doctor" class="page">
-<h2>👨‍⚕️ Daktari - Login</h2>
-<p><b>MWELEKEO:</b> Mgonjwa Kwanza > Daktari > Pharmacy</p>
+<h2>👨‍⚕️ Doctor's Check Up</h2>
 
-<label>PIN ya Daktari:</label>
-<input id="doctorPin" type="password" placeholder="Weka PIN - 2026">
-<button class="btn" onclick="if(document.getElementById('doctorPin').value=='2026'){document.getElementById('doctorMain').style.display='block'; loadDoctorData();}else{alert('PIN sio sahihi')}">INGIA</button>
-
-<div id="doctorMain" style="display:none">
-<div id="doctorPatientView" style="background:#e8f5e9;padding:12px;border-radius:10px;font-weight:bold;margin:10px 0;">Bado hakuna mgonjwa - Subiri mgonjwa ajaze Checkup</div>
-
-<h3>🧪 JUU: Lab - Jaza Matokeo ya Lab</h3>
-<label>Chagua Kipimo:</label>
-<select id="kipimoType">
-  <option>Malaria Test</option>
-  <option>Typhoid Test</option>
-  <option>Blood Sugar</option>
-  <option>Presha - BP</option>
-  <option>Urine Test</option>
-</select>
-<label>Matokeo ya Lab:</label>
-<input id="kipimoResult" placeholder="Mfano: Positive / Negative / 120/80">
-<label>Maelezo ya Daktari:</label>
-<input id="kipimoNote" placeholder="Daktari andika maelezo hapa">
-<button class="btn" onclick="saveLab()" style="width:100%">HIFADHI MATOKEO YA LAB</button>
-<div id="labResultShow" style="display:none;background:#e8f5e9;padding:10px;border-radius:10px;margin-top:8px;">✅ <b>Matokeo:</b> <span id="labResultText"></span></div>
-
-<h3>💊 CHINI: Pharmacy - Peana Dawa</h3>
-<label>Jina la Dawa - Chagua kwenye List:</label>
-<select id="docMedicine" onchange="autoDrug()">
-  <option value="">-- Chagua Dawa --</option>
-  <option value="Coartem 20/120mg">Coartem 20/120mg - Malaria</option>
-  <option value="Quinine 300mg">Quinine 300mg - Malaria Kali</option>
-  <option value="Artesunate">Artesunate - Malaria Emergency</option>
-  <option value="Ciprofloxacin 500mg">Ciprofloxacin 500mg - Typhoid</option>
-  <option value="Amoxil 500mg">Amoxil 500mg - Kikohozi</option>
-  <option value="Diclofenac">Diclofenac - Mifupa</option>
-  <option value="Paracetamol 500mg">Paracetamol 500mg - Homa</option>
-  <option value="Amlodipine">Amlodipine - Presha</option>
-</select>
-<label>Jinsi ya Kutumia:</label>
-<input id="docUsage" placeholder="Itajijaza yenyewe...">
-<label>Bei ya Dawa (Ksh):</label>
-<input id="docPrice" type="number" placeholder="Itajijaza yenyewe...">
-<button class="btn green" onclick="saveMedicine()" style="width:100%">💊 HIFADHI DAWA - NENDA PAYMENT</button>
-<div id="medSavedShow" style="display:none;background:#e8f5e9;padding:10px;border-radius:10px;margin-top:8px;">✅ <b>Dawa:</b> <span id="medSavedText"></span></div>
-
-<br><button class="btn" onclick="show('pharmacy')">Nenda Pharmacy →</button>
-<button class="btn" onclick="show('payment')">Nenda Payment →</button>
+<!-- 1. JAZA MGONJWA -->
+<div class="card">
+<h3>1. Jaza Mgonjwa</h3>
+<input id="dName" placeholder="Jina - Gina">
+<input id="dAge" type="number" placeholder="Umri">
+<select id="dGender"><option>Mwanaume</option><option>Mwanamke</option></select>
+<input id="dDisease" placeholder="Ugonjwa gani? - mfano Homa / Malaria / Typhoid / Pressure / Allergy / Sukari" oninput="autoLab()">
+<input id="dSugar" type="number" placeholder="Sukari ngapi?">
+<button onclick="savePatient()">HIFADHI MGONJWA</button>
 </div>
-  </div>
+
+<!-- 2. DOCTOR LOGIN -->
+<div class="card" id="pinBox">
+<h3>2. Doctor Login</h3>
+<input id="docPin" type="password" placeholder="PIN ya Doctor - 2026">
+<button onclick="if(document.getElementById('docPin').value==='2026'){document.getElementById('docArea').style.display='block';document.getElementById('pinBox').style.display='none';renderDoc();}else{alert('PIN sio sahihi')}">INGIA KAMA DOCTOR</button>
+</div>
+
+<div id="docArea" style="display:none">
+<!-- 3. LIST YA WAGONJWA -->
+<h3>3. List ya Wagonjwa</h3>
+<input id="docSearch" placeholder="Tafuta mgonjwa..." oninput="renderDoc()">
+<div id="doctorList"></div>
+
+<!-- 4. LAB IKO JUU -->
+<div class="card">
+<h3>4. LAB - Iko Juu</h3>
+<p>Chagua Test:</p>
+<label><input type="checkbox" class="labTest" value="Malaria Test - Ksh 500"> Malaria Test - Ksh 500</label><br>
+<label><input type="checkbox" class="labTest" value="Typhoid Test - Ksh 800"> Typhoid Test - Ksh 800</label><br>
+<label><input type="checkbox" class="labTest" value="Pressure Test - Ksh 300"> Pressure Test - Ksh 300</label><br>
+<label><input type="checkbox" class="labTest" value="Allergy Test - Ksh 1000"> Allergy Test - Ksh 1000</label><br>
+<label><input type="checkbox" class="labTest" value="Sugar Test - Ksh 400"> Sugar Test - Ksh 400</label><br>
+<label><input type="checkbox" class="labTest" value="Homa / Fever Test - Ksh 300"> Homa Test - Ksh 300</label><br>
+<button onclick="doLab()">FANYA LAB TEST ➜</button>
+<div id="labResult"></div>
+</div>
+
+<!-- 5. PRESCRIPTION - INAONYESHA DAWA + MARANGAPI -->
+<div class="card">
+<h3>5. Prescription - Dawa + Marangapi</h3>
+<div id="prescOut">Andika ugonjwa juu, Lab itajaza dawa hapa kiotomatiki.</div>
+</div>
+
+<!-- 6. PHARMACY - CHINI YA LAB, INAJAZA YENYEWE -->
+<div class="card">
+<h3>6. PHARMACY - Inajaza Yenyewe Kulingana na Lab</h3>
+<div id="pharmOut">Pharmacy itajaza hapa baada ya Lab.</div>
+<button onclick="goPayment()">ENDA KWA PAYMENT ➜</button>
+</div>
+
+<!-- 7. PAYMENT -->
+<div class="card" id="payBox" style="display:none">
+<h3>7. PAYMENT</h3>
+<div id="payOut"></div>
+<label><input type="radio" name="pay" checked> M-PESA</label>
+<label><input type="radio" name="pay"> CASH</label><br>
+<button onclick="makeReceipt()">LIPA NA TOA RECEIPT 🧾</button>
+</div>
+
+<!-- 8. RECEIPT -->
+<div class="card" id="receiptBox" style="display:none">
+<h3>🧾 RECEIPT</h3>
+<div id="receiptOut"></div>
+<button onclick="window.print()">PRINT RECEIPT</button>
+</div>
+</div>
+</div>
+
+<script>
+var docPatients = JSON.parse(localStorage.getItem('docPatients')||'[]');
+var currentPresc = ''; var currentPharm = []; var currentTotal = 0; var currentDisease = '';
+function getDiseaseDrug(d){
+  d = (d||'').toLowerCase();
+  if(d.indexOf('malaria')!==-1) return {drug:'Coartem',dose:'Mara 2 kwa siku, siku 3',price:350};
+  if(d.indexOf('typhoid')!==-1) return {drug:'Ciprofloxacin 500mg',dose:'Mara 2 kwa siku, siku 7',price:400};
+  if(d.indexOf('homa')!==-1 || d.indexOf('fever')!==-1) return {drug:'Panadol 500mg',dose:'Mara 3 kwa siku, siku 3',price:50};
+  if(d.indexOf('pressure')!==-1) return {drug:'Amlodipine 5mg',dose:'Mara 1 kila siku',price:180};
+  if(d.indexOf('allergy')!==-1) return {drug:'Cetirizine',dose:'Mara 1 kwa siku, siku 5',price:120};
+  if(d.indexOf('sukari')!==-1 || d.indexOf('sugar')!==-1 || d.indexOf('diabetes')!==-1) return {drug:'Metformin 500mg',dose:'Mara 2 kwa siku',price:150};
+  return {drug:'Panadol + Maji mengi + Pumzika',dose:'Mara 3 kwa siku',price:50};
+}
+function autoLab(){
+  var d = document.getElementById('dDisease').value;
+  var g = getDiseaseDrug(d);
+  document.getElementById('prescOut').innerHTML = '<b>Ugonjwa:</b> '+d+'<br><b>Dawa:</b> '+g.drug+'<br><b>Marangapi:</b> '+g.dose+'<br><b>Bei:</b> Ksh '+g.price;
+}
+function savePatient(){
+  var p = {name:document.getElementById('dName').value, age:document.getElementById('dAge').value, gender:document.getElementById('dGender').value, disease:document.getElementById('dDisease').value, sugar:document.getElementById('dSugar').value};
+  if(!p.name || !p.disease){alert('Jaza Jina na Ugonjwa');return;}
+  docPatients.push(p); localStorage.setItem('docPatients',JSON.stringify(docPatients));
+  currentDisease = p.disease; autoLab(); alert('Mgonjwa '+p.name+' amehifadhiwa. Sasa ingiza PIN ya Doctor.');
+}
+function renderDoc(){
+  var q = (document.getElementById('docSearch')?document.getElementById('docSearch').value.toLowerCase():'');
+  var h = ''; if(docPatients.length===0) h='<p>Hakuna mgonjwa bado.</p>';
+  for(var i=0;i<docPatients.length;i++){ var p=docPatients[i]; if(q && p.name.toLowerCase().indexOf(q)===-1) continue;
+    var g = getDiseaseDrug(p.disease);
+    h += '<div class="card"><b>'+p.name+'</b> | Umri: '+p.age+' | Gender: '+p.gender+'<br>Ugonjwa: <b>'+p.disease+'</b> | Sukari: '+p.sugar+'<br>Dawa: '+g.drug+' | '+g.dose+'</div>'; }
+  document.getElementById('doctorList').innerHTML = h;
+}
+function doLab(){
+  var tests = document.querySelectorAll('.labTest:checked');
+  var list = ''; var totalLab = 0;
+  for(var i=0;i<tests.length;i++){ list += '• '+tests[i].value+'<br>'; var m = tests[i].value.match(/Ksh (\d+)/); if(m) totalLab += parseInt(m[1]); }
+  if(!list){ alert('Chagua Test moja kwanza'); return; }
+  var g = getDiseaseDrug(currentDisease || document.getElementById('dDisease').value);
+  currentPresc = 'Ugonjwa: '+ (currentDisease || document.getElementById('dDisease').value) + ' | Dawa: '+g.drug+' | Marangapi: '+g.dose;
+  currentPharm = [{name:g.drug, price:g.price}];
+  document.getElementById('labResult').innerHTML = '<b>Lab Results:</b><br>'+list+'<b>Jumla Lab: Ksh '+totalLab+'</b>';
+  document.getElementById('prescOut').innerHTML = '<b>Prescription:</b><br>'+currentPresc+'<br><b>Bei ya Dawa:</b> Ksh '+g.price;
+  document.getElementById('pharmOut').innerHTML = '<b>Pharmacy (Imetoka kwa Lab):</b><br>• '+g.drug+' - Ksh '+g.price+'<br><b>Lab Jumla: Ksh '+totalLab+'</b>';
+  localStorage.setItem('lastLabTotal', totalLab);
+  alert('Lab imemaliza. Sasa Pharmacy imejaza yenyewe. Bonyeza ENDA KWA PAYMENT.');
+}
+function goPayment(){
+  var labTotal = parseInt(localStorage.getItem('lastLabTotal')||'0');
+  var drugPrice = currentPharm.length ? currentPharm[0].price : 0;
+  currentTotal = labTotal + drugPrice;
+  document.getElementById('payBox').style.display='block';
+  document.getElementById('payOut').innerHTML = '<b>Ugonjwa:</b> '+(currentDisease || document.getElementById('dDisease').value)+'<br><b>Dawa kutoka Pharmacy:</b> '+(currentPharm.length?currentPharm[0].name:'-')+' - Ksh '+drugPrice+'<br><b>Lab:</b> Ksh '+labTotal+'<br><b><h3>Jumla Kulipa: Ksh '+currentTotal+'</h3></b>';
+  window.scrollTo(0,document.getElementById('payBox').offsetTop);
+}
+function makeReceipt(){
+  document.getElementById('receiptBox').style.display='block';
+  document.getElementById('receiptOut').innerHTML = '<b>Scrupulous Hospital - RECEIPT</b><br><b>Mgonjwa:</b> '+document.getElementById('dName').value+'<br><b>Ugonjwa:</b> '+(currentDisease || document.getElementById('dDisease').value)+'<br><b>Lab Results:</b><br>'+document.getElementById('labResult').innerHTML+'<br><b>Pharmacy:</b><br>'+document.getElementById('pharmOut').innerHTML+'<br><b>Payment:</b> Ksh '+currentTotal+' - IMELIPWA ✅<br><small>Asante, You Are Loved ❤️</small>';
+}
+</script>
 
   
 <!-- PHARMACY -->
