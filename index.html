@@ -158,6 +158,30 @@ small{color:#555}
 <div class="card"><h2>🧪 Lab - Maabara</h2><img src="IMG-20261113-WA5047.jpg">
 <p><b>MWELEKEO:</b> Kutoka Check Up > Ingia Lab > Toa sampuli > Subiri majibu 30-60 min > Rudi kwa Daktari na majibu.</p>
 <p>Vipimo: Malaria, Typhoid, Presha, Sukari, Damu, Mkojo</p>
+  <!-- ===== LAB RESULTS - PASTE HAPA LINE 160 ===== -->
+<div style="background:#e8f5ec;border-radius:12px;padding:15px;margin-top:12px">
+<h3>🧪 Matokeo ya Vipimo - Lab Results</h3>
+<p><small>Daktari / Lab Tech: Jaza matokeo hapa</small></p>
+<label>Chagua Kipimo:</label>
+<select id="kipimoType" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
+<option>Malaria Test</option>
+<option>Typhoid Test</option>
+<option>Presha (Blood Pressure)</option>
+<option>Sukari (Blood Sugar)</option>
+<option>Damu (Blood Test / HB)</option>
+<option>Mkojo (Urine Test)</option>
+<option>Uvimbe / Maambukizi</option>
+<option>Mengineyo</option>
+</select>
+<label>Matokeo:</label>
+<input id="kipimoResult" placeholder="Mfano: Positive / Negative / 120/80 / 5.6" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
+<label>Maelezo ya Daktari:</label>
+<input id="kipimoNote" placeholder="Mfano: Mgonjwa ana Malaria" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
+<button onclick="saveLab()" style="width:100%;padding:12px;background:#0a7a3a;color:#fff;border:none;border-radius:8px;font-weight:bold">💾 HIFADHI MATOKEO YA LAB</button>
+<div id="labResultShow" style="background:#fff;border-radius:8px;padding:12px;margin-top:10px;display:none">
+<b>✅ Matokeo Yamehifadhiwa:</b><br><span id="labResultText"></span>
+</div>
+</div>
 <button class="btn" onclick="show('checkup')">RUDI KWA DAKTARI 🩺</button>
 <button class="btn" onclick="show('pharmacy')">NENDA PHARMACY 💊</button>
 <button class="btn green" onclick="show('payment')">NENDA PAYMENT 💳</button></div></div>
@@ -166,6 +190,23 @@ small{color:#555}
 <div id="pharmacy" class="page"><button class="btn red" onclick="show('theatre')">🏥 THEATRE / OPERATION</button>
 <div class="card"><h2>💊 Pharmacy - Dawa</h2><img src="IMG-20261113-WA1869.jpg">
 <p><b>MWELEKEO:</b> Kutoka Daktari / Lab > Leta karatasi ya dawa (Prescription) > Lipa > Chukua dawa. Daktari wa dawa atakuelekeza jinsi ya kutumia.</p>
+  <!-- ===== PHARMACY PRESCRIPTION - PASTE HAPA LINE 168 ===== -->
+<div style="background:#fff3cd;border-radius:12px;padding:15px;margin-top:12px;border:1px solid #f0c040">
+<h3>💊 Prescription - Dawa Uliyoandikiwa</h3>
+<p><b>Matokeo ya Lab yako:</b> <span id="pharmaLab">Hakuna kipimo bado</span></p>
+<p><small>Daktari anaandika dawa hapa kulingana na matokeo ya Lab:</small></p>
+<label>Jina la Dawa:</label>
+<input id="dawaName" placeholder="Daktari ataandika jina la dawa" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
+<label>Jinsi ya Kutumia:</label>
+<input id="dawaUse" placeholder="Mfano: Vidonge 2 asubuhi na jioni kwa siku 3" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
+<label>Bei ya Dawa (Ksh):</label>
+<input id="dawaPrice" type="number" placeholder="Mfano: 500" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
+<button onclick="saveDawa()" style="width:100%;padding:12px;background:#0a7a3a;color:#fff;border:none;border-radius:8px;font-weight:bold">💾 HIFADHI DAWA - NENDA PAYMENT</button>
+<div id="dawaShow" style="background:#fff;border-radius:8px;padding:12px;margin-top:10px;display:none">
+<b>✅ Dawa Uliyopewa:</b><br><span id="dawaText"></span>
+</div>
+<p style="font-size:12px;color:#555;margin-top:8px">⚠️ Tumia dawa kama Daktari alivyokuandikia. Usibadilishe dozi bila kuuliza Daktari.</p>
+</div>
 <button class="btn green" onclick="show('payment')">LIPA DAWA - NENDA PAYMENT 💳</button>
 <button class="btn" onclick="show('home')">MALIZA - RUDI HOME</button></div></div>
   
@@ -296,6 +337,26 @@ function orderFood(){
 <select id="p-njia"><option>M-PESA - 0112955446</option><option>Cash - Cashier</option><option>Insurance - NHIF / SHA</option><option>Card</option></select>
 <input id="p-kiasi" placeholder="Kiasi - Ksh">
 <button class="btn green" onclick="lipa()">LIPA SASA ✅</button>
+  <!-- ===== RECEIPT KAMILI - PASTE HAPA ===== -->
+<div id="receiptBox" style="background:#fff;border:2px dashed #0a7a3a;border-radius:12px;padding:15px;margin-top:12px">
+  <h3 style="text-align:center;color:#0a7a3a;margin:0">🧾 SCRUPULOUS HOSPITAL WATAMU</h3>
+  <p style="text-align:center;font-size:13px;margin:4px 0">Payment Receipt - Risiti ya Malipo</p>
+  <hr>
+  <p><b>Receipt No:</b> <span id="receiptNo">SCR-0001</span></p>
+  <p><b>Jina la Mgonjwa:</b> <span class="nm"></span></p>
+  <p><b>Tarehe:</b> <span id="receiptDate"></span></p>
+  <p><b>Njia ya Kulipa:</b> <span id="receiptMethod">M-PESA - 0112955446</span></p>
+  <p><b>Kiasi:</b> Ksh <span id="receiptAmount">200</span></p>
+  <p><b>Huduma:</b> <span id="receiptService">Matibabu / Lab / Pharmacy</span></p>
+  <p><b>Matokeo ya Lab:</b> <span id="receiptLab">Angalia hapa chini</span></p>
+  <p><b>Dawa Uliyopewa:</b> <span id="receiptDawa">Angalia Prescription</span></p>
+  <hr>
+  <p style="text-align:center"><b>✅ PAID - ASANTE! ENTRY IMERUHUSIWA</b><br><small>Onyesha hii kwa Security / Reception</small></p>
+  <p style="text-align:center;font-size:12px">Tel: 0112955446 | Email: scrupulouslucas@gmail.com</p>
+</div>
+<button onclick="window.print()" style="width:100%;padding:12px;background:#111;color:#fff;border:none;border-radius:8px;font-weight:bold;margin-top:8px">🖨️ PRINT / SAVE RECEIPT</button>
+<button onclick="shareReceipt()" style="width:100%;padding:12px;background:#25D366;color:#fff;border:none;border-radius:8px;font-weight:bold;margin-top:8px">💬 TUMA RECEIPT WHATSAPP</button>
+<!-- ===== MWISHO RECEIPT ===== -->
 <div id="p-res"></div></div></div>
   
   <!-- THEATRE -->
@@ -440,7 +501,7 @@ function orderFood(){
 <button class="btn" onclick="show('home')">⬅ RUDI HOME</button>
 </div></div>
 <script>
-function show(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
+function show(id){document.querySelectorAll('.page').forEach(p=>p.style.display='none');document.getElementById(id).style.display='block';if(id==='pharmacy') loadPharmacy();}
 function ingia(){let j=document.getElementById('jina').value;if(!j){alert('Weka jina kwanza');return;}
 localStorage.setItem('jina',j);document.querySelectorAll('.nm').forEach(e=>e.innerText=j);show('home');}
   function loadWork(){
@@ -545,4 +606,45 @@ function renderAgendas(){
 function toggleStatus(title){ const a = agendas.find(x=>x.title===title); a.status = a.status==="Pending" ? "In Progress" : a.status==="In Progress" ? "Done" : "Pending"; renderAgendas(); }
 function addAgenda(){ const t=document.getElementById('newAgenda').value.trim(); const dId=parseInt(document.getElementById('newDirector').value); if(!t) return alert("Weka agenda kwanza"); agendas.unshift({title:t,directorId:dId,status:"Pending"}); document.getElementById('newAgenda').value=""; renderAgendas(); }
 renderAgendas();
+  // ===== RECEIPT + LAB + PHARMACY =====
+function makeReceipt(amount, method){
+  const now = new Date();
+  document.getElementById('receiptNo').innerText = 'SCR-' + Math.floor(1000 + Math.random()*9000);
+  document.getElementById('receiptDate').innerText = now.toLocaleString();
+  document.getElementById('receiptAmount').innerText = amount || '200';
+  document.getElementById('receiptMethod').innerText = method || 'M-PESA - 0112955446';
+  document.getElementById('receiptLab').innerText = localStorage.getItem('labResult') || 'Hakuna kipimo';
+  document.getElementById('receiptDawa').innerText = localStorage.getItem('dawaPrescription') || 'Hakuna dawa';
+}
+function shareReceipt(){
+  const txt = "SCRUPULOUS RECEIPT%0AReceipt: "+document.getElementById('receiptNo').innerText+"%0AKiasi: Ksh "+document.getElementById('receiptAmount').innerText;
+  window.open("https://wa.me/254112955446?text="+txt, "_blank");
+}
+function saveLab(){
+  const type = document.getElementById('kipimoType').value;
+  const res = document.getElementById('kipimoResult').value.trim();
+  const note = document.getElementById('kipimoNote').value.trim();
+  if(!res) return alert("Weka matokeo kwanza");
+  const full = type + " : " + res + " | " + note;
+  localStorage.setItem('labResult', full);
+  document.getElementById('labResultShow').style.display = 'block';
+  document.getElementById('labResultText').innerText = full;
+  alert("Matokeo yamehifadhiwa! Sasa nenda Pharmacy.");
+}
+function loadPharmacy(){
+  const lab = localStorage.getItem('labResult') || 'Hakuna kipimo bado';
+  const el = document.getElementById('pharmaLab');
+  if(el) el.innerText = lab;
+}
+function saveDawa(){
+  const name = document.getElementById('dawaName').value.trim();
+  const use = document.getElementById('dawaUse').value.trim();
+  const price = document.getElementById('dawaPrice').value.trim();
+  if(!name) return alert("Daktari aingize jina la dawa");
+  const full = name + " - " + use + " | Bei: Ksh " + (price||'0');
+  localStorage.setItem('dawaPrescription', full);
+  document.getElementById('dawaShow').style.display = 'block';
+  document.getElementById('dawaText').innerText = full;
+  alert("Dawa imehifadhiwa! Sasa lipa ili upate Receipt.");
+}
 </script></body></html>
