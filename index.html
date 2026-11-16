@@ -46,21 +46,21 @@ small{color:#555}
 <!-- HOME -->
 <div id="home" class="page"><div class="card">
   <div class="nav-grid">
-  <button class="nav-square red" onclick="show('emergency')">🚨<span>EMERGENCY</span></button>
-  <button class="nav-square teal" onclick="show('checkup')">🩺<span>DOCTOR'S<br>CHECK UP</span></button>
-  <button class="nav-square green" onclick="show('lab')">🧪<span>LAB</span></button>
+  <button class="nav-square red" onclick="gopage('emergency')">🚨<span>EMERGENCY</span></button>
+  <button class="nav-square teal" onclick="gopage('checkup')">🩺<span>DOCTOR'S<br>CHECK UP</span></button>
+  <button class="nav-square green" onclick="gopage('lab')">🧪<span>LAB</span></button>
 
-  <button class="nav-square green2" onclick="show('pharmacy')">💊<span>PHARMACY</span></button>
-  <button class="nav-square red" onclick="show('theatre')">🏥<span>THEATRE</span></button>
-  <button class="nav-square orange" onclick="show('canteen')">🍽️<span>CANTEEN</span></button>
+  <button class="nav-square green2" onclick="gopage('pharmacy')">💊<span>PHARMACY</span></button>
+  <button class="nav-square red" onclick="gopage('theatre')">🏥<span>THEATRE</span></button>
+  <button class="nav-square orange" onclick="gopage('canteen')">🍽️<span>CANTEEN</span></button>
 
-  <button class="nav-square purple" onclick="show('boardroom')">🏢<span>BOARDROOM</span></button>
-  <button class="nav-square black" onclick="show('mortuary')">⚰️<span>MORTUARY</span></button>
-  <button class="nav-square green2" onclick="show('payment')">💳<span>PAYMENT</span></button>
-  <button class="nav-square navy" onclick="show('admin')">🔐<span>ADMIN</span></button>
- <button class="nav-square blue" onclick="show('staff')">👨‍⚕️<span>HOSPITAL<br>STAFF</span></button>
- <button class="nav-square gold" onclick="show('directors')">⭐<span>DIRECTORS</span></button>
- <button class="nav-square green2" onclick="show('doctor')">👨‍⚕️<br>DAKTARI LOGIN</button>
+  <button class="nav-square purple" onclick="gopage('boardroom')">🏢<span>BOARDROOM</span></button>
+  <button class="nav-square black" onclick="gopage('mortuary')">⚰️<span>MORTUARY</span></button>
+  <button class="nav-square green2" onclick="gopage('payment')">💳<span>PAYMENT</span></button>
+  <button class="nav-square navy" onclick="gopage('admin')">🔐<span>ADMIN</span></button>
+ <button class="nav-square blue" onclick="gopage('staff')">👨‍⚕️<span>HOSPITAL<br>STAFF</span></button>
+ <button class="nav-square gold" onclick="gopage('directors')">⭐<span>DIRECTORS</span></button>
+ <button class="nav-square green2" onclick="gopage('doctor')">👨‍⚕️<br>DAKTARI LOGIN</button>
   </div>
 <h2>Karibu <span class="nm"></span> 🙏🙏</h2>
 <img src="IMG-20261113-WA4381.jpg">
@@ -168,7 +168,7 @@ small{color:#555}
 
 <label>Dalili / Symptoms:</label>
 <textarea id="pSymptoms" rows="3" placeholder="Mfano: Homa, kichwa kuuma..."></textarea>
-<button class="btn" onclick="savePatientFromCheckup()">TUMA KWA DAKTARI</button>
+<button class="btn" onclick="goDoctor()" style="width:100%">TUMA KWA DAKTARI</button>
 <div id="c-res"></div></div></div>
 
 <!-- LAB -->
@@ -789,4 +789,54 @@ window.show = function(page){
 }
 var _oldShow2 = window.show;
 window.show = function(page){ if(_oldShow2) _oldShow2(page); if(page=='payment'||page=='receipt') loadReceipt(); };
+  
+  // ===== FIX: TUMA KWA DAKTARI - LAZIMA IENDE =====
+function goDoctor(){
+  // Chukua chochote kilichoandikwa, hata kama ID zimebadilika
+  var inputs = document.querySelectorAll('#checkup input, #checkup textarea, #checkup select');
+  var name = '';
+  var age = '';
+  // Jaribu kusoma kwa ID za zamani na mpya zote
+  var n1 = document.getElementById('c-jina') || document.getElementById('patName') || document.getElementById('patientName');
+  var a1 = document.getElementById('c-umri') || document.getElementById('patAge');
+  var u1 = document.getElementById('c-ugonjwa');
+  var g1 = document.getElementById('pGender');
+  var d1 = document.getElementById('pDays');
+  var s1 = document.getElementById('pSymptoms');
+
+  if(n1) name = n1.value;
+  if(a1) age = a1.value;
+  if(!name) return alert('Andika Jina kwanza');
+
+  // Hifadhi kwenye kabati MOJA tu
+  var old = {};
+  try{ old = JSON.parse(localStorage.getItem('scrupulous_patient')) || {}; }catch(e){}
+  old.name = name;
+  old.age = age;
+  old.disease = u1 ? u1.value : '';
+  old.gender = g1 ? g1.value : '';
+  old.days = d1 ? d1.value : '';
+  old.symptoms = s1 ? s1.value : '';
+  localStorage.setItem('scrupulous_patient', JSON.stringify(old));
+
+  // Nenda kwa Daktari - kwa nguvu, sio kwa show() ya zamani
+  var pages = document.querySelectorAll('.page');
+  pages.forEach(function(p){ p.style.display = 'none'; });
+  var doc = document.getElementById('doctor');
+  if(doc) doc.style.display = 'block';
+  window.scrollTo(0,0);
+  if(typeof loadDoctorData === 'function') loadDoctorData();
+  alert('Asante ' + name + '! Umepelekwa kwa Daktari');
+}
+
+// Kama nav ya juu ya DAKTARI pia haifanyi kazi, hii inairekebisha
+function goPage(pageId){
+  var pages = document.querySelectorAll('.page');
+  pages.forEach(function(p){ p.style.display = 'none'; });
+  var el = document.getElementById(pageId);
+  if(el) el.style.display = 'block';
+  window.scrollTo(0,0);
+  if(pageId === 'doctor' && typeof loadDoctorData === 'function') loadDoctorData();
+  if(pageId === 'pharmacy' && typeof loadDoctorData === 'function') loadDoctorData();
+}
 </script></body></html>
