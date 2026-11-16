@@ -47,7 +47,7 @@ small{color:#555}
 <div id="home" class="page"><div class="card">
   <div class="nav-grid">
   <button class="nav-square red" onclick="show ('emergency')">🚨<span>EMERGENCY</span></button>
-  <button class="nav-square teal" onclick="show ('checkup')">🩺<span>DOCTOR'S<br>CHECK UP</span></button>
+  <button class="nav-square teal" onclick="show('doctor')">🩺 DOCTOR'S CHECK UP</button>
   <button class="nav-square green" onclick="show ('lab')">🧪<span>LAB</span></button>
 
   <button class="nav-square green2" onclick="show ('pharmacy')">💊<span>PHARMACY</span></button>
@@ -196,12 +196,16 @@ small{color:#555}
 <button class="btn" onclick="show('pharmacy')">NENDA PHARMACY 💊</button>
 <button class="btn green" onclick="show('payment')">NENDA PAYMENT 💳</button></div></div>
  
-  
-<div id="doctor" class="page">
+  <div id="doctor" class="page">
 <h2>👨‍⚕️ Daktari - Login</h2>
 <p><b>MWELEKEO:</b> Mgonjwa Kwanza > Daktari > Pharmacy</p>
 
-<div id="doctorPatientView" style="background:#e8f5e9;padding:12px;border-radius:10px;font-weight:bold;">Bado hakuna mgonjwa</div>
+<label>PIN ya Daktari:</label>
+<input id="doctorPin" type="password" placeholder="Weka PIN - 2026">
+<button class="btn" onclick="if(document.getElementById('doctorPin').value=='2026'){document.getElementById('doctorMain').style.display='block'; loadDoctorData();}else{alert('PIN sio sahihi')}">INGIA</button>
+
+<div id="doctorMain" style="display:none">
+<div id="doctorPatientView" style="background:#e8f5e9;padding:12px;border-radius:10px;font-weight:bold;margin:10px 0;">Bado hakuna mgonjwa - Subiri mgonjwa ajaze Checkup</div>
 
 <h3>🧪 JUU: Lab - Jaza Matokeo ya Lab</h3>
 <label>Chagua Kipimo:</label>
@@ -217,10 +221,9 @@ small{color:#555}
 <label>Maelezo ya Daktari:</label>
 <input id="kipimoNote" placeholder="Daktari andika maelezo hapa">
 <button class="btn" onclick="saveLab()" style="width:100%">HIFADHI MATOKEO YA LAB</button>
-<div id="labResultShow" style="display:none;background:#e8f5e9;padding:10px;border-radius:10px;margin-top:8px;">✅ <b>Matokeo Yamehifadhiwa:</b> <span id="labResultText"></span></div>
+<div id="labResultShow" style="display:none;background:#e8f5e9;padding:10px;border-radius:10px;margin-top:8px;">✅ <b>Matokeo:</b> <span id="labResultText"></span></div>
 
-<h3>💊 CHINI: Pharmacy - Peana Dawa Kulingana na Lab</h3>
-<p>Chagua Dawa — Jinsi ya Kutumia na Bei zinajijaza zenyewe:</p>
+<h3>💊 CHINI: Pharmacy - Peana Dawa</h3>
 <label>Jina la Dawa - Chagua kwenye List:</label>
 <select id="docMedicine" onchange="autoDrug()">
   <option value="">-- Chagua Dawa --</option>
@@ -229,7 +232,7 @@ small{color:#555}
   <option value="Artesunate">Artesunate - Malaria Emergency</option>
   <option value="Ciprofloxacin 500mg">Ciprofloxacin 500mg - Typhoid</option>
   <option value="Amoxil 500mg">Amoxil 500mg - Kikohozi</option>
-  <option value="Diclofenac">Diclofenac - Mifupa / Maumivu</option>
+  <option value="Diclofenac">Diclofenac - Mifupa</option>
   <option value="Paracetamol 500mg">Paracetamol 500mg - Homa</option>
   <option value="Amlodipine">Amlodipine - Presha</option>
 </select>
@@ -238,11 +241,13 @@ small{color:#555}
 <label>Bei ya Dawa (Ksh):</label>
 <input id="docPrice" type="number" placeholder="Itajijaza yenyewe...">
 <button class="btn green" onclick="saveMedicine()" style="width:100%">💊 HIFADHI DAWA - NENDA PAYMENT</button>
-<div id="medSavedShow" style="display:none;background:#e8f5e9;padding:10px;border-radius:10px;margin-top:8px;">✅ <b>Dawa Uliyopewa:</b> <span id="medSavedText"></span></div>
+<div id="medSavedShow" style="display:none;background:#e8f5e9;padding:10px;border-radius:10px;margin-top:8px;">✅ <b>Dawa:</b> <span id="medSavedText"></span></div>
 
 <br><button class="btn" onclick="show('pharmacy')">Nenda Pharmacy →</button>
 <button class="btn" onclick="show('payment')">Nenda Payment →</button>
 </div>
+  </div>
+
   
 <!-- PHARMACY -->
 <div id="pharmacy" class="page"><button class="btn red" onclick="show('theatre')">🏥 THEATRE / OPERATION</button>
