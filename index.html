@@ -972,4 +972,34 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   }
 });
+
+// ===== RUDISHA SIGN IN PEKE YAKE =====
+function fixSignIn(){
+  var btns = document.querySelectorAll('button');
+  for(var i=0;i<btns.length;i++){
+    if(btns[i].textContent.indexOf('SIGN IN')!==-1){
+      btns[i].onclick = function(){
+        var inputs = document.querySelectorAll('input');
+        var name = ''; var phone = '';
+        for(var j=0;j<inputs.length;j++){
+          if(inputs[j].type==='radio' || inputs[j].type==='password' || inputs[j].type==='checkbox') continue;
+          if(!name && inputs[j].value) name = inputs[j].value;
+          else if(!phone && inputs[j].value) phone = inputs[j].value;
+        }
+        if(!name || !phone){ alert('Jaza Jina na Simu kwanza'); return; }
+        alert('Karibu '+name+'! Umeingia vizuri.');
+        // Ficha login, onyesha home
+        var pages = document.querySelectorAll('.page');
+        for(var k=0;k<pages.length;k++){ pages[k].style.display='none'; pages[k].classList.remove('active'); }
+        var home = document.getElementById('home');
+        if(home){ home.style.display='block'; home.classList.add('active'); }
+        else if(typeof show==='function'){ try{ show('home'); }catch(e){} }
+        window.scrollTo(0,0);
+      };
+    }
+  }
+}
+fixSignIn();
+document.addEventListener('DOMContentLoaded', fixSignIn);
+
 </script></body></html>
