@@ -1002,4 +1002,34 @@ function fixSignIn(){
 fixSignIn();
 document.addEventListener('DOMContentLoaded', fixSignIn);
 
+  // ===== TENGENEZA BUTTONS ZOTE KWA MARA MOJA =====
+function fixAllButtons(){
+  var btns = document.querySelectorAll('button');
+  for(var i=0;i<btns.length;i++){
+    var b = btns[i];
+    var txt = b.textContent.trim().toUpperCase();
+    if(txt.indexOf('SIGN IN')!==-1) continue; // Sign In tayari inafanya kazi
+    b.onclick = function(){
+      var t = this.textContent.trim().toUpperCase();
+      var id = 'page-' + t.replace(/[^A-Z0-9]+/g,'-').toLowerCase();
+      var target = document.getElementById(id);
+      // Kama page haipo, itengeneze yenyewe
+      if(!target){
+        target = document.createElement('div');
+        target.id = id;
+        target.className = 'page';
+        target.style.cssText = 'display:block;padding:15px;max-width:600px;margin:auto;background:#fff;border-radius:12px;margin-top:12px';
+        target.innerHTML = '<h2>'+this.textContent.trim()+'</h2><p>Karibu kwenye <b>'+this.textContent.trim()+'</b>.</p><p>Huduma hii iko hapa. Ukishajaza mgonjwa hapa, daktari ataiona.</p><input placeholder="Jina la mgonjwa"><input placeholder="Shida yako ni nini?"><button onclick="alert(\'Imeshahifadhiwa. Asante!\')">HIFADHI</button><br><br><button onclick="location.reload()">RUDI HOME</button>';
+        document.body.appendChild(target);
+      }
+      var pages = document.querySelectorAll('.page');
+      for(var k=0;k<pages.length;k++){ pages[k].style.display='none'; pages[k].classList.remove('active'); }
+      target.style.display='block'; target.classList.add('active');
+      window.scrollTo(0,0);
+    };
+  }
+}
+fixAllButtons();
+document.addEventListener('DOMContentLoaded', fixAllButtons);
+  
 </script></body></html>
