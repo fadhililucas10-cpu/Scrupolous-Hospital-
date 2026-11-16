@@ -845,4 +845,51 @@ function show(pageId){
 // Kama goPage bado iko kwenye buttons zingine, ifanye iwe show pia
 function goPage(pageId){ show(pageId); }
 function goDoctor(){ show('doctor'); }
+  // ===== RUDISHA SIGN IN - USIFUTE TENA =====
+function doSignIn(){
+  var name = "";
+  var phone = "";
+  var email = "";
+  var inputs = document.querySelectorAll('input');
+  for(var i=0; i<inputs.length; i++){
+    if(inputs[i].value && inputs[i].type !== 'radio' && inputs[i].type !== 'password' && inputs[i].type !== 'checkbox'){
+      if(!name) name = inputs[i].value;
+      else if(!phone) phone = inputs[i].value;
+      else if(!email) email = inputs[i].value;
+    }
+  }
+  if(!name || !phone){
+    alert('Tafadhali jaza Jina na Namba ya Simu kwanza');
+    return;
+  }
+  try{
+    localStorage.setItem('scrupulous_patient', JSON.stringify({name:name, phone:phone, email:email}));
+  }catch(e){}
+  alert('Karibu ' + name + '! Umeingia vizuri.');
+  // Nenda Homepage
+  var pages = document.querySelectorAll('.page');
+  for(var j=0; j<pages.length; j++){ pages[j].style.display='none'; }
+  var home = document.getElementById('home');
+  if(home) home.style.display='block';
+  else {
+    var first = document.getElementById('checkup');
+    if(first) first.style.display='block';
+  }
+  window.scrollTo(0,0);
+}
+// Kila jina linalowezekana la Sign In, lifanye kazi moja
+function signIn(){ doSignIn(); }
+function login(){ doSignIn(); }
+function handleLogin(){ doSignIn(); }
+function handleSignIn(){ doSignIn(); }
+
+// Kama button haina onclick, iunganishe kiotomatiki
+document.addEventListener('DOMContentLoaded', function(){
+  var btns = document.querySelectorAll('button');
+  for(var k=0; k<btns.length; k++){
+    if(btns[k].textContent.indexOf('SIGN IN') !== -1){
+      btns[k].onclick = doSignIn;
+    }
+  }
+});
 </script></body></html>
