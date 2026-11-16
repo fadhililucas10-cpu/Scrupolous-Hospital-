@@ -46,21 +46,21 @@ small{color:#555}
 <!-- HOME -->
 <div id="home" class="page"><div class="card">
   <div class="nav-grid">
-  <button class="nav-square red" onclick="gopage('emergency')">🚨<span>EMERGENCY</span></button>
-  <button class="nav-square teal" onclick="gopage('checkup')">🩺<span>DOCTOR'S<br>CHECK UP</span></button>
-  <button class="nav-square green" onclick="gopage('lab')">🧪<span>LAB</span></button>
+  <button class="nav-square red" onclick="show ('emergency')">🚨<span>EMERGENCY</span></button>
+  <button class="nav-square teal" onclick="show ('checkup')">🩺<span>DOCTOR'S<br>CHECK UP</span></button>
+  <button class="nav-square green" onclick="show ('lab')">🧪<span>LAB</span></button>
 
-  <button class="nav-square green2" onclick="gopage('pharmacy')">💊<span>PHARMACY</span></button>
-  <button class="nav-square red" onclick="gopage('theatre')">🏥<span>THEATRE</span></button>
-  <button class="nav-square orange" onclick="gopage('canteen')">🍽️<span>CANTEEN</span></button>
+  <button class="nav-square green2" onclick="show ('pharmacy')">💊<span>PHARMACY</span></button>
+  <button class="nav-square red" onclick="show ('theatre')">🏥<span>THEATRE</span></button>
+  <button class="nav-square orange" onclick="show ('canteen')">🍽️<span>CANTEEN</span></button>
 
-  <button class="nav-square purple" onclick="gopage('boardroom')">🏢<span>BOARDROOM</span></button>
-  <button class="nav-square black" onclick="gopage('mortuary')">⚰️<span>MORTUARY</span></button>
-  <button class="nav-square green2" onclick="gopage('payment')">💳<span>PAYMENT</span></button>
-  <button class="nav-square navy" onclick="gopage('admin')">🔐<span>ADMIN</span></button>
- <button class="nav-square blue" onclick="gopage('staff')">👨‍⚕️<span>HOSPITAL<br>STAFF</span></button>
- <button class="nav-square gold" onclick="gopage('directors')">⭐<span>DIRECTORS</span></button>
- <button class="nav-square green2" onclick="gopage('doctor')">👨‍⚕️<br>DAKTARI LOGIN</button>
+  <button class="nav-square purple" onclick="show ('boardroom')">🏢<span>BOARDROOM</span></button>
+  <button class="nav-square black" onclick="show ('mortuary')">⚰️<span>MORTUARY</span></button>
+  <button class="nav-square green2" onclick="show ('payment')">💳<span>PAYMENT</span></button>
+  <button class="nav-square navy" onclick="show ('admin')">🔐<span>ADMIN</span></button>
+ <button class="nav-square blue" onclick="show ('staff')">👨‍⚕️<span>HOSPITAL<br>STAFF</span></button>
+ <button class="nav-square gold" onclick="show ('directors')">⭐<span>DIRECTORS</span></button>
+ <button class="nav-square green2" onclick="show ('doctor')">👨‍⚕️<br>DAKTARI LOGIN</button>
   </div>
 <h2>Karibu <span class="nm"></span> 🙏🙏</h2>
 <img src="IMG-20261113-WA4381.jpg">
@@ -839,4 +839,26 @@ function goPage(pageId){
   if(pageId === 'doctor' && typeof loadDoctorData === 'function') loadDoctorData();
   if(pageId === 'pharmacy' && typeof loadDoctorData === 'function') loadDoctorData();
 }
+  // ===== FIX YOTE - BUTTONS ZIFANYE KAZI TENA =====
+function show(pageId){
+  var pages = document.querySelectorAll('.page');
+  for(var i=0; i<pages.length; i++){
+    pages[i].style.display = 'none';
+  }
+  var el = document.getElementById(pageId);
+  if(el){
+    el.style.display = 'block';
+  } else {
+    alert('Page ' + pageId + ' haijapatikana');
+    return;
+  }
+  window.scrollTo(0,0);
+  // Kama ni daktari, pakia mgonjwa
+  if(pageId === 'doctor' && typeof loadDoctorData === 'function'){
+    try{ loadDoctorData(); }catch(e){}
+  }
+}
+// Kama goPage bado iko kwenye buttons zingine, ifanye iwe show pia
+function goPage(pageId){ show(pageId); }
+function goDoctor(){ show('doctor'); }
 </script></body></html>
