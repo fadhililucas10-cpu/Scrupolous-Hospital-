@@ -187,9 +187,8 @@ small{color:#555}
 <label>Una Allergy yoyote?</label>
 <input id="mgonjwaAllergy" placeholder="Mfano: Hapana / Ndio - Penicillin" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
 <label>Matokeo:</label>
-<input id="kipimoResult" placeholder="Mfano: Positive / Negative / 120/80 / 5.6" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
 <label>Maelezo ya Daktari:</label>
-<input id="kipimoNote" placeholder="Mfano: Mgonjwa ana Malaria" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
+<input id="kipimoResult" oninput="autoNote()" placeholder="Mfano: Positive / Negative / 120/80 / 5.6" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
 <button onclick="saveLab()" style="width:100%;padding:12px;background:#0a7a3a;color:#fff;border:none;border-radius:8px;font-weight:bold">💾 HIFADHI MATOKEO YA LAB</button>
 <div id="labResultShow" style="background:#fff;border-radius:8px;padding:12px;margin-top:10px;display:none">
 <b>✅ Matokeo Yamehifadhiwa:</b><br><span id="labResultText"></span>
@@ -198,7 +197,56 @@ small{color:#555}
 <button class="btn" onclick="show('checkup')">RUDI KWA DAKTARI 🩺</button>
 <button class="btn" onclick="show('pharmacy')">NENDA PHARMACY 💊</button>
 <button class="btn green" onclick="show('payment')">NENDA PAYMENT 💳</button></div></div>
+  
+<!-- ===== DOCTOR LOGIN + PRESCRIPTION ===== -->
+<div id="doctor" class="page">
+<div class="card"><h2>👨‍⚕️ Daktari - Login</h2>
+<p><b>MWELEKEO:</b> Mgonjwa Kwanza > Daktari > Pharmacy</p>
 
+<!-- LOGIN -->
+<div id="doctorLoginBox" style="background:#e8f5ec;border-radius:12px;padding:15px">
+<h3>🔐 Ingia kama Daktari</h3>
+<label>PIN ya Daktari:</label>
+<input id="doctorPin" type="password" placeholder="Weka PIN" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
+<button onclick="doctorLogin()" style="width:100%;padding:12px;background:#0a7a3a;color:#fff;border:none;border-radius:8px;font-weight:bold">INGIA</button>
+<p style="font-size:12px;color:#555">PIN ya kujaribu sasa: 2026 - Badilisha baadaye uwe wako</p>
+</div>
+
+<!-- DASHBOARD - Inaonekana baada ya Login -->
+<div id="doctorDash" style="display:none">
+<h3>🧑‍⚕️ Taarifa za Mgonjwa - Kutoka kwa Mgonjwa</h3>
+<div id="doctorPatientView" style="background:#fff;border-radius:8px;padding:12px;border:1px solid #ddd">Hakuna mgonjwa bado</div>
+
+<h3 style="margin-top:15px">🧪 Daktari: Jaza Matokeo ya Lab</h3>
+<label>Chagua Kipimo:</label>
+<select id="docKipimoType" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
+<option>Malaria Test</option>
+<option>Typhoid Test</option>
+<option>Presha (Blood Pressure)</option>
+<option>Sukari (Blood Sugar)</option>
+<option>Damu (Blood Test / HB)</option>
+<option>Mkojo (Urine Test)</option>
+<option>Mengineyo</option>
+</select>
+<label>Matokeo ya Lab:</label>
+<input id="docKipimoResult" placeholder="Mfano: Positive / Negative / 120/80" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
+<label>Maelezo ya Daktari:</label>
+<input id="docKipimoNote" placeholder="Daktari andika maelezo hapa" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
+
+<h3 style="margin-top:15px">💊 Daktari: Andika Dawa</h3>
+<label>Jina la Dawa:</label>
+<input id="docDawaName" placeholder="Daktari andika jina la dawa hapa" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
+<label>Jinsi ya Kutumia:</label>
+<input id="docDawaUse" placeholder="Mfano: Kama Daktari alivyosema - Daktari andika hapa" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
+<label>Bei (Ksh):</label>
+<input id="docDawaPrice" type="number" placeholder="Mfano: 500" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
+<button onclick="doctorSave()" style="width:100%;padding:12px;background:#0a7a3a;color:#fff;border:none;border-radius:8px;font-weight:bold">💾 HIFADHI NA TUMA KWA PHARMACY</button>
+<div id="doctorSaved" style="display:none;background:#e8f5ec;padding:12px;border-radius:8px;margin-top:10px"><b>✅ Imeshahifadhiwa na kutumwa Pharmacy!</b></div>
+</div>
+<button class="btn" onclick="show('pharmacy');loadPharmacy();" style="margin-top:12px;width:100%">NENDA PHARMACY ➡️</button>
+</div>
+</div>
+  
 <!-- PHARMACY -->
 <div id="pharmacy" class="page"><button class="btn red" onclick="show('theatre')">🏥 THEATRE / OPERATION</button>
 <div class="card"><h2>💊 Pharmacy - Dawa</h2><img src="IMG-20261113-WA1869.jpg">
@@ -647,6 +695,58 @@ function saveLab(){
   document.getElementById('labResultText').innerText = full;
   alert("Matokeo yamehifadhiwa! Sasa Daktari ataona taarifa kamili na atachagua dawa.");
                           }
+  function autoNote(){
+  const type = document.getElementById('kipimoType').value;
+  const res = document.getElementById('kipimoResult').value.trim();
+  const umri = document.getElementById('mgonjwaUmri').value.trim();
+  const mjamzito = document.getElementById('mgonjwaMjamzito').value;
+  const allergy = document.getElementById('mgonjwaAllergy').value.trim();
+  const note = document.getElementById('kipimoNote');
+  if(!res || !note) return;
+  note.value = "Matokeo: " + type + " = " + res + " | Mgonjwa Umri " + umri + ", " + mjamzito + ", Allergy: " + (allergy || "Hakuna") + " - Subiri uamuzi wa Daktari";
+  }
+  // ===== DOCTOR LOGIN + LINKED PRESCRIPTION =====
+function doctorLogin(){
+  const pin = document.getElementById('doctorPin').value.trim();
+  if(pin !== '2026') return alert("PIN sio sahihi! Jaribu 2026");
+  document.getElementById('doctorLoginBox').style.display = 'none';
+  document.getElementById('doctorDash').style.display = 'block';
+  loadDoctor();
+}
+function loadDoctor(){
+  const p = localStorage.getItem('patientDetails') || 'Hakuna mgonjwa aliyejaza bado';
+  const el = document.getElementById('doctorPatientView');
+  if(el) el.innerText = p;
+}
+function doctorSave(){
+  const labType = document.getElementById('docKipimoType').value;
+  const labRes = document.getElementById('docKipimoResult').value.trim();
+  const labNote = document.getElementById('docKipimoNote').value.trim();
+  const dawa = document.getElementById('docDawaName').value.trim();
+  const use = document.getElementById('docDawaUse').value.trim();
+  const price = document.getElementById('docDawaPrice').value.trim();
+  if(!labRes) return alert("Daktari weka Matokeo ya Lab kwanza");
+  if(!dawa) return alert("Daktari weka Jina la Dawa kwanza");
+  if(!use) return alert("Daktari weka Jinsi ya Kutumia kwanza");
+  const patient = localStorage.getItem('patientDetails') || '';
+  const labFull = labType + " : " + labRes + " | " + labNote + " | Mgonjwa: " + patient;
+  localStorage.setItem('labResult', labFull);
+  localStorage.setItem('dawaData', JSON.stringify({name: dawa, use: use, price: price}));
+  document.getElementById('doctorSaved').style.display = 'block';
+  alert("Imetumwa Pharmacy! Sasa mgonjwa anaweza kwenda Pharmacy kulipa.");
+}
+  function savePatient(){
+  const n = document.getElementById('patName').value.trim();
+  const u = document.getElementById('patUmri').value.trim();
+  const m = document.getElementById('patMjamzito').value;
+  const a = document.getElementById('patAllergy').value.trim();
+  const d = document.getElementById('patDalili').value.trim();
+  if(!n || !u) return alert("Weka Jina na Umri kwanza");
+  const full = "Jina: " + n + " | Umri: " + u + " | " + m + " | Allergy: " + (a || "Hakuna") + " | Dalili: " + d;
+  localStorage.setItem('patientDetails', full);
+  alert("Asante " + n + "! Taarifa zako zimetumwa kwa Daktari. Subiri Daktari akupime.");
+  show('doctor');
+  }
 function loadPharmacy(){
   const lab = localStorage.getItem('labResult') || 'Hakuna kipimo bado';
   const el = document.getElementById('pharmaLab');
