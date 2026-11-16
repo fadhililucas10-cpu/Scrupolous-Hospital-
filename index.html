@@ -145,12 +145,18 @@ small{color:#555}
 <input id="c-umri" placeholder="Umri">
 <select id="c-ugonjwa">
   <label>Jinsia:</label>
-<select id="pGender" style="width:100%;padding:10px;margin:5px 0;border-radius:8px;">
+<select id="pGender">
   <option value="">-- Chagua Jinsia --</option>
   <option value="Mwanaume">Mwanaume</option>
   <option value="Mwanamke">Mwanamke</option>
   <option value="Mtoto">Mtoto</option>
 </select>
+
+<label>Umeugua kwa Siku Ngapi?</label>
+<input id="pDays" type="number" placeholder="Mfano: 2, 4, 8" min="1">
+
+<label>Dalili / Symptoms:</label>
+<textarea id="pSymptoms" rows="3" placeholder="Mfano: Homa, kutetemeka, kichwa kuuma..."></textarea>
 
 <label>Dalili / Symptoms - Eleza unavyojisikia:</label>
 <textarea id="pSymptoms" rows="3" placeholder="Mfano: Homa, kichwa kuuma, kikohozi siku 3, tumbo kuuma..." style="width:100%;padding:10px;margin:5px 0;border-radius:8px;"></textarea>
@@ -221,14 +227,15 @@ small{color:#555}
 <label>PIN ya Daktari:</label>
 <input id="doctorPin" type="password" placeholder="Weka PIN" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
 <button onclick="doctorLogin()" style="width:100%;padding:12px;background:#0a7a3a;color:#fff;border:none;border-radius:8px;font-weight:bold">INGIA</button>
-<p style="font-size:12px;color:#555">PIN ya kujaribu sasa: 2026 - Badilisha baadaye uwe wako</p>
+<p style="font-size:12px;color:#555">PIN ya kujaribu sasa: 2026 - Badilisha baadaye uwe yako</p>
 </div>
 
 <!-- DASHBOARD - Inaonekana baada ya Login -->
 <div id="doctorDash" style="display:none">
 <h3>🧑‍⚕️ Taarifa za Mgonjwa - Kutoka kwa Mgonjwa</h3>
 <div id="doctorPatientView" style="background:#fff;border-radius:8px;padding:12px;border:1px solid #ddd">Hakuna mgonjwa bado</div>
-
+<div id="drugSuggestion" style="background:#fff3cd;padding:12px;border-radius:10px;margin-top:10px;display:none;"></div>
+  
 <h3 style="margin-top:15px">🧪 Daktari: Jaza Matokeo ya Lab</h3>
 <label>Chagua Kipimo:</label>
 <select id="docKipimoType" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
@@ -278,6 +285,8 @@ small{color:#555}
 <div id="dawaShow" style="background:#fff;border-radius:8px;padding:12px;margin-top:10px;display:none">
 <b>✅ Dawa Uliyopewa:</b><br><span id="dawaText"></span>
 </div>
+  <div id="pharmPrice" style="background:#e8f5e9;padding:12px;border-radius:10px;font-weight:bold;margin-top:10px;">Jumla ya Kulipa: Ksh 0 (Dawa + Ksh 200 Huduma)</div>
+<button class="btn green" onclick="show('payment')" style="width:100%;margin-top:10px;">💰 LIPA SASA - M-PESA</button>
 <p style="font-size:12px;color:#555;margin-top:8px">⚠️ Tumia dawa kama Daktari alivyokuandikia. Usibadilishe dozi bila kuuliza Daktari.</p>
 </div>
 <button class="btn green" onclick="show('payment')">LIPA DAWA - NENDA PAYMENT 💳</button>
@@ -760,9 +769,11 @@ function doctorSave(){
   show('doctor');
   }
 function loadPharmacy(){
-  const lab = localStorage.getItem('labResult') || 'Hakuna kipimo bado';
-  const el = document.getElementById('pharmaLab');
-  if(el) el.innerText = lab;
+  var p = JSON.parse(localStorage.getItem('scrupulous_patient')||'{}');
+  if(document.getElementById('dawaName')) document.getElementById('dawaName').value = p.medicine || '';
+  var total = (p.medPrice||0) + 200;
+  var box = document.getElementById('pharmPrice');
+  if(box) box.innerText = 'Jumla ya Kulipa: Ksh ' + total + ' (Dawa Ksh ' + (p.medPrice||0) + ' + Ksh 200 Huduma)';
 }
 function saveDawa(){
   const name = document.getElementById('dawaName').value.trim();
