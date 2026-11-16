@@ -173,6 +173,19 @@ small{color:#555}
 <option>Uvimbe / Maambukizi</option>
 <option>Mengineyo</option>
 </select>
+  <!-- ===== TAARIFA ZA MGONJWA - PASTE HAPA ===== -->
+<label>Umri wa Mgonjwa:</label>
+<input id="mgonjwaUmri" type="number" placeholder="Mfano: 25" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
+
+<label>Je, ni Mjamzito / Ananyonyesha?</label>
+<select id="mgonjwaMjamzito" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
+<option>Hapana</option>
+<option>Ndio - Mjamzito</option>
+<option>Ndio - Ananyonyesha</option>
+</select>
+
+<label>Una Allergy yoyote?</label>
+<input id="mgonjwaAllergy" placeholder="Mfano: Hapana / Ndio - Penicillin" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
 <label>Matokeo:</label>
 <input id="kipimoResult" placeholder="Mfano: Positive / Negative / 120/80 / 5.6" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:1px solid #ccc">
 <label>Maelezo ya Daktari:</label>
@@ -623,14 +636,17 @@ function shareReceipt(){
 function saveLab(){
   const type = document.getElementById('kipimoType').value;
   const res = document.getElementById('kipimoResult').value.trim();
-  const note = document.getElementById('kipimoNote').value.trim();
+  const umri = document.getElementById('mgonjwaUmri').value.trim();
+  const mjamzito = document.getElementById('mgonjwaMjamzito').value;
+  const allergy = document.getElementById('mgonjwaAllergy').value.trim();
   if(!res) return alert("Weka matokeo kwanza");
-  const full = type + " : " + res + " | " + note;
+  if(!umri) return alert("Weka umri wa mgonjwa kwanza - Daktari anahitaji kujua");
+  const full = type + " : " + res + " | Mgonjwa: Umri " + umri + ", " + mjamzito + ", Allergy: " + (allergy || "Hakuna") + " - DAKTARI AAMUE DAWA";
   localStorage.setItem('labResult', full);
   document.getElementById('labResultShow').style.display = 'block';
   document.getElementById('labResultText').innerText = full;
-  alert("Matokeo yamehifadhiwa! Sasa nenda Pharmacy.");
-}
+  alert("Matokeo yamehifadhiwa! Sasa Daktari ataona taarifa kamili na atachagua dawa.");
+                          }
 function loadPharmacy(){
   const lab = localStorage.getItem('labResult') || 'Hakuna kipimo bado';
   const el = document.getElementById('pharmaLab');
