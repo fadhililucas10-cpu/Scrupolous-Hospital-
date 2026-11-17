@@ -244,6 +244,7 @@ table{width:100%;border-collapse:collapse;margin-top:10px}td,th{border:1px solid
 <h2>🧾 RECEIPT - SCRUPULOUS CARE HOSPITAL</h2><p style="text-align:center">Watamu | 0112955446 | info@scrupuloushospital.co.ke<br>Date: <b id="receiptDate"></b></p>
 <div id="receiptContent" class="receiptBox">Receipt itaonekana hapa baada ya Payment - Itaonyesha Patient, Checkup, Lab, Pharmacy, Payment yote.</div>
 <button class="btn" onclick="window.print()">PRINT RECEIPT 🖨️</button>
+ <button class="btn" onclick="sendWhatsApp()" style="background:#25D366">📲 TUMA RECEIPT KWA WHATSAPP - 0112955446</button>
 <button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
 
  <!-- CANTEEN -->
@@ -291,6 +292,11 @@ function showReceipt(){let method=document.getElementById('payMethod').value;let
 function updateFoodList(){let cat=document.getElementById('foodCat').value;let list=[];if(cat.includes("Local")) list=["Wali + Maharage - KSh 150","Pilau + Kuku - KSh 250","Ugali + Samaki - KSh 200","Chapati + Maharage - KSh 120","Mokimo + Nyama - KSh 220","Githeri - KSh 130","Chai + Mandazi - KSh 80"];else if(cat.includes("International")) list=["Fried Rice + Chicken - KSh 350","Pasta + Meatballs - KSh 400","Burger + Fries - KSh 450","Pizza Slice - KSh 300","Grilled Fish + Chips - KSh 500","Sandwich + Juice - KSh 280","Spaghetti Bolognese - KSh 380"];else list=["Uji wa Wimbi - KSh 100 (Patient)","Supu ya Kuku - KSh 180 (Patient)","Wali laini + Samaki wa Kuchemsha - KSh 200 (Patient)","Matunda Mix - KSh 120 (Patient)","Maziwa + Mkate - KSh 150 (Patient)","Porridge + Mayai - KSh 160 (Patient)"];document.getElementById('foodSel').innerHTML=list.map(f=>"<option>"+f+"</option>").join('');}
 function orderFood(){let n=document.getElementById('foodName').value;let lvl=document.getElementById('foodLevel').value;let food=document.getElementById('foodSel').value;if(!n){alert("Jaza jina lako");return;}let seat="";if(lvl==="Director") seat="VIP Room - Table 1 - Chair 1 (Directors Only)";else if(lvl==="Guest of Honor") seat="VIP Room - Table 2 - Chair 2 (Guest of Honor)";else if(lvl==="Doctor") seat="Doctors Lounge - Table 3 - Chair 5 (Doctors)";else if(lvl==="Patient") seat="Patient Ward Dining - Table 10 - Chair 3 (Patients)";else seat="Visitors Area - Table 15 - Chair 8 (Visitors)";document.getElementById('foodSeat').value=seat;document.getElementById('foodResult').innerHTML="<p class='resultBox'>✅ <b>"+n+" ("+lvl+")</b><br>Food: "+food+"<br><b>Kaa hapa:</b> "+seat+"</p>";alert("Order Imerekodiwa! "+seat);}
 updateFoodList();
+ function sendWhatsApp(){
+  var txt = document.getElementById('receiptContent').innerText;
+  if(!txt || txt.length < 10){ alert('Tengeneza Receipt kwanza kwa kulipa'); return; }
+  window.open('https://wa.me/254112955446?text=' + encodeURIComponent('🧾 RECEIPT - SCRUPULOUS HOSPITAL WATAMU\n\n' + txt), '_blank');
+ }
 </script>
 </body>
 </html>
