@@ -71,7 +71,7 @@ table{width:100%;border-collapse:collapse;margin-top:10px}td,th{border:1px solid
 <input id="userName" placeholder="✍️ Jina lako kamili: Mfano Isaac Mwaniki">
 <input id="userPhone" placeholder="📱 Namba ya Simu: Mfano 0712345678">
 <select id="userRole"><option value="patient">Mgonjwa / Patient</option><option value="staff">Mfanyakazi / Staff</option><option value="doctor">Daktari / Doctor</option><option value="director">Director / Mkurugenzi</option><option value="admin">Admin / Msimamizi</option></select>
-<button class="btn" onclick="signIn()">INGIA / SIGN IN ✅</button>
+<button class="btn" onclick="saveLogin();signIn()">INGIA</button>
   
 <div class="contactBox">
 <h3 style="color:#fff;border:0;margin:0">📍 LOCATION & CONTACT - SIGN PAGE PEKEE</h3>
@@ -289,9 +289,36 @@ function saveCheckup(){let n=document.getElementById('pName').value;if(!n){alert
 function saveLab(){let c=document.querySelectorAll('#labList input:checked');let tot=0;P.lab=[];c.forEach(x=>{tot+=parseInt(x.dataset.price);P.lab.push({n:x.value,p:parseInt(x.dataset.price)});});let a=parseInt(P.age||30);if(P.type==="Mtoto"){P.bp="100/65";P.temp="37.0°C";}else if(P.type==="Mjamzito"){P.bp="120/80";P.temp="36.8°C";}else if(a>=60){P.bp="140/90";P.temp="37.2°C";}else if(a>=40){P.bp="130/85";P.temp="37.0°C";}else{P.bp="120/80";P.temp="36.9°C";}document.getElementById('labResultTxt').innerText="BP: "+P.bp+" | Temp: "+P.temp+" (Automatic - Lab) | "+P.lab.map(x=>x.n).join(', ')+" = KSh "+tot;P.total=tot;let meds="";if(P.type==="Mjamzito"){meds="Folic Acid - 1 Tab Daily - KSh 200<br>Iron Tablets - 1 Tab Daily - KSh 300";P.medsText="Folic Acid + Iron Tablets";}else if(P.type==="Mtoto"){meds="Paracetamol Syrup - 5ml 3x Daily - KSh 250<br>Vitamin C - 1x Daily - KSh 150";P.medsText="Paracetamol Syrup + Vitamin C";}else if(P.symptom&&P.symptom.toLowerCase().includes("homa")){meds="Panadol - 2 Tabs 3x Daily - KSh 150<br>Malaria Drugs (Coartem) - 4 Tabs 2x Daily 3 Days - KSh 600";P.medsText="Panadol + Coartem";}else{meds="Panadol - 2 Tabs 3x Daily - KSh 150<br>Vitamin C - 1 Tab Daily - KSh 100";P.medsText="Panadol + Vitamin C";}document.getElementById('pharmList').innerHTML="<p><b>Mgonjwa:</b> "+P.name+" - "+P.type+"</p><p><b>Lab:</b> "+document.getElementById('labResultTxt').innerText+"</p><p><b>Dawa (Automatic kulingana na Lab):</b><br>"+meds+"</p><p><b>Jinsi ya Kutumia:</b> Kunywa baada ya kula, Kunywa maji mengi, Maliza dozi yote, Usinywe pombe</p>";document.getElementById('payDetails').innerHTML="<b>Mgonjwa:</b> "+P.name+"<br><b>Lab Total:</b> KSh "+tot+"<br><b>Dawa:</b> "+P.medsText+"<br><b>Jumla ya Kulipa:</b> KSh "+tot;go('pharmacy');}
 function doctorLogin(){let doc=document.getElementById('docName').value;let pin="PIN: 1234 - "+doc;let note="";if(P.name){note="Mgonjwa: "+P.name+" ("+P.type+") - Dalili: "+(P.symptom||"")+" - Lab BP: "+(P.bp||"")+" - Temp: "+(P.temp||"")+" - Dawa: "+(P.medsText||"Angalia Pharmacy");}else{note="Hakuna mgonjwa bado - Subiri Checkup";}document.getElementById('docAutoBox').innerHTML="<b>"+pin+"</b><br>"+note;alert("Doctor Login - "+pin);}
 function showReceipt(){let method=document.getElementById('payMethod').value;let phone=document.getElementById('payPhone').value;document.getElementById('receiptDate').innerText=new Date().toLocaleString();document.getElementById('receiptContent').innerHTML="<b>🏥 SCRUPULOUS CARE HOSPITAL - Watamu</b><br>0112955446 | info@scrupuloushospital.co.ke<hr><b>1. PATIENT DETAILS:</b><br>Jina: "+(P.name||"-")+"<br>Umri: "+(P.age||"-")+"<br>Simu: "+(P.phone||"-")+"<br>Jinsia: "+(P.gender||"-")+"<br>Aina: "+(P.type||"-")+"<br>Siku: "+(P.days||"-")+"<br>Dalili: "+(P.symptom||"-")+"<hr><b>2. LAB DETAILS:</b><br>BP: "+(P.bp||"-")+"<br>Temp: "+(P.temp||"-")+"<br>Vipimo: "+(P.lab?P.lab.map(x=>x.n).join(', '):"-")+"<br>Lab Total: KSh "+(P.total||0)+"<hr><b>3. PHARMACY:</b><br>Dawa: "+(P.medsText||"-")+"<br>Jinsi ya Kutumia: Kunywa baada ya kula, Kunywa maji mengi, Maliza dozi<hr><b>4. PAYMENT:</b><br>Njia: "+method+"<br>Simu ya Malipo: "+phone+"<br><b>Jumla: KSh "+(P.total||0)+"</b><hr>Asante! Pona Haraka 🙏";go('receipt');}
+  <button onclick="sendWhatsApp()" style="width:100%;padding:13px;background:#25D366;color:white;border:0;border-radius:10px;font-weight:bold;margin-top:10px;">📲 TUMA KWA HOSPITALI WHATSAPP</button>
 function updateFoodList(){let cat=document.getElementById('foodCat').value;let list=[];if(cat.includes("Local")) list=["Wali + Maharage - KSh 150","Pilau + Kuku - KSh 250","Ugali + Samaki - KSh 200","Chapati + Maharage - KSh 120","Mokimo + Nyama - KSh 220","Githeri - KSh 130","Chai + Mandazi - KSh 80"];else if(cat.includes("International")) list=["Fried Rice + Chicken - KSh 350","Pasta + Meatballs - KSh 400","Burger + Fries - KSh 450","Pizza Slice - KSh 300","Grilled Fish + Chips - KSh 500","Sandwich + Juice - KSh 280","Spaghetti Bolognese - KSh 380"];else list=["Uji wa Wimbi - KSh 100 (Patient)","Supu ya Kuku - KSh 180 (Patient)","Wali laini + Samaki wa Kuchemsha - KSh 200 (Patient)","Matunda Mix - KSh 120 (Patient)","Maziwa + Mkate - KSh 150 (Patient)","Porridge + Mayai - KSh 160 (Patient)"];document.getElementById('foodSel').innerHTML=list.map(f=>"<option>"+f+"</option>").join('');}
 function orderFood(){let n=document.getElementById('foodName').value;let lvl=document.getElementById('foodLevel').value;let food=document.getElementById('foodSel').value;if(!n){alert("Jaza jina lako");return;}let seat="";if(lvl==="Director") seat="VIP Room - Table 1 - Chair 1 (Directors Only)";else if(lvl==="Guest of Honor") seat="VIP Room - Table 2 - Chair 2 (Guest of Honor)";else if(lvl==="Doctor") seat="Doctors Lounge - Table 3 - Chair 5 (Doctors)";else if(lvl==="Patient") seat="Patient Ward Dining - Table 10 - Chair 3 (Patients)";else seat="Visitors Area - Table 15 - Chair 8 (Visitors)";document.getElementById('foodSeat').value=seat;document.getElementById('foodResult').innerHTML="<p class='resultBox'>✅ <b>"+n+" ("+lvl+")</b><br>Food: "+food+"<br><b>Kaa hapa:</b> "+seat+"</p>";alert("Order Imerekodiwa! "+seat);}
 updateFoodList();
+
+function sendWhatsApp(){
+  let txt = document.getElementById('receipt').innerText;
+  window.open("https://wa.me/254112955446?text="+encodeURIComponent(txt),'_blank');
+}
+
+// Hii ndio ya SAVE LOGIN
+function saveLogin(){
+  let u = {
+    name: document.getElementById('userName').value,
+    phone: document.getElementById('userPhone').value,
+    role: document.getElementById('userRole').value
+  };
+  localStorage.setItem('mylogin', JSON.stringify(u));
+}
+
+// Hii ndio ya KUONYESHA AKIRUDI TENA
+window.onload = function(){
+  let s = localStorage.getItem('mylogin');
+  if(s){
+    let u = JSON.parse(s);
+    document.getElementById('userName').value = u.name;
+    document.getElementById('userPhone').value = u.phone;
+    document.getElementById('userRole').value = u.role;
+  }
+}
 </script>
 </body>
 </html>
