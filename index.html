@@ -71,7 +71,7 @@ table{width:100%;border-collapse:collapse;margin-top:10px}td,th{border:1px solid
 <input id="userName" placeholder="✍️ Jina lako kamili: Mfano Isaac Mwaniki">
 <input id="userPhone" placeholder="📱 Namba ya Simu: Mfano 0712345678">
 <select id="userRole"><option value="patient">Mgonjwa / Patient</option><option value="staff">Mfanyakazi / Staff</option><option value="doctor">Daktari / Doctor</option><option value="director">Director / Mkurugenzi</option><option value="admin">Admin / Msimamizi</option></select>
-<button class="btn" onclick="saveLogin();signIn()">INGIA</button>
+<button class="btn" onclick="try{saveLogin()}catch(e){} signIn()">INGIA</button>
   
 <div class="contactBox">
 <h3 style="color:#fff;border:0;margin:0">📍 LOCATION & CONTACT - SIGN PAGE PEKEE</h3>
@@ -299,26 +299,15 @@ function sendWhatsApp(){
   window.open("https://wa.me/254112955446?text="+encodeURIComponent(txt),'_blank');
 }
 
-// Hii ndio ya SAVE LOGIN
 function saveLogin(){
-  let u = {
-    name: document.getElementById('userName').value,
-    phone: document.getElementById('userPhone').value,
-    role: document.getElementById('userRole').value
-  };
-  localStorage.setItem('mylogin', JSON.stringify(u));
-}
-
-// Hii ndio ya KUONYESHA AKIRUDI TENA
-window.onload = function(){
-  let s = localStorage.getItem('mylogin');
-  if(s){
-    let u = JSON.parse(s);
-    document.getElementById('userName').value = u.name;
-    document.getElementById('userPhone').value = u.phone;
-    document.getElementById('userRole').value = u.role;
+  try{
+    localStorage.setItem('mylogin', JSON.stringify({
+      name: document.getElementById('userName').value,
+      phone: document.getElementById('userPhone').value,
+      role: document.getElementById('userRole').value
+    }));
+  }catch(e){}
   }
-}
 </script>
 </body>
 </html>
