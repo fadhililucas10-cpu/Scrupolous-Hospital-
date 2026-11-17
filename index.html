@@ -25,6 +25,8 @@ img{width:100%;border-radius:12px}h2{color:#00796b}.hours{background:#fff3cd;pad
 <label><input type="radio" name="role" value="Doctor"> Daktari</label>
 <label><input type="radio" name="role" value="Staff"> Mfanyakazi</label>
 <label><input type="radio" name="role" value="Visitor"> Mgeni</label>
+<label><input type="radio" name="role" value="Director"> ⭐ Director</label>
+<label><input type="radio" name="role" value="Admin"> 🔐 Admin</label>
 <button class="btn" onclick="doSign()">SIGN IN</button></div>
 
 <div class="card" style="background:#0a7a3a;color:#fff"><h2 style="color:#fff">CONTACT - SIGN IN PEKEE</h2>
@@ -104,6 +106,22 @@ img{width:100%;border-radius:12px}h2{color:#00796b}.hours{background:#fff3cd;pad
 <h2>3. DOCTOR LOGIN</h2><p class="hours">🕐 Muda wa Kazi: 8:00 AM - 8:00 PM, On Call 24/7</p>
 <img src="IMG-20261115-WA9724.jpg">
 <p style="color:green;font-size:13px">✅ PIN imejijaza yenyewe - Bonyeza tu INGIA</p>
+ <select id="docRole" onchange="autoDocAssign()">
+<option value="">Chagua Aina ya Daktari</option>
+<option>Doctor - General</option>
+<option>Surgeon - Upasuaji</option>
+<option>Nurse - Muuguzi</option>
+<option>Midwife - Mkunga</option>
+<option>Paediatrician - Daktari wa Watoto</option>
+<option>Gynaecologist - Daktari wa Wamama</option>
+<option>Lab Technician - Maabara</option>
+<option>Pharmacist - Mfamasia</option>
+<option>Physiotherapist</option>
+<option>Dentist - Meno</option>
+<option>Optician - Macho</option>
+<option>Radiologist - X-Ray / Scan</option>
+</select>
+<input id="docAssign" placeholder="Assignment itajijaza yenyewe..."> 
 <input id="docPin" type="text" value="1234">
 <p>Matokeo ya Lab: <b id="labResultTxt"></b></p>
 <p><small>Maelezo hapa chini yamejijaza yenyewe kutokana na details za mgonjwa.</small></p>
@@ -183,22 +201,52 @@ img{width:100%;border-radius:12px}h2{color:#00796b}.hours{background:#fff3cd;pad
 <div id="boardroom" class="page"><div class="card"><img src="IMG-20261115-WA9694.jpg"><h2>🏢 BOARDROOM</h2><p class="hours">🕐 Muda wa Kazi: 8:00 AM - 5:00 PM</p><input placeholder="Jina la mkutano"><input type="date"><button class="btn" onclick="alert('Booking imerekodiwa!')">BOOK BOARDROOM</button><button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
 <div id="admin" class="page"><div class="card"><h2>🔐 ADMIN</h2><p class="hours">🕐 Muda wa Kazi: 8:00 AM - 5:00 PM</p><button class="btn" onclick="go('staff')">ONA STAFF & ATTENDANCE</button><button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
 
-<!-- STAFF - ASSIGNMENT INAJIJAZA AUTOMATIC KUTOKANA NA DEPARTMENT -->
+<!-- STAFF - ASSIGNMENT INAJIJAZA AUTOMATIC -->
 <div id="staff" class="page"><div class="card">
 <img src="IMG-20261115-WA9724.jpg">
-<h2>👨‍⚕️ HOSPITAL STAFF</h2><p class="hours">🕐 Shifts: Asubuhi 8-2, Mchana 2-8, Usiku 8-8</p>
+<h2>👨‍⚕️ HOSPITAL STAFF</h2>
+<p class="hours">🕐 Shifts: Asubuhi 8-2, Mchana 2-8, Usiku 8-8</p>
 <p>1. Medical Doctors and Specialists<br>2. Nursing Staff<br>3. Laboratory and Diagnostic Staff<br>4. Pharmacy Staff<br>5. Allied Health Professionals<br>6. Hospital Support and Operational Staff<br>7. Hospital Management and Administration</p>
+
 <h3>WORKERS ATTENDANCE + ASSIGNMENTS</h3>
 <p>Date: <b id="todayDate"></b></p>
-<select id="attDept" onchange="autoAssign()"><option>Emergency and Critical Care Staff</option><option>Nursing Staff</option><option>Laboratory and Diagnostic Staff</option><option>Pharmacy Staff</option><option>Allied Health Professionals</option><option>Hospital Support and Operational Staff</option><option>Hospital Management and Administration</option></select>
+
+<select id="attDept" onchange="autoAssign()">
+<option>Emergency and Critical Care Staff</option>
+<option>Nursing Staff</option>
+<option>Laboratory and Diagnostic Staff</option>
+<option>Pharmacy Staff</option>
+<option>Allied Health Professionals</option>
+<option>Hospital Support and Operational Staff</option>
+<option>Hospital Management and Administration</option>
+</select>
+
 <input id="attName" placeholder="Jina la Mfanyakazi: Mfano Isaac">
-<input id="attAssign" placeholder="Assignment itajijaza yenyewe...">
+
+<select id="attRole" onchange="autoAssign()">
+<option value="">Chagua Kazi ya Mfanyakazi</option>
+<option>Cleaner - Msafishaji</option>
+<option>Store Keeper - Mhifadhi Duka</option>
+<option>Security / Askari</option>
+<option>Driver - Dereva / Ambulance</option>
+<option>Cook - Mpishi Canteen</option>
+<option>Receptionist - Mapokezi</option>
+<option>Cashier - Mhasibu</option>
+<option>Gardener - Bustani</option>
+<option>Laundry - Mfuaji</option>
+<option>Mortuary Attendant</option>
+<option>Maintenance / Fundi</option>
+</select>
+
+<input id="attAssign" placeholder="Assignment itajijaza yenyewe..." readonly>
+
 <label><input type="radio" name="att" value="Present"> Present / Nipo</label>
 <label><input type="radio" name="att" value="Absent"> Absent / Sipo</label>
 <input id="attTime" type="time">
 <button class="btn" onclick="markAtt()">MARK ATTENDANCE ✅</button>
 <div id="attList"></div>
-<button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
+<button class="btn back" onclick="go('home')">RUDI HOME</button>
+</div></div>
 
 <!-- DIRECTORS -->
 <div id="directors" class="page"><div class="card">
@@ -271,9 +319,26 @@ function orderFood(){let f=document.getElementById('cFood');let price=parseInt(f
 function saveMortuary(){let n=document.getElementById('mName').value.trim();if(!n){alert("Weka Jina la Marehemu kwanza");return;}let order=document.getElementById('mOrder').value;document.getElementById('mResult').innerHTML="✅ Mortuary Order Imerekodiwa<br>Marehemu: "+n+"<br>Ndugu: "+document.getElementById('mKin').value+" - "+document.getElementById('mPhone').value+"<br>Tarehe ya Kifo: "+document.getElementById('mDeathDate').value+" Muda: "+document.getElementById('mDeathTime').value+"<br>Muda wa Kuingia: "+document.getElementById('mInTime').value+"<br>Order: "+order+"<br>Siku: "+document.getElementById('mDays').value+"<br>Mfanyakazi: "+document.getElementById('mStaff').value;alert("Mortuary Order Imerekodiwa!");}
 function autoAssign(){
 let d=document.getElementById('attDept').value;
-let map={"Emergency and Critical Care Staff":"Triage & Ambulance - Emergency Ward","Nursing Staff":"Ward A - Nursing Care & Vitals","Laboratory and Diagnostic Staff":"Lab - Blood Tests & Results","Pharmacy Staff":"Pharmacy - Dispense Drugs & Stock","Allied Health Professionals":"Physio / Nutrition - Patient Support","Hospital Support and Operational Staff":"Cleaning & Security - Hospital Grounds","Hospital Management and Administration":"Admin Office - Reports & Management"};
-document.getElementById('attAssign').value=map[d]||"";
+let r=document.getElementById('attRole') ? document.getElementById('attRole').value : "";
+let roleMap={
+"Cleaner - Msafishaji":"Cleaning - Wards & Toilets - 8AM to 2PM",
+"Store Keeper - Mhifadhi Duka":"Store - Dawa & Vifaa - Stock Taking",
+"Security / Askari":"Gate & Parking - Security 24HRS",
+"Driver - Dereva / Ambulance":"Ambulance - Watamu to Malindi",
+"Cook - Mpishi Canteen":"Canteen - Kupika 7AM - 8PM",
+"Receptionist - Mapokezi":"Reception - Mapokezi 8AM - 5PM",
+"Cashier - Mhasibu":"Cash Office - Payment & Receipts",
+"Gardener - Bustani":"Garden - Bustani & Mazingira",
+"Laundry - Mfuaji":"Laundry - Kufulia Mashuka",
+"Mortuary Attendant":"Mortuary - Kuhifadhi Mwili 24HRS",
+"Maintenance / Fundi":"Maintenance - Umeme & Maji"
+};
+let deptMap={"Emergency and Critical Care Staff":"Triage & Ambulance - Emergency Ward","Nursing Staff":"Ward A - Nursing Care & Vitals","Laboratory and Diagnostic Staff":"Lab - Blood Tests & Results","Pharmacy Staff":"Pharmacy - Dispense Drugs & Stock","Allied Health Professionals":"Physio / Nutrition - Patient Support","Hospital Support and Operational Staff":"Cleaning & Security - Hospital Grounds","Hospital Management and Administration":"Admin Office - Reports & Management"};
+// Kama amechagua Role kama Cleaner, tumia Role. Kama hajachagua, tumia Department.
+if(r && roleMap[r]){document.getElementById('attAssign').value=roleMap[r];}
+else{document.getElementById('attAssign').value=deptMap[d]||"";}
 }
+  
 let att=[];document.getElementById('todayDate').innerText=new Date().toLocaleDateString();
 function markAtt(){let n=document.getElementById('attName').value;let d=document.getElementById('attDept').value;let a=document.getElementById('attAssign').value;if(!a) autoAssign();a=document.getElementById('attAssign').value;let s=document.querySelector('input[name="att"]:checked');if(!n||!s){alert("Jaza jina na chagua Present/Absent");return;}att.push({n:n,d:d,s:s.value,t:document.getElementById('attTime').value,a:a});document.getElementById('attList').innerHTML=att.map(x=>`<p>✅ ${x.n} - ${x.d} - ${x.s} - ${x.t} - Assignment: ${x.a}</p>`).join('');alert("Attendance + Assignment imerekodiwa!");}
 let agendas=[{title:"Hire 10 nurses & 5 doctors",status:"In Progress"},{title:"Budget for ambulances, heli",status:"Pending"},{title:"Patient safety audit",status:"Pending"},{title:"Theatre expansion",status:"In Progress"},{title:"Final approval for Hospital opening",status:"Done"},{title:"Parking & security",status:"Pending"},{title:"Research - malaria",status:"In Progress"},{title:"Salaries & procurement",status:"Pending"},{title:"Community health program Watamu",status:"Done"}];
