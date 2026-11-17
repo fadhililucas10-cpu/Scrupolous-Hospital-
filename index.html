@@ -79,7 +79,6 @@ img{width:100%;border-radius:12px}h2{color:#00796b}.hours{background:#fff3cd;pad
 <select id="pType"><option value="Mtu Mzima">Mtu Mzima / Adult</option><option value="Mtoto">Mtoto / Child (chini ya 12)</option><option value="Mjamzito">Mjamzito / Pregnant</option></select>
 <input id="pDays" type="number" placeholder="Umeumwa siku ngapi? Mfano: 3">
 <input id="pTemp" placeholder="Joto la Mwili: Mfano 38.5">
-<input id="pBP" placeholder="Blood Pressure: Mfano 120/80">
 <select id="pDisease"><option value="">Chagua Ugonjwa / Dalili</option>
 <option value="Malaria">Malaria - Homa, Baridi, Kuumwa kichwa</option>
 <option value="Typhoid">Typhoid - Homa, Tumbo, Kuhara</option>
@@ -221,7 +220,7 @@ img{width:100%;border-radius:12px}h2{color:#00796b}.hours{background:#fff3cd;pad
 <option>Hospital Management and Administration</option>
 </select>
 
-<input id="attName" placeholder="Jina la Mfanyakazi: Mfano Isaac">
+<input id="attName" placeholder="Jina la Mfanyakazi: Mfano Timothy">
 
 <select id="attRole" onchange="autoAssign()">
 <option value="">Chagua Kazi ya Mfanyakazi</option>
@@ -238,16 +237,23 @@ img{width:100%;border-radius:12px}h2{color:#00796b}.hours{background:#fff3cd;pad
 <option>Maintenance / Fundi</option>
 </select>
 
-<input id="attAssign" placeholder="Assignment itajijaza yenyewe..." readonly>
+<input id="attAssign" placeholder="Assignment + Whole Day itajijaza yenyewe..." readonly>
 
 <label><input type="radio" name="att" value="Present"> Present / Nipo</label>
 <label><input type="radio" name="att" value="Absent"> Absent / Sipo</label>
-<input id="attTime" type="time">
+
+<select id="attTime" onchange="autoAssign()">
+<option value="06:30">6:30 AM - Morning Shift</option>
+<option value="08:00">8:00 AM - Morning Shift</option>
+<option value="14:00">2:00 PM - Afternoon Shift</option>
+<option value="20:00">8:00 PM - Night Shift</option>
+</select>
+
 <button class="btn" onclick="markAtt()">MARK ATTENDANCE ✅</button>
 <div id="attList"></div>
 <button class="btn back" onclick="go('home')">RUDI HOME</button>
 </div></div>
-
+  
 <!-- DIRECTORS -->
 <div id="directors" class="page"><div class="card">
 <img src="IMG-20261115-WA9694.jpg">
@@ -306,10 +312,19 @@ document.getElementById('labList').innerHTML=P.tests.map((t,i)=>`<label><input t
 go('lab');
 }
 function saveLab(){
-let c=document.querySelectorAll('#labList input:checked');P.lab=[];let tot=0;c.forEach(x=>{let t=P.tests[x.dataset.i];P.lab.push(t);tot+=t.p;});P.labTotal=tot;
-document.getElementById('labResultTxt').innerText=P.lab.map(x=>x.n).join(', ')+" = KSh "+tot;
-document.getElementById('docNote').value="Mgonjwa: "+P.name+" | Umri: "+P.age+" | Aina: "+P.type+" | Jinsia: "+P.gender+" | Ugonjwa: "+(P.disease||"General")+" | Umeumwa siku: "+P.days+" | Joto: "+P.temp+" | BP: "+P.bp+" | Dalili: "+P.symptoms+" | Lab: "+P.lab.map(x=>x.n).join(', ')+". Daktari: Tafadhali thibitisha na toa dawa.";
-document.getElementById('docPin').value="1234";
+let c=document.querySelectorAll('#labList input:checked');
+let tot=0;P.lab=[];
+c.forEach(x=>{tot+=parseInt(x.dataset.price);P.lab.push({n:x.value,p:parseInt(x.dataset.price)});});
+// --- BLOOD PRESSURE AUTOMATIC - INAJIJAZA KWENYE LAB ---
+let a=parseInt(P.age||30);
+if(P.type==="Mtoto") P.bp="100/65";
+else if(P.type==="Mjamzito") P.bp="120/80";
+else if(a>=60) P.bp="140/90";
+else if(a>=40) P.bp="130/85";
+else P.bp="120/80";
+document.getElementById('labResultTxt').innerText="Blood Pressure: "+P.bp+" (Automatic - Lab) | "+P.lab.map(x=>x.n).join(', ')+" = KSh "+tot;
+document.getElementById('docNote').value="";
+document.getElementById('docPin').value="";
 go('doctor');
 }
 function doctorLogin(){if(document.getElementById('docPin').value!=="1234"){alert("PIN sio sahihi!");return;}P.docNote=document.getElementById('docNote').value;P.drugs=getDrugsForLab();document.getElementById('pharmList').innerHTML=P.drugs.map((x,i)=>`<label><input type="checkbox" checked data-i="${i}"> <b>${x.n}</b> - KSh ${x.p}<br><small>Jinsi: ${x.u}</small></label>`).join('');go('pharmacy');}
@@ -317,31 +332,39 @@ function savePharmacy(){let c=document.querySelectorAll('#pharmList input:checke
 function doPay(){P.payMethod=document.getElementById('payMethod').value;P.payPhone=document.getElementById('payPhone').value;P.receiptNo="SH-"+Math.floor(1000+Math.random()*9000);P.date=new Date().toLocaleString();document.getElementById('receiptBox').innerHTML=`<h2 style="text-align:center">SCRUPULOUS HOSPITAL WATAMU</h2><p style="text-align:center">RECEIPT: ${P.receiptNo}<br>${P.date}</p><hr><p><b>Jina:</b> ${P.name}</p><p><b>Umri:</b> ${P.age} | <b>Aina:</b> ${P.type} | <b>Jinsia:</b> ${P.gender} | <b>Simu:</b> ${P.phone}</p><p><b>Ugonjwa:</b> ${P.disease}</p><p><b>Umeumwa Siku:</b> ${P.days} siku | <b>Joto:</b> ${P.temp} | <b>BP:</b> ${P.bp}</p><p><b>Maelezo:</b> ${P.symptoms}</p><p><b>Maelezo ya Daktari:</b> ${P.docNote||"-"}</p><hr><p><b>LAB (Automatic):</b><br>${P.lab.map(x=>x.n+" - KSh "+x.p).join('<br>')}<br><b>Lab Total: KSh ${P.labTotal}</b></p><hr><p><b>PHARMACY (Automatic):</b><br>${P.pharm.map(x=>x.n+" - "+x.u+" - KSh "+x.p).join('<br>')}<br><b>Pharmacy Total: KSh ${P.pharmTotal}</b></p><hr><p>Consultation: KSh ${P.consult}</p><h3>JUMLA KUBWA: KSh ${P.grand}</h3><p><b>Njia:</b> ${P.payMethod} - ${P.payPhone}</p><p>Asante, Pona Haraka! 🙏</p>`;go('receipt');}
 function orderFood(){let f=document.getElementById('cFood');let price=parseInt(f.value);document.getElementById('cTotal').innerText="KSh "+price;document.getElementById('cResult').innerHTML="Asante "+document.getElementById('cName').value+"! Umagiza: "+f.options[f.selectedIndex].text+" - Lipa KSh "+price+" kwa "+document.getElementById('cPay').value;}
 function saveMortuary(){let n=document.getElementById('mName').value.trim();if(!n){alert("Weka Jina la Marehemu kwanza");return;}let order=document.getElementById('mOrder').value;document.getElementById('mResult').innerHTML="✅ Mortuary Order Imerekodiwa<br>Marehemu: "+n+"<br>Ndugu: "+document.getElementById('mKin').value+" - "+document.getElementById('mPhone').value+"<br>Tarehe ya Kifo: "+document.getElementById('mDeathDate').value+" Muda: "+document.getElementById('mDeathTime').value+"<br>Muda wa Kuingia: "+document.getElementById('mInTime').value+"<br>Order: "+order+"<br>Siku: "+document.getElementById('mDays').value+"<br>Mfanyakazi: "+document.getElementById('mStaff').value;alert("Mortuary Order Imerekodiwa!");}
+function getShift(t){
+if(!t) return "Morning Shift - Whole Day 8AM to 2PM";
+let h=parseInt(t.split(":")[0]);
+if(h>=20||h<6) return "Night Shift - Whole Day 8PM to 8AM";
+if(h>=14) return "Afternoon Shift - Whole Day 2PM to 8PM";
+return "Morning Shift - Whole Day 8AM to 2PM";
+}
 function autoAssign(){
 let d=document.getElementById('attDept').value;
-let r=document.getElementById('attRole') ? document.getElementById('attRole').value : "";
-let roleMap={
-"Cleaner - Msafishaji":"Cleaning - Wards & Toilets - 8AM to 2PM",
-"Store Keeper - Mhifadhi Duka":"Store - Dawa & Vifaa - Stock Taking",
-"Security / Askari":"Gate & Parking - Security 24HRS",
-"Driver - Dereva / Ambulance":"Ambulance - Watamu to Malindi",
-"Cook - Mpishi Canteen":"Canteen - Kupika 7AM - 8PM",
-"Receptionist - Mapokezi":"Reception - Mapokezi 8AM - 5PM",
-"Cashier - Mhasibu":"Cash Office - Payment & Receipts",
-"Gardener - Bustani":"Garden - Bustani & Mazingira",
-"Laundry - Mfuaji":"Laundry - Kufulia Mashuka",
-"Mortuary Attendant":"Mortuary - Kuhifadhi Mwili 24HRS",
-"Maintenance / Fundi":"Maintenance - Umeme & Maji"
-};
+let r=document.getElementById('attRole').value;
+let t=document.getElementById('attTime').value;
+let shift=getShift(t);
+let roleMap={"Cleaner - Msafishaji":"Cleaning - Wards & Toilets","Store Keeper - Mhifadhi Duka":"Store - Dawa & Vifaa - Stock Taking","Security / Askari":"Gate & Parking - Security","Driver - Dereva / Ambulance":"Ambulance - Watamu to Malindi","Cook - Mpishi Canteen":"Canteen - Kupika","Receptionist - Mapokezi":"Reception - Mapokezi","Cashier - Mhasibu":"Cash Office - Payment & Receipts","Gardener - Bustani":"Garden - Bustani & Mazingira","Laundry - Mfuaji":"Laundry - Kufulia Mashuka","Mortuary Attendant":"Mortuary - Kuhifadhi Mwili","Maintenance / Fundi":"Maintenance - Umeme & Maji"};
 let deptMap={"Emergency and Critical Care Staff":"Triage & Ambulance - Emergency Ward","Nursing Staff":"Ward A - Nursing Care & Vitals","Laboratory and Diagnostic Staff":"Lab - Blood Tests & Results","Pharmacy Staff":"Pharmacy - Dispense Drugs & Stock","Allied Health Professionals":"Physio / Nutrition - Patient Support","Hospital Support and Operational Staff":"Cleaning & Security - Hospital Grounds","Hospital Management and Administration":"Admin Office - Reports & Management"};
-// Kama amechagua Role kama Cleaner, tumia Role. Kama hajachagua, tumia Department.
-if(r && roleMap[r]){document.getElementById('attAssign').value=roleMap[r];}
-else{document.getElementById('attAssign').value=deptMap[d]||"";}
+let base="";
+if(r && roleMap[r]) base=roleMap[r];
+else base=deptMap[d]||"";
+document.getElementById('attAssign').value=base+" | "+shift;
 }
-  
-let att=[];document.getElementById('todayDate').innerText=new Date().toLocaleDateString();
-function markAtt(){let n=document.getElementById('attName').value;let d=document.getElementById('attDept').value;let a=document.getElementById('attAssign').value;if(!a) autoAssign();a=document.getElementById('attAssign').value;let s=document.querySelector('input[name="att"]:checked');if(!n||!s){alert("Jaza jina na chagua Present/Absent");return;}att.push({n:n,d:d,s:s.value,t:document.getElementById('attTime').value,a:a});document.getElementById('attList').innerHTML=att.map(x=>`<p>✅ ${x.n} - ${x.d} - ${x.s} - ${x.t} - Assignment: ${x.a}</p>`).join('');alert("Attendance + Assignment imerekodiwa!");}
-let agendas=[{title:"Hire 10 nurses & 5 doctors",status:"In Progress"},{title:"Budget for ambulances, heli",status:"Pending"},{title:"Patient safety audit",status:"Pending"},{title:"Theatre expansion",status:"In Progress"},{title:"Final approval for Hospital opening",status:"Done"},{title:"Parking & security",status:"Pending"},{title:"Research - malaria",status:"In Progress"},{title:"Salaries & procurement",status:"Pending"},{title:"Community health program Watamu",status:"Done"}];
+let att=[];
+document.getElementById('todayDate').innerText=new Date().toLocaleString();
+function markAtt(){
+let n=document.getElementById('attName').value;
+let d=document.getElementById('attDept').value;
+let a=document.getElementById('attAssign').value;
+let s=document.querySelector('input[name="att"]:checked');
+if(!n||!s){alert("Jaza jina na chagua Present/Absent");return;}
+if(!a){autoAssign();a=document.getElementById('attAssign').value;}
+att.push({n:n,d:d,s:s.value,t:document.getElementById('attTime').value,a:a});
+document.getElementById('attList').innerHTML=att.map(x=>`<p>✅ ${x.n} - ${x.d} - ${x.s} - ${x.t} - Assignment: ${x.a} - Date: ${new Date().toLocaleDateString()}</p>`).join('');
+alert("Attendance + Whole Day Assignment imerekodiwa!");
+}
+autoAssign();
 function loadAgenda(){let f=document.getElementById('filterStatus').value;let list=agendas.filter(a=>f==="All"||a.status===f);document.getElementById('agendaBox').innerHTML=list.map(a=>`<p>📌 ${a.title} - <b>${a.status}</b></p>`).join('');}
 function addAgenda(){let v=document.getElementById('newAgenda').value;if(!v)return;agendas.push({title:v,status:"Pending"});loadAgenda();document.getElementById('newAgenda').value="";}
 loadAgenda();autoAssign();
