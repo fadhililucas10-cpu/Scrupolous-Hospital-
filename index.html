@@ -12,11 +12,11 @@
 input,select,textarea{width:100%;padding:11px;margin:6px 0;border:1px solid #ccc;border-radius:9px}
 .btn{display:block;background:#00796b;color:#fff;padding:13px;border:0;border-radius:10px;width:100%;font-weight:bold}
 .back{background:#555;margin-top:8px}label{display:block;margin:8px 0;background:#f5f5f5;padding:10px;border-radius:9px}
-img{width:100%;border-radius:12px}h2{color:#00796b}
+img{width:100%;border-radius:12px}h2{color:#00796b}.hours{background:#fff3cd;padding:8px;border-radius:8px;font-size:13px}
 </style></head><body>
 <div class="top">SCRUPULOUS HOSPITAL WATAMU<br>0112955446</div>
 
-<!-- SIGN IN - MAPS / LANDMARKS / CONTACT / EMAIL / WHATSAPP / CALL ZIKO HAPA PEKEE -->
+<!-- SIGN IN - MAPS / LANDMARKS / CONTACT / EMAIL / WHATSAPP / CALL HAPA PEKEE -->
 <div id="signin" class="page active"><div class="card">
 <img src="IMG-20261115-WA9724.jpg">
 <h2>You Are In Safe Hands - We Care, We Serve</h2>
@@ -46,7 +46,7 @@ img{width:100%;border-radius:12px}h2{color:#00796b}
 <p><b>5. Mida Creek:</b> Toka Mida Creek Road, jiunge na Watamu Road hadi Watamu Town.</p></div>
 </div>
 
-<!-- HOME - HAKUNA MAPS / CONTACT HAPA, NI BARS TU -->
+<!-- HOME - BARS 13 TU, HAKUNA MAPS HAPA -->
 <div id="home" class="page">
 <img src="IMG-20261115-WA9724.jpg">
 <h2>Karibu 🙏🙏</h2>
@@ -64,14 +64,12 @@ img{width:100%;border-radius:12px}h2{color:#00796b}
 <button class="blue" onclick="go('staff')">👨‍⚕️<br>HOSPITAL<br>STAFF</button>
 <button class="gold" onclick="go('directors')">⭐<br>DIRECTORS</button>
 <button class="green2" onclick="go('doctor')">👨‍⚕️<br>DAKTARI<br>LOGIN</button>
-</div>
-<div class="card"><p style="text-align:center;color:#555">© Scrupulous Hospital Watamu - We Care, We Serve</p></div>
-</div>
+</div></div>
 
-<!-- CHECKUP - DETAILS ZOTE -->
+<!-- CHECKUP -->
 <div id="checkup" class="page"><div class="card">
 <img src="IMG-20261115-WA9724.jpg">
-<h2>1. DOCTOR'S CHECK UP</h2>
+<h2>1. DOCTOR'S CHECK UP</h2><p class="hours">🕐 Muda wa Kazi: 8:00 AM - 8:00 PM, Emergency 24/7</p>
 <input id="pName" placeholder="Jina la Mgonjwa *">
 <input id="pAge" type="number" placeholder="Umri / Age *">
 <input id="pPhone" placeholder="Simu: 07...">
@@ -93,19 +91,17 @@ img{width:100%;border-radius:12px}h2{color:#00796b}
 <button class="btn back" onclick="go('home')">⬅ RUDI HOME</button>
 </div></div>
 
-  <!-- LAB - INAJIJAZA AUTOMATIC KUTOKANA NA PATIENT DETAILS -->
-<div id="lab" class="page"><div class="card">
+  <div id="lab" class="page"><div class="card">
 <img src="IMG-20261113-WA4381.jpg">
-<h2>2. LAB - UPPER FORM (AUTOMATIC)</h2>
+<h2>2. LAB - UPPER FORM (AUTOMATIC)</h2><p class="hours">🕐 Muda wa Kazi: 8:00 AM - 8:00 PM</p>
 <p>Mgonjwa: <b id="labPatient"></b></p>
 <p><small>Lab imeandikwa automatic kutokana na: Umri + Mjamzito/Mtoto + Ugonjwa + Siku + Joto.</small></p>
 <div id="labList"></div>
 <button class="btn" onclick="saveLab()">ENDELEA KWA DAKTARI ➡️</button>
 </div></div>
 
-<!-- DAKTARI LOGIN - PIN + MAELEZO AUTOMATIC -->
 <div id="doctor" class="page"><div class="card">
-<h2>3. DAKTARI LOGIN</h2>
+<h2>3. DAKTARI LOGIN</h2><p class="hours">🕐 Muda wa Kazi: 8:00 AM - 8:00 PM, On Call 24/7</p>
 <img src="IMG-20261115-WA9724.jpg">
 <p style="color:green;font-size:13px">✅ PIN imejijaza yenyewe - Bonyeza tu INGIA</p>
 <input id="docPin" type="text" value="1234">
@@ -115,17 +111,17 @@ img{width:100%;border-radius:12px}h2{color:#00796b}
 <button class="btn" onclick="doctorLogin()">INGIA NA ANDIKA DAWA ➡️</button>
 </div></div>
 
-<!-- PHARMACY - INAJIJAZA AUTOMATIC KUTOKANA NA LAB -->
 <div id="pharmacy" class="page"><div class="card">
 <img src="IMG-20261113-WA4381.jpg">
-<h2>4. PHARMACY - LOWER FORM (AUTOMATIC)</h2>
+<h2>4. PHARMACY - LOWER FORM (AUTOMATIC)</h2><p class="hours">🕐 Muda wa Kazi: 24 HRS - Wazi Usiku na Mchana</p>
 <p><small>Dawa zimeandikwa automatic kutokana na Lab Results + Ugonjwa + Mjamzito/Mtoto, pamoja na jinsi ya kutumia.</small></p>
 <div id="pharmList"></div>
 <button class="btn" onclick="savePharmacy()">ENDELEA KWA PAYMENT ➡️</button>
 </div></div>
 
 <div id="payment" class="page"><div class="card">
-<h2>5. PAYMENT</h2><div id="bill"></div>
+<h2>5. PAYMENT</h2><p class="hours">🕐 Muda wa Kazi: 8:00 AM - 8:00 PM</p>
+<div id="bill"></div>
 <select id="payMethod"><option>M-PESA</option><option>CASH</option><option>CARD</option><option>AIRTEL MONEY</option></select>
 <input id="payPhone" placeholder="Namba ya M-PESA">
 <button class="btn" onclick="doPay()">LIPA SASA - TENGENEZA RECEIPT 🧾</button>
@@ -138,18 +134,43 @@ img{width:100%;border-radius:12px}h2{color:#00796b}
 
 <div id="emergency" class="page"><div class="card">
 <img src="IMG-20261115-WA9724.jpg">
-<h2>🚨 EMERGENCY</h2><p>Tuko wazi 24/7. Fika haraka. Ambulance ipo.</p>
+<h2>🚨 EMERGENCY</h2><p class="hours">🕐 Muda wa Kazi: 24/7 - Wazi Siku Zote</p>
+<p>Tuko wazi 24/7. Fika haraka. Ambulance ipo.</p>
 <input id="eName" placeholder="Jina la Mgonjwa"><input id="ePhone" placeholder="Simu">
 <button class="btn" onclick="alert('Asante! Emergency team wamejulishwa.')">TUMA EMERGENCY</button>
 <button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
 
-  <div id="canteen" class="page"><div class="card">
+  <!-- MORTUARY - SASA INA FOMU + ORDER YA KAZI + MUDA -->
+<div id="mortuary" class="page"><div class="card">
 <img src="IMG-20261113-WA4381.jpg">
-<h2>🍽️ CANTEEN - CHAKULA CHOTE + BEI</h2>
+<h2>⚰️ MORTUARY</h2><p class="hours">🕐 Muda wa Kazi: 24 HRS - Wazi Siku Zote</p>
+<p>Pole sana. Jaza fomu hapa chini.</p>
+<input id="mName" placeholder="Jina la Marehemu *">
+<input id="mAge" type="number" placeholder="Umri wa Marehemu">
+<input id="mKin" placeholder="Jina la Ndugu / Next of Kin *">
+<input id="mPhone" placeholder="Simu ya Ndugu: 07...">
+<label>Tarehe ya Kifo: <input id="mDeathDate" type="date"></label>
+<label>Muda wa Kifo: <input id="mDeathTime" type="time"></label>
+<label>Muda wa Kuingia Mortuary: <input id="mInTime" type="time"></label>
+<select id="mOrder"><option value="">Chagua Order ya Kazi</option>
+<option value="Storage - 1500 kwa siku">Storage - Kuhifadhi Mwili - 1500 kwa siku</option>
+<option value="Embalming - 5000">Embalming - Kuhifadhi na Kupamba - 5000</option>
+<option value="Body Wash + Dressing - 3000">Kuoga + Kuvalisha - 3000</option>
+<option value="Release / Kuchukua Mwili - 1000">Release / Kuchukua Mwili - 1000</option>
+<option value="Storage + Embalming - 6500">Storage + Embalming - 6500</option></select>
+<input id="mDays" type="number" placeholder="Siku ngapi atahifadhiwa? Mfano: 2">
+<input id="mStaff" placeholder="Mfanyakazi Aliyepokea">
+<textarea id="mNote" placeholder="Maelezo mengine..."></textarea>
+<button class="btn" onclick="saveMortuary()">HIFADHI MORTUARY ORDER ✅</button>
+<p id="mResult"></p>
+<button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
+
+<div id="canteen" class="page"><div class="card">
+<img src="IMG-20261113-WA4381.jpg">
+<h2>🍽️ CANTEEN</h2><p class="hours">🕐 Muda wa Kazi: 7:00 AM - 8:00 PM</p>
 <h3>LOCALS</h3><p>Pilau + Kuku - 300<br>Ugali + Nyama - 250<br>Chapati + Maharage - 200<br>Nyama Choma - 400<br>Wali + Samaki - 300<br>Matoke + Nyama - 280<br>Githeri - 150<br>Samaki + Ugali - 300</p>
 <h3>INTERNATIONAL</h3><p>Burger + Chips - 450<br>Pizza (Slice) - 350<br>Spaghetti - 400<br>Shawarma - 380<br>Fried Chicken + Chips - 500<br>Chicken Biryani - 450</p>
 <h3>VINYWAJI / SNACKS</h3><p>Soda - 100<br>Juice Fresh - 150<br>Chai / Kahawa - 80<br>Maji - 50<br>Mandazi - 50<br>Samosa - 80</p>
-<h3>AGIZA</h3>
 <input id="cName" placeholder="Jina lako">
 <select id="cFood"><optgroup label="LOCALS"><option value="300">Pilau + Kuku - 300</option><option value="250">Ugali + Nyama - 250</option><option value="200">Chapati + Maharage - 200</option><option value="400">Nyama Choma - 400</option><option value="280">Matoke + Nyama - 280</option><option value="150">Githeri - 150</option></optgroup><optgroup label="INTERNATIONAL"><option value="450">Burger + Chips - 450</option><option value="350">Pizza - 350</option><option value="400">Spaghetti - 400</option><option value="380">Shawarma - 380</option><option value="500">Fried Chicken + Chips - 500</option></optgroup><optgroup label="VINYWAJI"><option value="100">Soda - 100</option><option value="150">Juice Fresh - 150</option><option value="80">Chai / Kahawa - 80</option><option value="50">Maji - 50</option></optgroup></select>
 <select id="cPay"><option>M-PESA</option><option>CASH</option><option>CARD</option></select>
@@ -157,21 +178,20 @@ img{width:100%;border-radius:12px}h2{color:#00796b}
 <button class="btn" onclick="orderFood()">AGIZA CHAKULA</button><p id="cResult"></p>
 <button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
 
-<div id="theatre" class="page"><div class="card"><img src="IMG-20261115-WA9724.jpg"><h2>🏥 THEATRE</h2><p>Upasuaji mdogo na mkubwa. Madaktari wa upasuaji wapo.</p><button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
-<div id="boardroom" class="page"><div class="card"><img src="IMG-20261113-WA4381.jpg"><h2>🏢 BOARDROOM</h2><p>Kwa mikutano ya hospitali. Booking hapa.</p><input placeholder="Jina la mkutano"><input type="date"><button class="btn" onclick="alert('Booking imerekodiwa!')">BOOK BOARDROOM</button><button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
-<div id="mortuary" class="page"><div class="card"><h2>⚰️ MORTUARY</h2><p>Pole sana. Wasiliana na Admin.</p><button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
-<div id="admin" class="page"><div class="card"><h2>🔐 ADMIN</h2><p>Admin Panel - Uzimamizi wa Hospitali.</p><button class="btn" onclick="go('staff')">ONA STAFF & ATTENDANCE</button><button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
+<div id="theatre" class="page"><div class="card"><img src="IMG-20261115-WA9724.jpg"><h2>🏥 THEATRE</h2><p class="hours">🕐 Muda wa Kazi: 24 HRS - On Call</p><p>Upasuaji mdogo na mkubwa.</p><button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
+<div id="boardroom" class="page"><div class="card"><img src="IMG-20261113-WA4381.jpg"><h2>🏢 BOARDROOM</h2><p class="hours">🕐 Muda wa Kazi: 8:00 AM - 5:00 PM</p><input placeholder="Jina la mkutano"><input type="date"><button class="btn" onclick="alert('Booking imerekodiwa!')">BOOK BOARDROOM</button><button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
+<div id="admin" class="page"><div class="card"><h2>🔐 ADMIN</h2><p class="hours">🕐 Muda wa Kazi: 8:00 AM - 5:00 PM</p><button class="btn" onclick="go('staff')">ONA STAFF & ATTENDANCE</button><button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
 
-<!-- STAFF + ATTENDANCE + ASSIGNMENTS -->
+<!-- STAFF - ASSIGNMENT INAJIJAZA AUTOMATIC KUTOKANA NA DEPARTMENT -->
 <div id="staff" class="page"><div class="card">
 <img src="IMG-20261115-WA9724.jpg">
-<h2>👨‍⚕️ HOSPITAL STAFF</h2>
+<h2>👨‍⚕️ HOSPITAL STAFF</h2><p class="hours">🕐 Shifts: Asubuhi 8-2, Mchana 2-8, Usiku 8-8</p>
 <p>1. Medical Doctors and Specialists<br>2. Nursing Staff<br>3. Laboratory and Diagnostic Staff<br>4. Pharmacy Staff<br>5. Allied Health Professionals<br>6. Hospital Support and Operational Staff<br>7. Hospital Management and Administration</p>
 <h3>WORKERS ATTENDANCE + ASSIGNMENTS</h3>
 <p>Date: <b id="todayDate"></b></p>
-<select id="attDept"><option>Emergency and Critical Care Staff</option><option>Nursing Staff</option><option>Laboratory and Diagnostic Staff</option><option>Pharmacy Staff</option><option>Allied Health Professionals</option><option>Hospital Support and Operational Staff</option><option>Hospital Management and Administration</option></select>
-<input id="attName" placeholder="Jina la Mfanyakazi">
-<input id="attAssign" placeholder="Assignment ya Leo: Mfano: Ward A - Night Shift">
+<select id="attDept" onchange="autoAssign()"><option>Emergency and Critical Care Staff</option><option>Nursing Staff</option><option>Laboratory and Diagnostic Staff</option><option>Pharmacy Staff</option><option>Allied Health Professionals</option><option>Hospital Support and Operational Staff</option><option>Hospital Management and Administration</option></select>
+<input id="attName" placeholder="Jina la Mfanyakazi: Mfano Isaac">
+<input id="attAssign" placeholder="Assignment itajijaza yenyewe...">
 <label><input type="radio" name="att" value="Present"> Present / Nipo</label>
 <label><input type="radio" name="att" value="Absent"> Absent / Sipo</label>
 <input id="attTime" type="time">
@@ -179,10 +199,10 @@ img{width:100%;border-radius:12px}h2{color:#00796b}
 <div id="attList"></div>
 <button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
 
-<!-- DIRECTORS + NAMES + ASSIGNMENTS -->
+<!-- DIRECTORS -->
 <div id="directors" class="page"><div class="card">
 <img src="IMG-20261113-WA4381.jpg">
-<h2>⭐ DIRECTORS - MAJINA + ASSIGNMENTS</h2>
+<h2>⭐ DIRECTORS - MAJINA + ASSIGNMENTS</h2><p class="hours">🕐 Muda wa Kazi: 9:00 AM - 5:00 PM</p>
 <p><b>MR. ARNOLD TUMAINI - Chief Executive Officer</b><br>Assignment: Kusimamia hospitali yote, Budget, Final approval for opening</p>
 <p><b>MR. KITSAO NYALE - Chief Operations Officer</b><br>Assignment: Operations, Parking & Security, Ambulances & Heli</p>
 <p><b>DR. NZARO KIRIMO - Chief Medical Officer</b><br>Assignment: Clinical services, Theatre expansion, Patient safety audit</p>
@@ -239,19 +259,24 @@ go('lab');
 function saveLab(){
 let c=document.querySelectorAll('#labList input:checked');P.lab=[];let tot=0;c.forEach(x=>{let t=P.tests[x.dataset.i];P.lab.push(t);tot+=t.p;});P.labTotal=tot;
 document.getElementById('labResultTxt').innerText=P.lab.map(x=>x.n).join(', ')+" = KSh "+tot;
-// MAELEZO AUTOMATIC KUTOKANA NA PATIENT DETAILS
 document.getElementById('docNote').value="Mgonjwa: "+P.name+" | Umri: "+P.age+" | Aina: "+P.type+" | Jinsia: "+P.gender+" | Ugonjwa: "+(P.disease||"General")+" | Umeumwa siku: "+P.days+" | Joto: "+P.temp+" | BP: "+P.bp+" | Dalili: "+P.symptoms+" | Lab: "+P.lab.map(x=>x.n).join(', ')+". Daktari: Tafadhali thibitisha na toa dawa.";
 document.getElementById('docPin').value="1234";
 go('doctor');
 }
 function doctorLogin(){if(document.getElementById('docPin').value!=="1234"){alert("PIN sio sahihi!");return;}P.docNote=document.getElementById('docNote').value;P.drugs=getDrugsForLab();document.getElementById('pharmList').innerHTML=P.drugs.map((x,i)=>`<label><input type="checkbox" checked data-i="${i}"> <b>${x.n}</b> - KSh ${x.p}<br><small>Jinsi: ${x.u}</small></label>`).join('');go('pharmacy');}
 function savePharmacy(){let c=document.querySelectorAll('#pharmList input:checked');P.pharm=[];let tot=0;c.forEach(x=>{let d=P.drugs[x.dataset.i];P.pharm.push(d);tot+=d.p;});P.pharmTotal=tot;P.grand=P.consult+P.labTotal+P.pharmTotal;document.getElementById('bill').innerHTML=`<p>Consultation: KSh ${P.consult}</p><p>Lab: KSh ${P.labTotal}</p><p>Pharmacy: KSh ${P.pharmTotal}</p><h3>Jumla: KSh ${P.grand}</h3>`;go('payment');}
-function doPay(){P.payMethod=document.getElementById('payMethod').value;P.payPhone=document.getElementById('payPhone').value;P.receiptNo="SH-"+Math.floor(1000+Math.random()*9000);P.date=new Date().toLocaleString();document.getElementById('receiptBox').innerHTML=`<h2 style="text-align:center">SCRUPULOUS HOSPITAL WATAMU</h2><p style="text-align:center">RECEIPT: ${P.receiptNo}<br>${P.date}</p><hr><p><b>Jina:</b> ${P.name}</p><p><b>Umri:</b> ${P.age} | <b>Aina:</b> ${P.type} | <b>Jinsia:</b> ${P.gender} | <b>Simu:</b> ${P.phone}</p><p><b>Ugonjwa:</b> ${P.disease}</p><p><b>Umeumwa Siku:</b> ${P.days} siku | <b>Joto:</b> ${P.temp} | <b>BP:</b> ${P.bp}</p><p><b>Maelezo:</b> ${P.symptoms}</p><p><b>Maelezo ya Daktari:</b> ${P.docNote||"-"}</p><hr><p><b>LAB (Automatic kutokana na Patient):</b><br>${P.lab.map(x=>x.n+" - KSh "+x.p).join('<br>')}<br><b>Lab Total: KSh ${P.labTotal}</b></p><hr><p><b>PHARMACY (Automatic kutokana na Lab):</b><br>${P.pharm.map(x=>x.n+" - "+x.u+" - KSh "+x.p).join('<br>')}<br><b>Pharmacy Total: KSh ${P.pharmTotal}</b></p><hr><p>Consultation: KSh ${P.consult}</p><h3>JUMLA KUBWA: KSh ${P.grand}</h3><p><b>Njia:</b> ${P.payMethod} - ${P.payPhone}</p><p>Asante, Pona Haraka! 🙏</p>`;go('receipt');}
+function doPay(){P.payMethod=document.getElementById('payMethod').value;P.payPhone=document.getElementById('payPhone').value;P.receiptNo="SH-"+Math.floor(1000+Math.random()*9000);P.date=new Date().toLocaleString();document.getElementById('receiptBox').innerHTML=`<h2 style="text-align:center">SCRUPULOUS HOSPITAL WATAMU</h2><p style="text-align:center">RECEIPT: ${P.receiptNo}<br>${P.date}</p><hr><p><b>Jina:</b> ${P.name}</p><p><b>Umri:</b> ${P.age} | <b>Aina:</b> ${P.type} | <b>Jinsia:</b> ${P.gender} | <b>Simu:</b> ${P.phone}</p><p><b>Ugonjwa:</b> ${P.disease}</p><p><b>Umeumwa Siku:</b> ${P.days} siku | <b>Joto:</b> ${P.temp} | <b>BP:</b> ${P.bp}</p><p><b>Maelezo:</b> ${P.symptoms}</p><p><b>Maelezo ya Daktari:</b> ${P.docNote||"-"}</p><hr><p><b>LAB (Automatic):</b><br>${P.lab.map(x=>x.n+" - KSh "+x.p).join('<br>')}<br><b>Lab Total: KSh ${P.labTotal}</b></p><hr><p><b>PHARMACY (Automatic):</b><br>${P.pharm.map(x=>x.n+" - "+x.u+" - KSh "+x.p).join('<br>')}<br><b>Pharmacy Total: KSh ${P.pharmTotal}</b></p><hr><p>Consultation: KSh ${P.consult}</p><h3>JUMLA KUBWA: KSh ${P.grand}</h3><p><b>Njia:</b> ${P.payMethod} - ${P.payPhone}</p><p>Asante, Pona Haraka! 🙏</p>`;go('receipt');}
 function orderFood(){let f=document.getElementById('cFood');let price=parseInt(f.value);document.getElementById('cTotal').innerText="KSh "+price;document.getElementById('cResult').innerHTML="Asante "+document.getElementById('cName').value+"! Umagiza: "+f.options[f.selectedIndex].text+" - Lipa KSh "+price+" kwa "+document.getElementById('cPay').value;}
+function saveMortuary(){let n=document.getElementById('mName').value.trim();if(!n){alert("Weka Jina la Marehemu kwanza");return;}let order=document.getElementById('mOrder').value;document.getElementById('mResult').innerHTML="✅ Mortuary Order Imerekodiwa<br>Marehemu: "+n+"<br>Ndugu: "+document.getElementById('mKin').value+" - "+document.getElementById('mPhone').value+"<br>Tarehe ya Kifo: "+document.getElementById('mDeathDate').value+" Muda: "+document.getElementById('mDeathTime').value+"<br>Muda wa Kuingia: "+document.getElementById('mInTime').value+"<br>Order: "+order+"<br>Siku: "+document.getElementById('mDays').value+"<br>Mfanyakazi: "+document.getElementById('mStaff').value;alert("Mortuary Order Imerekodiwa!");}
+function autoAssign(){
+let d=document.getElementById('attDept').value;
+let map={"Emergency and Critical Care Staff":"Triage & Ambulance - Emergency Ward","Nursing Staff":"Ward A - Nursing Care & Vitals","Laboratory and Diagnostic Staff":"Lab - Blood Tests & Results","Pharmacy Staff":"Pharmacy - Dispense Drugs & Stock","Allied Health Professionals":"Physio / Nutrition - Patient Support","Hospital Support and Operational Staff":"Cleaning & Security - Hospital Grounds","Hospital Management and Administration":"Admin Office - Reports & Management"};
+document.getElementById('attAssign').value=map[d]||"";
+}
 let att=[];document.getElementById('todayDate').innerText=new Date().toLocaleDateString();
-function markAtt(){let n=document.getElementById('attName').value;let d=document.getElementById('attDept').value;let a=document.getElementById('attAssign').value;let s=document.querySelector('input[name="att"]:checked');if(!n||!s){alert("Jaza jina na chagua Present/Absent");return;}att.push({n:n,d:d,s:s.value,t:document.getElementById('attTime').value,a:a});document.getElementById('attList').innerHTML=att.map(x=>`<p>✅ ${x.n} - ${x.d} - ${x.s} - ${x.t} - Assignment: ${x.a}</p>`).join('');alert("Attendance + Assignment imerekodiwa!");}
+function markAtt(){let n=document.getElementById('attName').value;let d=document.getElementById('attDept').value;let a=document.getElementById('attAssign').value;if(!a) autoAssign();a=document.getElementById('attAssign').value;let s=document.querySelector('input[name="att"]:checked');if(!n||!s){alert("Jaza jina na chagua Present/Absent");return;}att.push({n:n,d:d,s:s.value,t:document.getElementById('attTime').value,a:a});document.getElementById('attList').innerHTML=att.map(x=>`<p>✅ ${x.n} - ${x.d} - ${x.s} - ${x.t} - Assignment: ${x.a}</p>`).join('');alert("Attendance + Assignment imerekodiwa!");}
 let agendas=[{title:"Hire 10 nurses & 5 doctors",status:"In Progress"},{title:"Budget for ambulances, heli",status:"Pending"},{title:"Patient safety audit",status:"Pending"},{title:"Theatre expansion",status:"In Progress"},{title:"Final approval for Hospital opening",status:"Done"},{title:"Parking & security",status:"Pending"},{title:"Research - malaria",status:"In Progress"},{title:"Salaries & procurement",status:"Pending"},{title:"Community health program Watamu",status:"Done"}];
 function loadAgenda(){let f=document.getElementById('filterStatus').value;let list=agendas.filter(a=>f==="All"||a.status===f);document.getElementById('agendaBox').innerHTML=list.map(a=>`<p>📌 ${a.title} - <b>${a.status}</b></p>`).join('');}
 function addAgenda(){let v=document.getElementById('newAgenda').value;if(!v)return;agendas.push({title:v,status:"Pending"});loadAgenda();document.getElementById('newAgenda').value="";}
-loadAgenda();
+loadAgenda();autoAssign();
 </script></body></html>
