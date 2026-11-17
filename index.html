@@ -1,371 +1,154 @@
-<!DOCTYPE html>
-<html><head><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Scrupulous Hospital Watamu</title>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SCRUPULOUS CARE HOSPITAL - Watamu</title>
 <style>
-*{box-sizing:border-box}body{font-family:Arial;margin:0;background:#e8f5f0}
-.top{background:#00796b;color:#fff;text-align:center;padding:14px;font-weight:bold}
-.page{display:none;padding:12px;max-width:560px;margin:auto}.page.active{display:block}
-.card{background:#fff;padding:14px;border-radius:14px;margin:10px 0}
-.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-.grid button{border:0;border-radius:14px;padding:16px 3px;color:#fff;font-weight:bold;font-size:12px}
-.red{background:#e53935}.teal{background:#009688}.green{background:#00a651}.green2{background:#1faa4f}.red2{background:#d32f2f}.orange{background:#ff8f00}.purple{background:#6a1b9a}.black{background:#222}.green3{background:#00965c}.navy{background:#1a237e}.blue{background:#1976d2}.gold{background:#c59a00}
-input,select,textarea{width:100%;padding:11px;margin:6px 0;border:1px solid #ccc;border-radius:9px}
-.btn{display:block;background:#00796b;color:#fff;padding:13px;border:0;border-radius:10px;width:100%;font-weight:bold}
-.back{background:#555;margin-top:8px}label{display:block;margin:8px 0;background:#f5f5f5;padding:10px;border-radius:9px}
-img{width:100%;border-radius:12px}h2{color:#00796b}.hours{background:#fff3cd;padding:8px;border-radius:8px;font-size:13px}
+*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#eef6f2;color:#222}
+.page{display:none;padding:12px}.page.active{display:block}.card{background:#fff;border-radius:14px;padding:14px;max-width:650px;margin:10px auto;box-shadow:0 4px 14px #0002}
+.card img{width:100%;height:180px;object-fit:cover;border-radius:12px}
+h2{color:#0a7a5a;text-align:center;margin:6px 0}h3{color:#0a7a5a;border-top:2px solid #e0e0e0;padding-top:8px}
+input,select,textarea{width:100%;padding:11px;margin:6px 0;border:1px solid #ccc;border-radius:10px;font-size:15px}
+.btn{width:100%;padding:13px;background:#0a7a5a;color:#fff;border:0;border-radius:10px;font-size:16px;margin:6px 0}.btn.back{background:#555}
+.hours{background:#e6fff4;padding:8px;border-radius:8px;text-align:center;font-weight:bold}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.box{background:#f7f7f7;border:1px solid #ddd;border-radius:12px;padding:10px;text-align:center}
+.box img{height:90px}.box b{display:block;margin:5px 0}
+.contactBox{background:#0a7a5a;color:#fff;padding:12px;border-radius:12px;text-align:center}
+.contactBox a{color:#fff;font-weight:bold;text-decoration:none}
+iframe{width:100%;height:220px;border:0;border-radius:12px}
+label{display:block;margin:5px 0}
 </style></head><body>
-<div class="top">SCRUPULOUS HOSPITAL WATAMU<br>0112955446</div>
 
-<!-- SIGN IN - MAPS / LANDMARKS / CONTACT / EMAIL / WHATSAPP / CALL HAPA PEKEE -->
+<!-- SIGN IN - HAPA PEKEE KUNA CONTACT / MAPS / WHATSAPP / CALL -->
 <div id="signin" class="page active"><div class="card">
 <img src="IMG-20261115-WA9724.jpg">
-<h2>You Are In Safe Hands - We Care, We Serve</h2>
-<input id="sName" placeholder="Jina lako"><input id="sPhone" placeholder="Simu">
-<label><input type="radio" name="role" value="Patient"> Mgonjwa</label>
-<label><input type="radio" name="role" value="Doctor"> Daktari</label>
-<label><input type="radio" name="role" value="Staff"> Mfanyakazi</label>
-<label><input type="radio" name="role" value="Visitor"> Mgeni</label>
-<label><input type="radio" name="role" value="Director"> ⭐ Director</label>
-<label><input type="radio" name="role" value="Admin"> 🔐 Admin</label>
-<button class="btn" onclick="doSign()">SIGN IN</button></div>
+<h2>🏥 SCRUPULOUS CARE HOSPITAL</h2><p style="text-align:center">Watamu - Malindi, Kilifi County</p>
+<input id="userName" placeholder="Jina lako: Mfano Isaac">
+<input id="userPhone" placeholder="Namba ya Simu: 0712345678">
+<select id="userRole"><option value="patient">Mgonjwa / Patient</option><option value="staff">Mfanyakazi / Staff</option><option value="doctor">Daktari / Doctor</option><option value="director">Director</option><option value="admin">Admin</option></select>
+<button class="btn" onclick="signIn()">INGIA / SIGN IN ✅</button>
+<div class="contactBox">
+📍 <b>Location:</b> Watamu, Opp. Watamu Police Station, Near Blue Bay Beach, Next to Watamu Market<br><br>
+📞 <a href="tel:+254712345678">CALL: 0712 345 678</a><br>
+💬 <a href="https://wa.me/254712345678?text=Habari%20Scrupulous%20Hospital">WHATSAPP: Chat Sasa</a><br>
+📧 <a href="mailto:info@scrupuloushospital.co.ke">info@scrupuloushospital.co.ke</a><br><br>
+<iframe src="https://www.google.com/maps?q=Watamu,+Kilifi&output=embed"></iframe>
+</div></div></div>
 
-<div class="card" style="background:#0a7a3a;color:#fff"><h2 style="color:#fff">CONTACT - SIGN IN PEKEE</h2>
-<p>📞 Call: 0112955446</p><p>📞 Call: 254112955446</p>
-<p>✉️ Email: <a href="mailto:scrupulouscares@gmail.com" style="color:#fff">scrupulouscares@gmail.com</a></p>
-<p>📍 Watamu, Kilifi County, Kenya</p><p>🕐 8:00 AM - 8:00 PM, Emergency 24/7</p>
-<a href="tel:0112955446" style="display:block;background:#fff;color:#0a7a3a;text-align:center;padding:12px;border-radius:10px;text-decoration:none;font-weight:bold;margin-bottom:8px">📞 PIGA SIMU SASA</a>
-<a href="https://wa.me/254112955446?text=Hello%20Scrupulous%20Hospital%20Watamu" style="display:block;background:#25D366;color:#fff;text-align:center;padding:12px;border-radius:10px;text-decoration:none;font-weight:bold">💬 WHATSAPP: 0112955446</a></div>
-
-<div class="card"><h3>GOOGLE MAP - SIGN IN PEKEE</h3>
-<iframe src="https://maps.google.com/maps?q=Watamu%20Hospital&t=&z=14&ie=UTF8&iwloc=&output=embed" width="100%" height="280" style="border:0;border-radius:10px"></iframe>
-<a href="https://maps.google.com/?q=Scrupulous+Hospital+Watamu" style="display:block;background:#000;color:#fff;text-align:center;padding:12px;border-radius:10px;margin-top:8px;text-decoration:none">🗺️ GOOGLE MAPS - DIRECTIONS</a></div>
-
-<div class="card"><h3>DIRECTIONS BY LANDMARKS - SIGN IN PEKEE</h3>
-<p><b>1. Watamu Town:</b> Shuka barabara kuu Watamu-Malindi, baada ya soko la Watamu, hospitali iko mbele kulia.</p>
-<p><b>2. Malindi Town:</b> Chukua Malindi-Watamu, vuka Gedi, endelea hadi Watamu, hospitali iko kushoto kabla ya beach.</p>
-<p><b>3. Gedi Ruins:</b> Toka Gedi Ruins, dakika 10 tu umefika Watamu.</p>
-<p><b>4. Watamu Beach:</b> Toka Beach Road, panda boda/tuk-tuk hadi Mlango Mkuu.</p>
-<p><b>5. Mida Creek:</b> Toka Mida Creek Road, jiunge na Watamu Road hadi Watamu Town.</p></div>
-</div>
-
-<!-- HOME - BARS 13 TU, HAKUNA MAPS HAPA -->
-<div id="home" class="page">
-<img src="IMG-20261113-WA4381.jpg">
-<h2>Karibu 🙏🙏</h2>
+<!-- HOMEPAGE - HAKUNA CONTACT / MAPS HAPA -->
+<div id="home" class="page"><div class="card">
+<img src="IMG-20261115-WA9724.jpg">
+<h2>🏥 WELCOME TO SCRUPULOUS CARE HOSPITAL</h2><p style="text-align:center">Huduma Bora - Watamu</p>
 <div class="grid">
-<button class="red" onclick="go('emergency')">🚨<br>EMERGENCY</button>
-<button class="teal" onclick="go('checkup')">🩺<br>DOCTOR'S<br>CHECK UP</button>
-<button class="green" onclick="go('checkup')">🧪<br>LAB</button>
-<button class="green2" onclick="go('checkup')">💊<br>PHARMACY</button>
-<button class="red2" onclick="go('theatre')">🏥<br>THEATRE</button>
-<button class="orange" onclick="go('canteen')">🍽️<br>CANTEEN</button>
-<button class="purple" onclick="go('boardroom')">🏢<br>BOARDROOM</button>
-<button class="black" onclick="go('mortuary')">⚰️<br>MORTUARY</button>
-<button class="green3" onclick="go('payment')">💳<br>PAYMENT</button>
-<button class="navy" onclick="go('admin')">🔐<br>ADMIN</button>
-<button class="blue" onclick="go('staff')">👨‍⚕️<br>HOSPITAL<br>STAFF</button>
-<button class="gold" onclick="go('directors')">⭐<br>DIRECTORS</button>
-<button class="green2" onclick="go('doctor')">👨‍⚕️<br>DOCTOR<br>LOGIN</button>
+<div class="box" onclick="go('checkup')"><img src="IMG-20261115-WA9724.jpg"><b>🩺 CHECKUP</b><span>8AM - 8PM</span></div>
+<div class="box" onclick="go('staff')"><img src="IMG-20261115-WA9724.jpg"><b>👨‍⚕️ STAFF</b><span>24 HRS</span></div>
+<div class="box" onclick="go('doctors')"><img src="IMG-20261115-WA9724.jpg"><b>👩‍⚕️ DOCTORS</b><span>8AM - 8PM</span></div>
+<div class="box" onclick="go('directors')"><img src="IMG-20261115-WA9724.jpg"><b>👔 DIRECTORS</b><span>9AM - 5PM</span></div>
+<div class="box" onclick="go('admin')"><img src="IMG-20261115-WA9724.jpg"><b>🛡️ ADMIN</b><span>8AM - 5PM</span></div>
+<div class="box" onclick="go('lab')"><img src="IMG-20261115-WA9724.jpg"><b>🧪 LAB</b><span>8AM - 6PM</span></div>
+<div class="box" onclick="go('pharmacy')"><img src="IMG-20261115-WA9724.jpg"><b>💊 PHARMACY</b><span>8AM - 8PM</span></div>
+<div class="box" onclick="go('canteen')"><img src="IMG-20261115-WA9724.jpg"><b>🍲 CANTEEN</b><span>7AM - 8PM</span></div>
+<div class="box" onclick="go('mortuary')"><img src="IMG-20261115-WA9724.jpg"><b>⚰️ MORTUARY</b><span>24 HRS</span></div>
+</div>
+<button class="btn back" onclick="go('signin')">LOGOUT</button>
 </div></div>
 
-<!-- CHECKUP -->
-<div id="checkup" class="page"><div class="card">
-<img src="IMG-20261113-WA3610.jpg">
-<h2>1. DOCTOR'S CHECK UP</h2><p class="hours">🕐 Muda wa Kazi: 8:00 AM - 8:00 PM, Emergency 24/7</p>
-<input id="pName" placeholder="Jina la Mgonjwa *">
-<input id="pAge" type="number" placeholder="Umri / Age *">
-<input id="pPhone" placeholder="Simu: 07...">
-<select id="pGender"><option value="">Chagua Jinsia</option><option>Mwanaume</option><option>Mwanamke</option></select>
-<select id="pType"><option value="Mtu Mzima">Mtu Mzima / Adult</option><option value="Mtoto">Mtoto / Child (chini ya 12)</option><option value="Mjamzito">Mjamzito / Pregnant</option></select>
-<input id="pDays" type="number" placeholder="Umeumwa siku ngapi? Mfano: 3">
-<input id="pTemp" placeholder="Joto la Mwili: Mfano 38.5">
-<select id="pDisease"><option value="">Chagua Ugonjwa / Dalili</option>
-<option value="Malaria">Malaria - Homa, Baridi, Kuumwa kichwa</option>
-<option value="Typhoid">Typhoid - Homa, Tumbo, Kuhara</option>
-<option value="Flu">Flu / Mafua - Kikohozi, Mafua</option>
-<option value="Pressure">Pressure - Kizunguzungu</option>
-<option value="Sugar">Sukari / Diabetes - Kiu, Kukojoa sana</option>
-<option value="Wound">Jeraha / Wound</option>
-<option value="Pregnancy">Mimba / Pregnancy Check</option></select>
-<textarea id="pSymptoms" placeholder="Maelezo ya ugonjwa..."></textarea>
-<button class="btn" onclick="saveCheckup()">ENDELEA KWA LAB ➡️</button>
-<button class="btn back" onclick="go('home')">⬅ RUDI HOME</button>
-</div></div>
-
-  <div id="lab" class="page"><div class="card">
-<img src="IMG-20261113-WA5047.jpg">
-<h2>2. LAB - UPPER FORM (AUTOMATIC)</h2><p class="hours">🕐 Muda wa Kazi: 8:00 AM - 8:00 PM</p>
-<p>Mgonjwa: <b id="labPatient"></b></p>
-<p><small>Lab imeandikwa automatic kutokana na: Umri + Mjamzito/Mtoto + Ugonjwa + Siku + Joto.</small></p>
-<div id="labList"></div>
-<button class="btn" onclick="saveLab()">ENDELEA KWA DAKTARI ➡️</button>
-</div></div>
-
-<div id="doctor" class="page"><div class="card">
-<h2>3. DOCTOR LOGIN</h2><p class="hours">🕐 Muda wa Kazi: 8:00 AM - 8:00 PM, On Call 24/7</p>
-<img src="IMG-20261115-WA9724.jpg">
-<p style="color:green;font-size:13px">✅ PIN imejijaza yenyewe - Bonyeza tu INGIA</p>
- <select id="docRole" onchange="autoDocAssign()">
-<option value="">Chagua Aina ya Daktari</option>
-<option>Doctor - General</option>
-<option>Surgeon - Upasuaji</option>
-<option>Nurse - Muuguzi</option>
-<option>Midwife - Mkunga</option>
-<option>Paediatrician - Daktari wa Watoto</option>
-<option>Gynaecologist - Daktari wa Wamama</option>
-<option>Lab Technician - Maabara</option>
-<option>Pharmacist - Mfamasia</option>
-<option>Physiotherapist</option>
-<option>Dentist - Meno</option>
-<option>Optician - Macho</option>
-<option>Radiologist - X-Ray / Scan</option>
-</select>
-<input id="docAssign" placeholder="Assignment itajijaza yenyewe..."> 
-<input id="docPin" type="text" value="1234">
-<p>Matokeo ya Lab: <b id="labResultTxt"></b></p>
-<p><small>Maelezo hapa chini yamejijaza yenyewe kutokana na details za mgonjwa.</small></p>
-<textarea id="docNote"></textarea>
-<button class="btn" onclick="doctorLogin()">INGIA NA ANDIKA DAWA ➡️</button>
-</div></div>
-
-<div id="pharmacy" class="page"><div class="card">
-<img src="IMG-20261113-WA1869.jpg">
-<h2>4. PHARMACY - LOWER FORM (AUTOMATIC)</h2><p class="hours">🕐 Muda wa Kazi: 24 HRS - Wazi Usiku na Mchana</p>
-<p><small>Dawa zimeandikwa automatic kutokana na Lab Results + Ugonjwa + Mjamzito/Mtoto, pamoja na jinsi ya kutumia.</small></p>
-<div id="pharmList"></div>
-<button class="btn" onclick="savePharmacy()">ENDELEA KWA PAYMENT ➡️</button>
-</div></div>
-
-<div id="payment" class="page"><div class="card">
-<img src="IMG-20261113-WA8002.jpg">
-<h2>5. PAYMENT</h2><p class="hours">🕐 Muda wa Kazi: 8:00 AM - 8:00 PM</p>
-<div id="bill"></div>
-<select id="payMethod"><option>M-PESA</option><option>CASH</option><option>CARD</option><option>AIRTEL MONEY</option></select>
-<input id="payPhone" placeholder="Namba ya M-PESA">
-<button class="btn" onclick="doPay()">LIPA SASA - TENGENEZA RECEIPT 🧾</button>
-</div></div>
-
-<div id="receipt" class="page"><div class="card" id="receiptBox"></div>
-<button class="btn" onclick="window.print()">🖨️ PRINT / SAVE RECEIPT</button>
-<button class="btn back" onclick="go('home')">🏠 MALIZA - RUDI HOME</button>
-</div></div>
-
-<div id="emergency" class="page"><div class="card">
-<img src="IMG-20261113-WA0968.jpg">
-<h2>🚨 EMERGENCY</h2><p class="hours">🕐 Muda wa Kazi: 24/7 - Wazi Siku Zote</p>
-<p>Tuko wazi 24/7. Fika haraka. Ambulance ipo.</p>
-<input id="eName" placeholder="Jina la Mgonjwa"><input id="ePhone" placeholder="Simu">
-<button class="btn" onclick="alert('Asante! Emergency team wamejulishwa.')">TUMA EMERGENCY</button>
-<button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
-
-  <!-- MORTUARY - SASA INA FOMU + ORDER YA KAZI + MUDA -->
-<div id="mortuary" class="page"><div class="card">
-<img src="IMG-20261113-WA8067.jpg">
-<h2>⚰️ MORTUARY</h2><p class="hours">🕐 Muda wa Kazi: 24 HRS - Wazi Siku Zote</p>
-<p>Pole sana. Jaza fomu hapa chini.</p>
-<input id="mName" placeholder="Jina la Marehemu *">
-<input id="mAge" type="number" placeholder="Umri wa Marehemu">
-<input id="mKin" placeholder="Jina la Ndugu / Next of Kin *">
-<input id="mPhone" placeholder="Simu ya Ndugu: 07...">
-<label>Tarehe ya Kifo: <input id="mDeathDate" type="date"></label>
-<label>Muda wa Kifo: <input id="mDeathTime" type="time"></label>
-<label>Muda wa Kuingia Mortuary: <input id="mInTime" type="time"></label>
-<select id="mOrder"><option value="">Chagua Order ya Kazi</option>
-<option value="Storage - 1500 kwa siku">Storage - Kuhifadhi Mwili - 1500 kwa siku</option>
-<option value="Embalming - 5000">Embalming - Kuhifadhi na Kupamba - 5000</option>
-<option value="Body Wash + Dressing - 3000">Kuoga + Kuvalisha - 3000</option>
-<option value="Release / Kuchukua Mwili - 1000">Release / Kuchukua Mwili - 1000</option>
-<option value="Storage + Embalming - 6500">Storage + Embalming - 6500</option></select>
-<input id="mDays" type="number" placeholder="Siku ngapi atahifadhiwa? Mfano: 2">
-<input id="mStaff" placeholder="Mfanyakazi Aliyepokea">
-<textarea id="mNote" placeholder="Maelezo mengine..."></textarea>
-<button class="btn" onclick="saveMortuary()">HIFADHI MORTUARY ORDER ✅</button>
-<p id="mResult"></p>
-<button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
-
-<div id="canteen" class="page"><div class="card">
-<img src="IMG-20261113-WA1638.jpg">
-<h2>🍽️ CANTEEN</h2><p class="hours">🕐 Muda wa Kazi: 7:00 AM - 8:00 PM</p>
-<h3>LOCALS</h3><p>Pilau + Kuku - 300<br>Ugali + Nyama - 250<br>Chapati + Maharage - 200<br>Nyama Choma - 400<br>Wali + Samaki - 300<br>Matoke + Nyama - 280<br>Githeri - 150<br>Samaki + Ugali - 300</p>
-<h3>INTERNATIONAL</h3><p>Burger + Chips - 450<br>Pizza (Slice) - 350<br>Spaghetti - 400<br>Shawarma - 380<br>Fried Chicken + Chips - 500<br>Chicken Biryani - 450</p>
-<h3>VINYWAJI / SNACKS</h3><p>Soda - 100<br>Juice Fresh - 150<br>Chai / Kahawa - 80<br>Maji - 50<br>Mandazi - 50<br>Samosa - 80</p>
-<input id="cName" placeholder="Jina lako">
-<select id="cFood"><optgroup label="LOCALS"><option value="300">Pilau + Kuku - 300</option><option value="250">Ugali + Nyama - 250</option><option value="200">Chapati + Maharage - 200</option><option value="400">Nyama Choma - 400</option><option value="280">Matoke + Nyama - 280</option><option value="150">Githeri - 150</option></optgroup><optgroup label="INTERNATIONAL"><option value="450">Burger + Chips - 450</option><option value="350">Pizza - 350</option><option value="400">Spaghetti - 400</option><option value="380">Shawarma - 380</option><option value="500">Fried Chicken + Chips - 500</option></optgroup><optgroup label="VINYWAJI"><option value="100">Soda - 100</option><option value="150">Juice Fresh - 150</option><option value="80">Chai / Kahawa - 80</option><option value="50">Maji - 50</option></optgroup></select>
-<select id="cPay"><option>M-PESA</option><option>CASH</option><option>CARD</option></select>
-<p>Jumla: <b id="cTotal">KSh 0</b></p>
-<button class="btn" onclick="orderFood()">AGIZA CHAKULA</button><p id="cResult"></p>
-<button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
-
-<div id="theatre" class="page"><div class="card"><img src="IMG-20261113-WA8923.jpg"><h2>🏥 THEATRE</h2><p class="hours">🕐 Muda wa Kazi: 24 HRS - On Call</p><p>Upasuaji mdogo na mkubwa.</p><button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
-<div id="boardroom" class="page"><div class="card"><img src="IMG-20261115-WA9694.jpg"><h2>🏢 BOARDROOM</h2><p class="hours">🕐 Muda wa Kazi: 8:00 AM - 5:00 PM</p><input placeholder="Jina la mkutano"><input type="date"><button class="btn" onclick="alert('Booking imerekodiwa!')">BOOK BOARDROOM</button><button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
-<div id="admin" class="page"><div class="card"><h2>🔐 ADMIN</h2><p class="hours">🕐 Muda wa Kazi: 8:00 AM - 5:00 PM</p><button class="btn" onclick="go('staff')">ONA STAFF & ATTENDANCE</button><button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
-
-<!-- STAFF - ASSIGNMENT INAJIJAZA AUTOMATIC -->
+  <!-- STAFF -->
 <div id="staff" class="page"><div class="card">
-<img src="IMG-20261115-WA9724.jpg">
-<h2>👨‍⚕️ HOSPITAL STAFF</h2>
-<p class="hours">🕐 Shifts: Asubuhi 8-2, Mchana 2-8, Usiku 8-8</p>
-<p>1. Medical Doctors and Specialists<br>2. Nursing Staff<br>3. Laboratory and Diagnostic Staff<br>4. Pharmacy Staff<br>5. Allied Health Professionals<br>6. Hospital Support and Operational Staff<br>7. Hospital Management and Administration</p>
-
-<h3>WORKERS ATTENDANCE + ASSIGNMENTS</h3>
+<img src="IMG-20261115-WA9724.jpg"><h2>👨‍⚕️ HOSPITAL STAFF</h2>
+<p class="hours">🕐 Kila Sector: 8AM - 8PM | Shifts: 8-2, 2-8, 8-8</p>
 <p>Date: <b id="todayDate"></b></p>
+<select id="attDept" onchange="autoAssign()"><option>Emergency and Critical Care Staff</option><option>Nursing Staff</option><option>Laboratory and Diagnostic Staff</option><option>Pharmacy Staff</option><option>Allied Health Professionals</option><option>Hospital Support and Operational Staff</option><option>Hospital Management and Administration</option></select>
+<input id="attName" placeholder="Jina la Mfanyakazi">
+<select id="attRole" onchange="autoAssign()"><option value="">Chagua Kazi ya Mfanyakazi</option><option>Cleaner - Msafishaji</option><option>Store Keeper - Mhifadhi Duka</option><option>Security / Askari</option><option>Driver - Dereva / Ambulance</option><option>Cook - Mpishi Canteen</option><option>Receptionist - Mapokezi</option><option>Cashier - Mhasibu</option><option>Gardener - Bustani</option><option>Laundry - Mfuaji</option><option>Mortuary Attendant</option><option>Maintenance / Fundi</option></select>
+<input id="attAssign" placeholder="Assignment + Whole Day itajijaza..." readonly>
+<label><input type="radio" name="att" value="Present"> Present</label><label><input type="radio" name="att" value="Absent"> Absent</label>
+<select id="attTime" onchange="autoAssign()"><option value="06:30">6:30 AM - Morning</option><option value="08:00">8:00 AM - Morning</option><option value="14:00">2:00 PM - Afternoon</option><option value="20:00">8:00 PM - Night</option></select>
+<button class="btn" onclick="markAtt()">MARK ATTENDANCE ✅</button><div id="attList"></div>
+<button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
 
-<select id="attDept" onchange="autoAssign()">
-<option>Emergency and Critical Care Staff</option>
-<option>Nursing Staff</option>
-<option>Laboratory and Diagnostic Staff</option>
-<option>Pharmacy Staff</option>
-<option>Allied Health Professionals</option>
-<option>Hospital Support and Operational Staff</option>
-<option>Hospital Management and Administration</option>
-</select>
+<!-- DOCTORS SIGN PAGE -->
+<div id="doctors" class="page"><div class="card">
+<img src="IMG-20261115-WA9724.jpg"><h2>👩‍⚕️ DOCTORS SIGN PAGE</h2><p class="hours">🕐 8AM - 8PM</p>
+<select id="docName"><option>Dr. Isaac - Surgeon / Mpasuaji</option><option>Dr. Mary - Nurse / Muuguzi</option><option>Dr. John - General Doctor</option><option>Dr. Fatuma - Pediatrician / Watoto</option><option>Dr. Peter - Gynecologist / Wazazi</option><option>Dr. Grace - Lab Doctor</option><option>Dr. David - Dentist / Meno</option></select>
+<input id="docPinInput" placeholder="PIN ya Daktari">
+<button class="btn" onclick="doctorLogin()">LOGIN AS DOCTOR ✅</button>
+<div id="docAutoBox" style="background:#e6fff4;padding:10px;border-radius:10px;margin-top:8px"></div>
+<button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
 
-<input id="attName" placeholder="Jina la Mfanyakazi: Mfano Timothy">
-
-<select id="attRole" onchange="autoAssign()">
-<option value="">Chagua Kazi ya Mfanyakazi</option>
-<option>Cleaner - Msafishaji</option>
-<option>Store Keeper - Mhifadhi Duka</option>
-<option>Security / Askari</option>
-<option>Driver - Dereva / Ambulance</option>
-<option>Cook - Mpishi Canteen</option>
-<option>Receptionist - Mapokezi</option>
-<option>Cashier - Mhasibu</option>
-<option>Gardener - Bustani</option>
-<option>Laundry - Mfuaji</option>
-<option>Mortuary Attendant</option>
-<option>Maintenance / Fundi</option>
-</select>
-
-<input id="attAssign" placeholder="Assignment + Whole Day itajijaza yenyewe..." readonly>
-
-<label><input type="radio" name="att" value="Present"> Present / Nipo</label>
-<label><input type="radio" name="att" value="Absent"> Absent / Sipo</label>
-
-<select id="attTime" onchange="autoAssign()">
-<option value="06:30">6:30 AM - Morning Shift</option>
-<option value="08:00">8:00 AM - Morning Shift</option>
-<option value="14:00">2:00 PM - Afternoon Shift</option>
-<option value="20:00">8:00 PM - Night Shift</option>
-</select>
-
-<button class="btn" onclick="markAtt()">MARK ATTENDANCE ✅</button>
-<div id="attList"></div>
-<button class="btn back" onclick="go('home')">RUDI HOME</button>
-</div></div>
-  
-<!-- DIRECTORS -->
+<!-- DIRECTORS BOX -->
 <div id="directors" class="page"><div class="card">
-<img src="IMG-20261115-WA9694.jpg">
-<h2>⭐ DIRECTORS - MAJINA + ASSIGNMENTS</h2><p class="hours">🕐 Muda wa Kazi: 9:00 AM - 5:00 PM</p>
-<p><b>MR. ARNOLD TUMAINI - Chief Executive Officer</b><br>Assignment: Kusimamia hospitali yote, Budget, Final approval for opening</p>
-<p><b>MR. KITSAO NYALE - Chief Operations Officer</b><br>Assignment: Operations, Parking & Security, Ambulances & Heli</p>
-<p><b>DR. NZARO KIRIMO - Chief Medical Officer</b><br>Assignment: Clinical services, Theatre expansion, Patient safety audit</p>
-<p><b>MS. PRAISE FURAHA - Chief Nursing Officer</b><br>Assignment: Nursing staff, Hire 10 nurses & 5 doctors, Ward management</p>
-<p><b>MS. CHRISTINA NEEMA - Director of Finance</b><br>Assignment: Salaries & Procurement payment, Budget for ambulances</p>
-<p><b>MS. NADZUA MKANZALA - Director of Human Resources</b><br>Assignment: Staff recruitment, Attendance, Community health program</p>
-<p><b>DR. SAMUEL SHUKRANI - Director of Research</b><br>Assignment: Research for new treatment - Malaria, Infection control</p>
-<p><b>MR. CHENGO MWALIMU - Director of Procurement</b><br>Assignment: Dawa, Vifaa, Procurement payment</p>
-<h3>DIRECTORS AGENDA LIST</h3>
-<label>Filter: <select id="filterStatus" onchange="loadAgenda()"><option value="All">ALL</option><option value="Pending">Pending</option><option value="In Progress">In Progress</option><option value="Done">Done</option></select></label>
-<div id="agendaBox"></div>
-<input id="newAgenda" placeholder="Agenda mpya..."><button class="btn" onclick="addAgenda()">ADD AGENDA</button>
+<img src="IMG-20261115-WA9724.jpg"><h2>👔 DIRECTORS BOX</h2><p class="hours">🕐 9AM - 5PM</p>
+<input id="dirName" placeholder="Jina la Director"><select id="dirRole"><option>Director - Mkurugenzi Mkuu</option><option>Deputy Director</option><option>Finance Director</option></select>
+<input id="dirAssign" placeholder="Assignment itajijaza..." readonly>
+<button class="btn" onclick="document.getElementById('dirAssign').value=document.getElementById('dirRole').value+' - Office - Reports & Management - Whole Day 9AM to 5PM'">ASSIGN DIRECTOR ✅</button>
+<button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
+
+<!-- ADMIN BOX -->
+<div id="admin" class="page"><div class="card">
+<img src="IMG-20261115-WA9724.jpg"><h2>🛡️ ADMIN BOX</h2><p class="hours">🕐 8AM - 5PM</p>
+<input id="admName" placeholder="Jina la Admin"><select id="admRole"><option>Admin - Msimamizi</option><option>HR - Rasilimali Watu</option><option>Reception Admin</option></select>
+<input id="admAssign" placeholder="Assignment itajijaza..." readonly>
+<button class="btn" onclick="document.getElementById('admAssign').value=document.getElementById('admRole').value+' - Admin Office - Whole Day 8AM to 5PM'">ASSIGN ADMIN ✅</button>
+<button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
+
+<!-- CHECKUP - HAKUNA BP, HAKUNA TEMP -->
+<div id="checkup" class="page"><div class="card">
+<img src="IMG-20261115-WA9724.jpg"><h2>🩺 CHECKUP - PATIENT DETAILS</h2><p class="hours">🕐 8AM - 8PM</p>
+<input id="pName" placeholder="Jina la Mgonjwa"><input id="pAge" type="number" placeholder="Umri / Age"><input id="pPhone" placeholder="Simu">
+<select id="pGender"><option>Mwanaume</option><option>Mwanamke</option></select>
+<select id="pType"><option value="Mtu Mzima">Mtu Mzima</option><option value="Mjamzito">Mjamzito</option><option value="Mtoto">Mtoto</option></select>
+<select id="pDays"><option>Siku 1</option><option>Siku 2</option><option>Siku 3</option><option>Siku 7</option></select>
+<textarea id="pSymptom" placeholder="Ugonjwa / Dalili: Mfano Homa, Kikohozi"></textarea>
+<p style="color:#888;font-size:13px">⚠️ BP na Body Temperature haziko hapa - ziko Lab Automatic</p>
+<button class="btn" onclick="saveCheckup()">ENDELEA KWA LAB ➡️</button>
+<button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
+
+<!-- LAB - BP + TEMP AUTOMATIC -->
+<div id="lab" class="page"><div class="card">
+<img src="IMG-20261115-WA9724.jpg"><h2>🧪 LAB DETAILS</h2><p class="hours">🕐 8AM - 6PM</p>
+<p>Mgonjwa: <b id="labPatient"></b></p><div id="labList"></div>
+<p><b id="labResultTxt" style="color:#0a7a5a"></b></p>
+<button class="btn" onclick="saveLab()">SAVE LAB + GO TO DOCTOR ✅</button>
+<button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
+
+<!-- PHARMACY - DAWA AUTOMATIC -->
+<div id="pharmacy" class="page"><div class="card">
+<img src="IMG-20261115-WA9724.jpg"><h2>💊 PHARMACY</h2><p class="hours">🕐 8AM - 8PM</p>
+<div id="pharmList"></div>
+<button class="btn" onclick="go('home')">RUDI HOME</button></div></div>
+
+  <!-- CANTEEN - MPYA -->
+<div id="canteen" class="page"><div class="card">
+<img src="IMG-20261115-WA9724.jpg"><h2>🍲 CANTEEN FOOD</h2><p class="hours">🕐 7AM - 8PM</p>
+<input id="foodName" placeholder="Jina lako">
+<select id="foodLevel" onchange="updateFoodList()"><option>Doctor</option><option>Director</option><option>Guest of Honor</option><option>Patient</option><option>Visitor</option></select>
+<select id="foodCat" onchange="updateFoodList()"><option>Local Foods - Chakula cha Nyumbani</option><option>International Foods</option><option>Special Foods za Patients</option></select>
+<select id="foodSel"></select>
+<input id="foodSeat" placeholder="Table + Chair itajijaza yenyewe..." readonly>
+<button class="btn" onclick="orderFood()">ORDER FOOD + PATA TABLE ✅</button>
+<div id="foodResult"></div>
+<button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
+
+<!-- MORTUARY - FOMU + ORDER + MUDA -->
+<div id="mortuary" class="page"><div class="card">
+<img src="IMG-20261115-WA9724.jpg"><h2>⚰️ MORTUARY</h2><p class="hours">🕐 24 HRS - Open Day & Night</p>
+<input id="mName" placeholder="Jina la Marehemu"><input id="mAge" placeholder="Umri"><input id="mRelative" placeholder="Jina la Ndugu"><input id="mPhone" placeholder="Simu ya Ndugu">
+<select id="mService"><option>Kuhifadhi Mwili - KSh 1000 / Siku</option><option>Kuandaa Mazishi - KSh 5000</option><option>Kusafisha Mwili - KSh 2000</option></select>
+<input id="mTime" type="time"><button class="btn" onclick="alert('Mortuary Order Imerekodiwa: '+document.getElementById('mName').value+' - '+document.getElementById('mService').value+' - Muda: '+document.getElementById('mTime').value)">SAVE MORTUARY ORDER ✅</button>
 <button class="btn back" onclick="go('home')">RUDI HOME</button></div></div>
 
 <script>
-function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
-function doSign(){let n=document.getElementById('sName').value.trim();if(!n){alert('Jaza Jina na Namba kwanza');return;}alert('Karibu '+n);go('home');}
-let P={};
-function getLabForPatient(){
-let d=P.disease||"", t=P.type||"Mtu Mzima";
-if(t==="Mjamzito") return [{n:"Pregnancy Test / Ultrasound",p:1200},{n:"Blood Group + Haemoglobin",p:600},{n:"Urine Test",p:400},{n:"HIV Test",p:500}];
-if(t==="Mtoto") return [{n:"Malaria Test (Child)",p:400},{n:"Full Blood Count (Child)",p:600},{n:"Stool Test",p:400}];
-if(d==="Malaria") return [{n:"Malaria Test",p:500},{n:"Full Blood Count",p:800},{n:"Blood Sugar",p:300}];
-if(d==="Typhoid") return [{n:"Typhoid Test (Widal)",p:800},{n:"Stool Test",p:500},{n:"Full Blood Count",p:800}];
-if(d==="Flu") return [{n:"Flu Test",p:600},{n:"Chest X-Ray",p:1500}];
-if(d==="Pressure") return [{n:"Blood Pressure Check",p:200},{n:"Blood Sugar",p:300}];
-if(d==="Sugar") return [{n:"Blood Sugar (Fasting)",p:300},{n:"Urine Test",p:400}];
-if(d==="Wound") return [{n:"Wound Swab",p:600},{n:"Tetanus Check",p:400}];
-if(d==="Pregnancy") return [{n:"Pregnancy Test / Ultrasound",p:1200},{n:"Blood Group",p:500}];
-return [{n:"General Checkup",p:500},{n:"Blood Sugar",p:300}];
-}
-function getDrugsForLab(){
-let d=P.disease||"", t=P.type||"Mtu Mzima";
-if(t==="Mjamzito") return [{n:"Folic Acid",u:"1 kila siku asubuhi - kwa mama mjamzito",p:200},{n:"Iron Tablets",u:"1 x 2 kwa siku baada ya chakula",p:300},{n:"Panadol (Salama)",u:"2 baada ya saa 8 kama homa",p:100}];
-if(t==="Mtoto") return [{n:"Coartem Syrup (Mtoto)",u:"Kulingana na uzito - 1 x 2 kwa siku, siku 3",p:300},{n:"Panadol Syrup",u:"5ml baada ya saa 8",p:150}];
-if(d==="Malaria") return [{n:"Coartem",u:"1 x 2 kwa siku, siku 3",p:350},{n:"Panadol",u:"2 baada ya saa 8 kama homa ipo",p:100}];
-if(d==="Typhoid") return [{n:"Ciprofloxacin 500mg",u:"1 x 2 kwa siku, siku 7",p:450},{n:"Panadol",u:"2 baada ya saa 8",p:100}];
-if(d==="Flu") return [{n:"Piriton",u:"1 x 2 kwa siku",p:150},{n:"Panadol",u:"2 baada ya saa 8",p:100}];
-if(d==="Pressure") return [{n:"Amlodipine 5mg",u:"1 kila asubuhi",p:250}];
-if(d==="Sugar") return [{n:"Metformin 500mg",u:"1 x 2 baada ya chakula",p:300}];
-if(d==="Wound") return [{n:"Amoxicillin 500mg",u:"1 x 3 kwa siku, siku 5",p:400},{n:"Betadine + Gauze",u:"Safisha jeraha kila siku",p:300}];
-if(d==="Pregnancy") return [{n:"Folic Acid",u:"1 kila siku",p:200},{n:"Iron Tablets",u:"1 x 2 kwa siku",p:300}];
-return [{n:"Panadol",u:"2 baada ya saa 8",p:100}];
-}
-function saveCheckup(){
-let n=document.getElementById('pName').value.trim();if(!n){alert("Weka Jina la mgonjwa kwanza!");return;}
-P={name:n,age:document.getElementById('pAge').value,phone:document.getElementById('pPhone').value,gender:document.getElementById('pGender').value,type:document.getElementById('pType').value,days:document.getElementById('pDays').value,temp:document.getElementById('pTemp').value,bp:document.getElementById('pBP').value,disease:document.getElementById('pDisease').value||"",symptoms:document.getElementById('pSymptoms').value,consult:500};
-localStorage.setItem('scrupulous_patient',JSON.stringify(P));
-document.getElementById('labPatient').innerText=P.name+" - "+P.type+" - "+(P.disease||"General")+" - Siku "+P.days;
-P.tests=getLabForPatient();
-document.getElementById('labList').innerHTML=P.tests.map((t,i)=>`<label><input type="checkbox" checked data-i="${i}"> ${t.n} - KSh ${t.p}</label>`).join('');
-go('lab');
-}
-function saveLab(){
-let c=document.querySelectorAll('#labList input:checked');
-let tot=0;P.lab=[];
-c.forEach(x=>{tot+=parseInt(x.dataset.price);P.lab.push({n:x.value,p:parseInt(x.dataset.price)});});
-// --- BLOOD PRESSURE AUTOMATIC - INAJIJAZA KWENYE LAB ---
-let a=parseInt(P.age||30);
-if(P.type==="Mtoto") P.bp="100/65";
-else if(P.type==="Mjamzito") P.bp="120/80";
-else if(a>=60) P.bp="140/90";
-else if(a>=40) P.bp="130/85";
-else P.bp="120/80";
-document.getElementById('labResultTxt').innerText="Blood Pressure: "+P.bp+" (Automatic - Lab) | "+P.lab.map(x=>x.n).join(', ')+" = KSh "+tot;
-document.getElementById('docNote').value="";
-document.getElementById('docPin').value="";
-go('doctor');
-}
-function doctorLogin(){if(document.getElementById('docPin').value!=="1234"){alert("PIN sio sahihi!");return;}P.docNote=document.getElementById('docNote').value;P.drugs=getDrugsForLab();document.getElementById('pharmList').innerHTML=P.drugs.map((x,i)=>`<label><input type="checkbox" checked data-i="${i}"> <b>${x.n}</b> - KSh ${x.p}<br><small>Jinsi: ${x.u}</small></label>`).join('');go('pharmacy');}
-function savePharmacy(){let c=document.querySelectorAll('#pharmList input:checked');P.pharm=[];let tot=0;c.forEach(x=>{let d=P.drugs[x.dataset.i];P.pharm.push(d);tot+=d.p;});P.pharmTotal=tot;P.grand=P.consult+P.labTotal+P.pharmTotal;document.getElementById('bill').innerHTML=`<p>Consultation: KSh ${P.consult}</p><p>Lab: KSh ${P.labTotal}</p><p>Pharmacy: KSh ${P.pharmTotal}</p><h3>Jumla: KSh ${P.grand}</h3>`;go('payment');}
-function doPay(){P.payMethod=document.getElementById('payMethod').value;P.payPhone=document.getElementById('payPhone').value;P.receiptNo="SH-"+Math.floor(1000+Math.random()*9000);P.date=new Date().toLocaleString();document.getElementById('receiptBox').innerHTML=`<h2 style="text-align:center">SCRUPULOUS HOSPITAL WATAMU</h2><p style="text-align:center">RECEIPT: ${P.receiptNo}<br>${P.date}</p><hr><p><b>Jina:</b> ${P.name}</p><p><b>Umri:</b> ${P.age} | <b>Aina:</b> ${P.type} | <b>Jinsia:</b> ${P.gender} | <b>Simu:</b> ${P.phone}</p><p><b>Ugonjwa:</b> ${P.disease}</p><p><b>Umeumwa Siku:</b> ${P.days} siku | <b>Joto:</b> ${P.temp} | <b>BP:</b> ${P.bp}</p><p><b>Maelezo:</b> ${P.symptoms}</p><p><b>Maelezo ya Daktari:</b> ${P.docNote||"-"}</p><hr><p><b>LAB (Automatic):</b><br>${P.lab.map(x=>x.n+" - KSh "+x.p).join('<br>')}<br><b>Lab Total: KSh ${P.labTotal}</b></p><hr><p><b>PHARMACY (Automatic):</b><br>${P.pharm.map(x=>x.n+" - "+x.u+" - KSh "+x.p).join('<br>')}<br><b>Pharmacy Total: KSh ${P.pharmTotal}</b></p><hr><p>Consultation: KSh ${P.consult}</p><h3>JUMLA KUBWA: KSh ${P.grand}</h3><p><b>Njia:</b> ${P.payMethod} - ${P.payPhone}</p><p>Asante, Pona Haraka! 🙏</p>`;go('receipt');}
-function orderFood(){let f=document.getElementById('cFood');let price=parseInt(f.value);document.getElementById('cTotal').innerText="KSh "+price;document.getElementById('cResult').innerHTML="Asante "+document.getElementById('cName').value+"! Umagiza: "+f.options[f.selectedIndex].text+" - Lipa KSh "+price+" kwa "+document.getElementById('cPay').value;}
-function saveMortuary(){let n=document.getElementById('mName').value.trim();if(!n){alert("Weka Jina la Marehemu kwanza");return;}let order=document.getElementById('mOrder').value;document.getElementById('mResult').innerHTML="✅ Mortuary Order Imerekodiwa<br>Marehemu: "+n+"<br>Ndugu: "+document.getElementById('mKin').value+" - "+document.getElementById('mPhone').value+"<br>Tarehe ya Kifo: "+document.getElementById('mDeathDate').value+" Muda: "+document.getElementById('mDeathTime').value+"<br>Muda wa Kuingia: "+document.getElementById('mInTime').value+"<br>Order: "+order+"<br>Siku: "+document.getElementById('mDays').value+"<br>Mfanyakazi: "+document.getElementById('mStaff').value;alert("Mortuary Order Imerekodiwa!");}
-function getShift(t){
-if(!t) return "Morning Shift - Whole Day 8AM to 2PM";
-let h=parseInt(t.split(":")[0]);
-if(h>=20||h<6) return "Night Shift - Whole Day 8PM to 8AM";
-if(h>=14) return "Afternoon Shift - Whole Day 2PM to 8PM";
-return "Morning Shift - Whole Day 8AM to 2PM";
-}
-function autoAssign(){
-let d=document.getElementById('attDept').value;
-let r=document.getElementById('attRole').value;
-let t=document.getElementById('attTime').value;
-let shift=getShift(t);
-let roleMap={"Cleaner - Msafishaji":"Cleaning - Wards & Toilets","Store Keeper - Mhifadhi Duka":"Store - Dawa & Vifaa - Stock Taking","Security / Askari":"Gate & Parking - Security","Driver - Dereva / Ambulance":"Ambulance - Watamu to Malindi","Cook - Mpishi Canteen":"Canteen - Kupika","Receptionist - Mapokezi":"Reception - Mapokezi","Cashier - Mhasibu":"Cash Office - Payment & Receipts","Gardener - Bustani":"Garden - Bustani & Mazingira","Laundry - Mfuaji":"Laundry - Kufulia Mashuka","Mortuary Attendant":"Mortuary - Kuhifadhi Mwili","Maintenance / Fundi":"Maintenance - Umeme & Maji"};
-let deptMap={"Emergency and Critical Care Staff":"Triage & Ambulance - Emergency Ward","Nursing Staff":"Ward A - Nursing Care & Vitals","Laboratory and Diagnostic Staff":"Lab - Blood Tests & Results","Pharmacy Staff":"Pharmacy - Dispense Drugs & Stock","Allied Health Professionals":"Physio / Nutrition - Patient Support","Hospital Support and Operational Staff":"Cleaning & Security - Hospital Grounds","Hospital Management and Administration":"Admin Office - Reports & Management"};
-let base="";
-if(r && roleMap[r]) base=roleMap[r];
-else base=deptMap[d]||"";
-document.getElementById('attAssign').value=base+" | "+shift;
-}
-let att=[];
+let P={};let att=[];
+function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');}
+function signIn(){if(!document.getElementById('userName').value){alert("Jaza jina");return;}go('home');}
+function getShift(t){if(!t) return "Morning Shift - Whole Day 8AM to 2PM";let h=parseInt(t.split(":")[0]);if(h>=20||h<6) return "Night Shift - Whole Day 8PM to 8AM";if(h>=14) return "Afternoon Shift - Whole Day 2PM to 8PM";return "Morning Shift - Whole Day 8AM to 2PM";}
+function autoAssign(){let d=document.getElementById('attDept').value;let r=document.getElementById('attRole').value;let t=document.getElementById('attTime').value;let shift=getShift(t);let roleMap={"Cleaner - Msafishaji":"Cleaning - Wards & Toilets","Store Keeper - Mhifadhi Duka":"Store - Dawa & Vifaa - Stock Taking","Security / Askari":"Gate & Parking - Security","Driver - Dereva / Ambulance":"Ambulance - Watamu to Malindi","Cook - Mpishi Canteen":"Canteen - Kupika","Receptionist - Mapokezi":"Reception - Mapokezi","Cashier - Mhasibu":"Cash Office - Payment & Receipts","Gardener - Bustani":"Garden - Bustani & Mazingira","Laundry - Mfuaji":"Laundry - Kufulia Mashuka","Mortuary Attendant":"Mortuary - Kuhifadhi Mwili","Maintenance / Fundi":"Maintenance - Umeme & Maji"};let deptMap={"Emergency and Critical Care Staff":"Triage & Ambulance - Emergency Ward","Nursing Staff":"Ward A - Nursing Care & Vitals","Laboratory and Diagnostic Staff":"Lab - Blood Tests & Results","Pharmacy Staff":"Pharmacy - Dispense Drugs & Stock","Allied Health Professionals":"Physio / Nutrition - Patient Support","Hospital Support and Operational Staff":"Cleaning & Security - Hospital Grounds","Hospital Management and Administration":"Admin Office - Reports & Management"};let base="";if(r&&roleMap[r]) base=roleMap[r];else base=deptMap[d]||"";document.getElementById('attAssign').value=base+" | "+shift;}
 document.getElementById('todayDate').innerText=new Date().toLocaleString();
-function markAtt(){
-let n=document.getElementById('attName').value;
-let d=document.getElementById('attDept').value;
-let a=document.getElementById('attAssign').value;
-let s=document.querySelector('input[name="att"]:checked');
-if(!n||!s){alert("Jaza jina na chagua Present/Absent");return;}
-if(!a){autoAssign();a=document.getElementById('attAssign').value;}
-att.push({n:n,d:d,s:s.value,t:document.getElementById('attTime').value,a:a});
-document.getElementById('attList').innerHTML=att.map(x=>`<p>✅ ${x.n} - ${x.d} - ${x.s} - ${x.t} - Assignment: ${x.a} - Date: ${new Date().toLocaleDateString()}</p>`).join('');
-alert("Attendance + Whole Day Assignment imerekodiwa!");
-}
-autoAssign();
-function loadAgenda(){let f=document.getElementById('filterStatus').value;let list=agendas.filter(a=>f==="All"||a.status===f);document.getElementById('agendaBox').innerHTML=list.map(a=>`<p>📌 ${a.title} - <b>${a.status}</b></p>`).join('');}
-function addAgenda(){let v=document.getElementById('newAgenda').value;if(!v)return;agendas.push({title:v,status:"Pending"});loadAgenda();document.getElementById('newAgenda').value="";}
-loadAgenda();autoAssign();
+function markAtt(){let n=document.getElementById('attName').value;let d=document.getElementById('attDept').value;let a=document.getElementById('attAssign').value;let s=document.querySelector('input[name="att"]:checked');if(!n||!s){alert("Jaza jina na chagua Present/Absent");return;}if(!a){autoAssign();a=document.getElementById('attAssign').value;}document.getElementById('attList').innerHTML+="<p>✅ "+n+" - "+d+" - "+s.value+" - "+a+" - Date: "+new Date().toLocaleDateString()+"</p>";alert("Attendance + Whole Day Assignment imerekodiwa!");}autoAssign();
+function getLabForPatient(){if(P.type==="Mtoto") return [{n:"Malaria Test - 300",p:300},{n:"Blood Test - 500",p:500}];if(P.type==="Mjamzito") return [{n:"Pregnancy Test - 400",p:400},{n:"Blood Test - 500",p:500},{n:"Urine Test - 300",p:300}];if(P.symptom&&P.symptom.toLowerCase().includes("homa")) return [{n:"Malaria Test - 300",p:300},{n:"Blood Test - 500",p:500}];return [{n:"General Blood Test - 500",p:500},{n:"Malaria Test - 300",p:300}];}
+function saveCheckup(){let n=document.getElementById('pName').value;if(!n){alert("Jaza jina la mgonjwa");return;}P={name:n,age:document.getElementById('pAge').value,phone:document.getElementById('pPhone').value,gender:document.getElementById('pGender').value,type:document.getElementById('pType').value,days:document.getElementById('pDays').value,symptom:document.getElementById('pSymptom').value,bp:"",temp:""};P.tests=getLabForPatient();document.getElementById('labPatient').innerText=P.name+" - "+P.type+" - "+P.symptom;document.getElementById('labList').innerHTML=P.tests.map(t=>"<label><input type='checkbox' checked value='"+t.n+"' data-price='"+t.p+"'> "+t.n+"</label>").join('');go('lab');}
+function saveLab(){let c=document.querySelectorAll('#labList input:checked');let tot=0;P.lab=[];c.forEach(x=>{tot+=parseInt(x.dataset.price);P.lab.push({n:x.value,p:parseInt(x.dataset.price)});});let a=parseInt(P.age||30);if(P.type==="Mtoto"){P.bp="100/65";P.temp="37.0°C";}else if(P.type==="Mjamzito"){P.bp="120/80";P.temp="36.8°C";}else if(a>=60){P.bp="140/90";P.temp="37.2°C";}else if(a>=40){P.bp="130/85";P.temp="37.0°C";}else{P.bp="120/80";P.temp="36.9°C";}document.getElementById('labResultTxt').innerText="BP: "+P.bp+" | Temp: "+P.temp+" (Automatic - Lab) | "+P.lab.map(x=>x.n).join(', ')+" = KSh "+tot;let meds="";if(P.type==="Mjamzito") meds="Folic Acid - 1 Tab Daily - KSh 200<br>Iron Tablets - 1 Tab Daily - KSh 300";else if(P.type==="Mtoto") meds="Paracetamol Syrup - 5ml 3x Daily - KSh 250<br>Vitamin C - 1x Daily - KSh 150";else if(P.symptom&&P.symptom.toLowerCase().includes("homa")) meds="Panadol - 2 Tabs 3x Daily - KSh 150<br>Malaria Drugs (Coartem) - 4 Tabs 2x Daily 3 Days - KSh 600";else meds="Panadol - 2 Tabs 3x Daily - KSh 150<br>Vitamin C - 1 Tab Daily - KSh 100";document.getElementById('pharmList').innerHTML="<p><b>Mgonjwa:</b> "+P.name+" - "+P.type+"</p><p><b>Lab:</b> "+document.getElementById('labResultTxt').innerText+"</p><p><b>Dawa (Automatic):</b><br>"+meds+"</p><p><b>Jinsi ya kutumia:</b> Kunywa baada ya kula, Kunywa maji mengi, Maliza dozi</p>";go('pharmacy');}
+function doctorLogin(){let doc=document.getElementById('docName').value;let pin="PIN: 1234 - "+doc;let note="";if(P.name){note="Mgonjwa: "+P.name+" ("+P.type+") - Dalili: "+(P.symptom||"")+" - Lab BP: "+(P.bp||"")+" - Temp: "+(P.temp||"")+" - Dawa: Angalia Pharmacy";}else{note="Hakuna mgonjwa bado - Subiri Checkup";}document.getElementById('docAutoBox').innerHTML="<b>"+pin+"</b><br>"+note;alert("Doctor Login - "+pin);}
+// CANTEEN - LOCAL / INTERNATIONAL / SPECIAL + TABLE + CHAIR AUTOMATIC
+function updateFoodList(){let cat=document.getElementById('foodCat').value;let list=[];if(cat.includes("Local")) list=["Wali + Maharage - KSh 150","Pilau + Kuku - KSh 250","Ugali + Samaki - KSh 200","Chapati + Maharage - KSh 120","Mokimo + Nyama - KSh 220","Githeri - KSh 130","Chai + Mandazi - KSh 80"];else if(cat.includes("International")) list=["Fried Rice + Chicken - KSh 350","Pasta + Meatballs - KSh 400","Burger + Fries - KSh 450","Pizza Slice - KSh 300","Grilled Fish + Chips - KSh 500","Sandwich + Juice - KSh 280","Spaghetti Bolognese - KSh 380"];else list=["Uji wa Wimbi - KSh 100 (Patient)","Supu ya Kuku - KSh 180 (Patient)","Wali laini + Samaki wa Kuchemsha - KSh 200 (Patient)","Matunda Mix - KSh 120 (Patient)","Maziwa + Mkate - KSh 150 (Patient)","Porridge + Mayai - KSh 160 (Patient)"];document.getElementById('foodSel').innerHTML=list.map(f=>"<option>"+f+"</option>").join('');}
+function orderFood(){let n=document.getElementById('foodName').value;let lvl=document.getElementById('foodLevel').value;let food=document.getElementById('foodSel').value;if(!n){alert("Jaza jina lako");return;}let seat="";if(lvl==="Director") seat="VIP Room - Table 1 - Chair 1 (Directors Only)";else if(lvl==="Guest of Honor") seat="VIP Room - Table 2 - Chair 2 (Guest of Honor)";else if(lvl==="Doctor") seat="Doctors Lounge - Table 3 - Chair 5 (Doctors)";else if(lvl==="Patient") seat="Patient Ward Dining - Table 10 - Chair 3 (Patients)";else seat="Visitors Area - Table 15 - Chair 8 (Visitors)";document.getElementById('foodSeat').value=seat;document.getElementById('foodResult').innerHTML="<p style='background:#e6fff4;padding:10px;border-radius:10px'>✅ <b>"+n+" ("+lvl+")</b><br>Food: "+food+"<br><b>Kaa hapa:</b> "+seat+"</p>";alert("Order Imerekodiwa! "+seat);}
+updateFoodList();
 </script></body></html>
